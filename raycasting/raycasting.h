@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/14 14:13:21 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/14 18:39:37 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 #define VIEW_D 60
 #define PLAYER_H 32
 #define RAY_D VIEW_D/WIDTH
-#define ALPHA 90 - (VIEW_D/2)
 #define PP_DIST (PP_WIDTH/2) / tan(VIEW_D/2)
-#define PI 3.141592654
 
 typedef struct s_map{
 	char	**map;

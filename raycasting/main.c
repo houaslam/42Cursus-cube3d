@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MAIN.C                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 15:06:46 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/14 16:57:02 by houaslam         ###   ########.fr       */
+/*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
+/*   Updated: 2023/07/14 18:48:28 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void	find_wall(t_map *map)
 {
-    map->p_x = 2;
-    map->p_y = 3;
-    
     map->pu_x = map->p_x * UNIT + (UNIT / 2);
     map->pu_y = map->p_y * UNIT + (UNIT / 2);
     
     map->c_hy = ((map->pu_y / UNIT) * UNIT) - 1;
-    map->c_hx = (( map->p_y - map->c_hy) / tan(60)) + map->p_x;
+    map->c_hx = ((map->pu_y - map->c_hy) / tan(60 * M_PI/180)) + map->pu_x;
     
-    map->d_hx = UNIT/tan(ALPHA);
+    map->d_hx = UNIT/tan(60 * M_PI/180);
     map->d_hy = -UNIT;
     
     printf("cy = %d\n", map->c_hy);
     printf("cx = %d\n", map->c_hx);
-    // printf("dx = %d\n", map->d_hx);
-    // while(map->c_hx / 64 < 6 && map->c_hy / 64 < 8 && map->map[map->c_hx / 64][map->c_hy / 64] != '1')
-    //     map->c_hx += map->d_hx;
-    // printf("AFTER cx = %d\n", map->c_hx / 64);
+    while(map->c_hx / 64 < 3 && map->c_hy / 64 < 4 && map->map[map->c_hx / 64][map->c_hy / 64] != '1')
+    {
+        map->c_hx += map->d_hx;
+        map->c_hy += map->d_hy;
+    }
+    printf("AFTER cx = %d\n", map->c_hx / 64);
+    printf("AFTER cy = %d\n", map->c_hy/64);
+
 }
 
 
@@ -51,8 +52,10 @@ int main(int ac, char **av)
     map->map[2] = "1000";
     map->map[3] = "1P00";
     map->map[4] = NULL;
-    // window->mlx = mlx_init();
+    window->mlx = mlx_init();
+    map->p_x = 1;
+    map->p_y = 3;
     find_wall(window->map);
-    // window->mlx_win =  mlx_new_window(window->mlx, 1920, 1080, "Cube");
-    // mlx_loop(window->mlx);
+    window->mlx_win =  mlx_new_window(window->mlx, 1920, 1080, "Cube");
+    mlx_loop(window->mlx);
 }
