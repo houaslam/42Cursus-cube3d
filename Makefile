@@ -6,18 +6,26 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/07/14 18:48:52 by houaslam         ###   ########.fr        #
+#    Updated: 2023/07/17 13:15:18 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cube
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
-EXTRA_FLAGS = -fsanitize=address -Lmlx -lmlx -framework OpenGL -framework AppKit
+EXTRA_FLAGS = -fsanitize=address -g3 -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-SRCS = raycasting/main.c
+SRCS = 	raycasting/distances.c \
+		raycasting/raycasting.c \
+	    raycasting/player.c \
+	    raycasting/quadrant.c \
+	    raycasting/external_outil.c \
+		rendering/wall.c \
+		rendering/floor.c \
+		rendering/ceilling.c \
+		rendering/render_setup.c \
 
-OBJ = ${SRCS:.cpp=.o}
+OBJ = ${SRCS:.c=.o}
 
 all : ${NAME}
 
