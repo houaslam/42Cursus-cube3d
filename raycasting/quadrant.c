@@ -6,23 +6,35 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/17 10:35:51 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/18 08:11:03 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-// void	quadrant(t_map **map)
-// {
-// 	if (0 < (*map)->ray_ang && (*map)->ray_ang < 90)
-// 		quadrant_1(map);
-// 	else if (91 <= (*map)->ray_ang && (*map)->ray_ang <= 179)
-// 		quadrant_2(map);
-// 	else if (181 <= (*map)->ray_ang && (*map)->ray_ang <= 179)
-// 		quadrant_3(map);
-// 	else if (271 <= (*map)->ray_ang && (*map)->ray_ang <= 359)
-// 		quadrant_4(map);
-// }
+void	quadrant(t_map **map)
+{
+	if (0 < (*map)->r.ang && (*map)->r.ang < 90)
+	{
+		(*map)->r.up = 1;
+		(*map)->r.right = 0;
+	}
+	else if (91 <= (*map)->r.ang && (*map)->r.ang <= 179)
+	{
+		(*map)->r.up = 1;
+		(*map)->r.left = 1;
+	}
+	else if (181 <= (*map)->r.ang && (*map)->r.ang <= 179)
+	{
+		(*map)->r.down = 1;
+		(*map)->r.left = 1;
+	}
+	else if (271 <= (*map)->r.ang && (*map)->r.ang <= 359)
+	{
+		(*map)->r.down = 1;
+		(*map)->r.right = 1;
+	}
+}
 
 // void	quadrant_1(t_map **map)
 // {
@@ -46,7 +58,7 @@
 // 	int	dx;
 // 	int	dy;
 
-// 	(*map)->alpha = ((*map)->ray_ang - 90) * (M_PI / 180);
+// 	(*map)->alpha = ((*map)->r.ang - 90) * (M_PI / 180);
 // 	(*map)->c_hy = ((floor((*map)->pu_y / UNIT)) * UNIT) - 1;
 // 	(*map)->c_hx = (int)(tan((*map)->alpha) / ((*map)->c_hy - (*map)->pu_y)) + (*map)->pu_x;
 // 	dx = -UNIT / tan((*map)->alpha);
@@ -63,7 +75,7 @@
 // 	int	dx;
 // 	int	dy;
 
-// 	(*map)->alpha = ((*map)->ray_ang - 180) * M_PI / 180;
+// 	(*map)->alpha = ((*map)->r.ang - 180) * M_PI / 180;
 // 	(*map)->pu_x = (*map)->p_x * UNIT + (UNIT / 2);
 // 	(*map)->pu_y = (*map)->p_y * UNIT + (UNIT / 2);
 // 	(*map)->c_hy = (((*map)->pu_y / UNIT) * UNIT) + 64;
@@ -82,7 +94,7 @@
 // 	int	dx;
 // 	int	dy;
 
-// 	(*map)->alpha = (*map)->ray_ang - 270 * M_PI / 180;
+// 	(*map)->alpha = (*map)->r.ang - 270 * M_PI / 180;
 // 	(*map)->pu_x = (*map)->p_x * UNIT + (UNIT / 2);
 // 	(*map)->pu_y = (*map)->p_y * UNIT + (UNIT / 2);
 // 	(*map)->c_hy = (((*map)->pu_y / UNIT) * UNIT) + 64;
@@ -102,7 +114,7 @@
 // 	int y;
 
 // 	(*map)->c_hy = floor((*map)->pu_y / 64) * 64;
-// 	// if ((*map)->ray_ang > 0 && (*map)->ray_ang < 180)
+// 	// if ((*map)->r.ang > 0 && (*map)->r.ang < 180)
 // 	(*map)->c_hy -= 1;
 // 	// else
 // 	// (*map)->c_hy += 64;
@@ -114,7 +126,7 @@
 // 		(*map)->c_hx += x;
 // 		(*map)->c_hy += y;
 // 	}
-// 	// if ((*map)->ray_ang > 90 && (*map)->ray_ang < 270)
+// 	// if ((*map)->r.ang > 90 && (*map)->r.ang < 270)
 // 	// 	(*map)->c_hx -= 1;
 // 	// else
 // 	// 	(*map)->c_hy += 64;

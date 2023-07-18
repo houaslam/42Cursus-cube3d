@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/17 13:20:43 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/18 08:03:52 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,23 @@ typedef struct s_wall
 	int					dy;
 }	t_wall;
 
+
+typedef struct s_ray
+{
+	float				alpha;
+	float				ang;
+	int					up;
+	int					down;
+	int					left;
+	int					right;
+}	t_ray;
+
 typedef struct s_map
 {
 	//map
 	char				**map;
 	int					m_x;
 	int					m_y;
-	//angles
-	float				alpha;
-	float				ray_ang;
-	int					up;
-	int					down;
-	int					left;
-	int					right;
 	// player
 	int					p_x;
 	int					p_y;
@@ -60,6 +64,7 @@ typedef struct s_map
 	int					k;
 	// render
 	int					ceiling;
+	t_ray				r;
 	t_wall				h;
 	t_wall				v;
 	struct s_window		*window;
