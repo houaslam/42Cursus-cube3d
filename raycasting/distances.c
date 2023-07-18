@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/18 08:14:07 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/18 08:14:26 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	horizental_inter(t_map **map)
 	if ((*map)->r.up)
 		(*map)->h.cy += 64;
 	else
-		(*map)->r.cy -= 1;
+		(*map)->h.cy -= 1;
 	(*map)->h.cx = ((*map)->h.cy - (*map)->p_y) \
 	/ (tan((*map)->r.alpha)) + (*map)->p_x;
 	printf("H CX = %d CY = %d\n", (*map)->h.cx / 64, (*map)->h.cy / 64);
