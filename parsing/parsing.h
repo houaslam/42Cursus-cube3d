@@ -6,12 +6,14 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:23 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/19 11:44:45 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:51:16 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+
+#include "../cube.h"
 
 void	player_position(t_map **map);
 

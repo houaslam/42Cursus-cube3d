@@ -6,13 +6,14 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 11:44:49 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:50:14 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
+#include "../parsing/parsing.h"
 
 //render
 void					render_ceiling(t_window *window, int pos);

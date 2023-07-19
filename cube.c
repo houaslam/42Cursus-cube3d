@@ -6,12 +6,10 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 11:44:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:51:45 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube.h"
-#include "parsing/parsing.h"
 #include "raycasting/raycasting.h"
 
 
@@ -21,6 +19,7 @@ int	main(int ac, char **av)
 	t_map		*map;
 
 	(void)av;
+	(void)ac;
 	window = (t_window *)malloc(sizeof(t_window));
 	map = (t_map *)malloc(sizeof(t_map));
 	window->map = map;
