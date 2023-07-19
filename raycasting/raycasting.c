@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/18 17:33:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:45:02 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int ac, char **av)
 	map->map[4] = NULL;
 	map->m_x = 4;
 	map->m_y = 4;
-	map->p_x = 1;
-	map->p_y = 3;
+	map->p.x = 1;
+	map->p.y = 3;
 	player_view(&window->map);
 	set_distance(&map, window);
 	mlx_loop(window->mlx);

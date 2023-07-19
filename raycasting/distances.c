@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 08:08:57 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:35:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	p_to_wall(t_map *map)
 	int	h;
 	int	v;
 
-	a = map->h.cy - map->pu_y;
-	c = map->h.cx - map->pu_x;
+	a = map->h.cy - map->p.u_y;
+	c = map->h.cx - map->p.u_x;
 	h = sqrt(pow(a, 2) + pow(c, 2));
-	a = map->v.cy - map->pu_y;
-	c = map->v.cx - map->pu_x;
+	a = map->v.cy - map->p.u_y;
+	c = map->v.cx - map->p.u_x;
 	v = sqrt(pow(a, 2) + pow(c, 2));
 	if (map->its_h)
 		return (h);
@@ -41,8 +41,8 @@ void	set_distance(t_map **map, t_window *window)
 
 	i = 0;
 	(void)window;
-	(*map)->pu_x = (*map)->p_x * UNIT + (UNIT / 2);
-	(*map)->pu_y = (*map)->p_y * UNIT + (UNIT / 2);
+	(*map)->p.u_x = (*map)->p.x * UNIT + (UNIT / 2);
+	(*map)->p.u_y = (*map)->p.y * UNIT + (UNIT / 2);
 	k = 0;
 	// vertical_inter_d(map);
 	// horizental_inter_d(map);

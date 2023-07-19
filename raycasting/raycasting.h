@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:31:14 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:35:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	int					p_x;
-	int					p_y;
-	int					pu_x;
-	int					pu_y;
+	int					x;
+	int					y;
+	int					u_x;
+	int					u_y;
 }	t_player;
 
 

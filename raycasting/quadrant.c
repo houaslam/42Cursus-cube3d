@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:27:29 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:44:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	quadrant(t_map **map)
 {
-	if (0 < (*map)->r.ang && (*map)->r.ang <= 90)
+	if (0 <= (*map)->r.ang && (*map)->r.ang < 90)
 		case_one(map);
 	else if (91 <= (*map)->r.ang && (*map)->r.ang <= 179)
 		case_two(map);
@@ -28,7 +28,7 @@ int	quadrant(t_map **map)
 		(*map)->v.cx += (*map)->v.dx;
 		(*map)->v.cy += (*map)->v.dy;
 	}
-	// printf("%f h_cy : %d h_cx : %d v_cx : %d v_cy : %d\n", (*map)->r.alpha, (*map)->h.cy / 64, (*map)->h.cx / 64, (*map)->v.cx / 64, (*map)->v.cy / 64);
+	printf("%f h_cy : %d h_cx : %d v_cx : %d v_cy : %d\n", (*map)->r.alpha, (*map)->h.cy / 64, (*map)->h.cx / 64, (*map)->v.cx / 64, (*map)->v.cy / 64);
 	return (0);
 	}
 
@@ -98,19 +98,19 @@ void	horizental_inter_d(t_map **map)
 void	horizental_inter_c(t_map **map)
 {
 	// y
-	(*map)->h.cy = (floor((*map)->pu_y / UNIT) * UNIT);
+	(*map)->h.cy = (floor((*map)->p.u_y / UNIT) * UNIT);
 	if ((*map)->r.up)
 		(*map)->h.cy += 64;
 	else if ((*map)->r.down)
 		(*map)->h.cy -= 1;
 	// x
-	(*map)->h.cx = abs((*map)->h.cy - (*map)->pu_y);
+	(*map)->h.cx = abs((*map)->h.cy - (*map)->p.u_y);
 	if (((*map)->r.right && (*map)->r.up) || ((*map)->r.left && (*map)->r.down))
 		(*map)->h.cx /= tan((*map)->r.alpha);
 	else if (((*map)->r.left && (*map)->r.down) \
 	|| ((*map)->r.right && (*map)->r.up))
 		(*map)->h.cx *= tan((*map)->r.alpha);
-	(*map)->h.cx += (*map)->pu_x;
+	(*map)->h.cx += (*map)->p.u_x;
 }
 
 void	vertical_inter_d(t_map **map)
@@ -133,19 +133,19 @@ void	vertical_inter_d(t_map **map)
 void	vertical_inter_c(t_map **map)
 {
 	// x
-	(*map)->v.cx = (floor((*map)->pu_y / UNIT) * UNIT);
+	(*map)->v.cx = (floor((*map)->p.u_y / UNIT) * UNIT);
 	if ((*map)->r.right)
 		(*map)->v.cx += 64;
 	else if ((*map)->r.left)
 		(*map)->v.cx -= 1;
 	// y
-	(*map)->v.cy = abs((*map)->pu_x - (*map)->v.cy);
+	(*map)->v.cy = abs((*map)->p.u_x - (*map)->v.cy);
 	if (((*map)->r.right && (*map)->r.up) || ((*map)->r.left && (*map)->r.down))
 		(*map)->v.cy *= tan((*map)->r.alpha);
 	else if (((*map)->r.left && (*map)->r.down) \
 	|| ((*map)->r.right && (*map)->r.up))
 		(*map)->v.cy /= tan((*map)->r.alpha);
-	(*map)->v.cy += (*map)->pu_y;
+	(*map)->v.cy += (*map)->p.u_y;
 		while (check_case_h(map))
 	{
 		(*map)->v.cx += (*map)->v.dx;
