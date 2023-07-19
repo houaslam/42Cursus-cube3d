@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 13:09:38 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:46:53 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:05:07 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	case_one(t_map **map)
 {
 	static int i;
 
-	(*map)->r.alpha = (*map)->r.ang - 30;
+	(*map)->r.alpha = (*map)->r.ang - 60;
 
 	(*map)->h.cy = (((int)(*map)->p.u_y / UNIT) * UNIT) - 1;
 	(*map)->h.cx = (((*map)->p.u_y - (*map)->h.cy) / tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_x;

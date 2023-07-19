@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:35:40 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:07:05 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,17 @@ void	set_distance(t_map **map, t_window *window)
 	int k;
 
 	i = 0;
-	(void)window;
 	(*map)->p.u_x = (*map)->p.x * UNIT + (UNIT / 2);
 	(*map)->p.u_y = (*map)->p.y * UNIT + (UNIT / 2);
 	k = 0;
-	// vertical_inter_d(map);
-	// horizental_inter_d(map);
 	while (i < PP_WIDTH)
 	{
-		printf("alpha : %f ang : %f\n", (*map)->r.alpha, (*map)->r.ang);
 		quadrant(map);
+		// printf("alpha : %f ang : %f\n", (*map)->r.alpha, (*map)->r.ang);
 		(*map)->p_to_w = p_to_wall(*map);
-		printf("WALL = %d\n",(*map)->p_to_w  );
 		draw_ray(window, i);
 		(*map)->r.ang -= (float)VIEW_D / PP_WIDTH;
-		break ;
+		// break ;
 		
 		i++;
 	}

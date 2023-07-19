@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 11:42:39 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:53:05 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_wall
 	int					dx;
 	int					dy;
 }	t_wall;
-
 
 typedef struct s_ray
 {

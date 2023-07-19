@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:44:22 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:06:27 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	quadrant(t_map **map)
 {
 	if (0 <= (*map)->r.ang && (*map)->r.ang < 90)
 		case_one(map);
-	else if (91 <= (*map)->r.ang && (*map)->r.ang <= 179)
+	else if (90 <= (*map)->r.ang && (*map)->r.ang <= 179)
 		case_two(map);
 	while (check_case_h(map))
 	{
@@ -28,7 +28,6 @@ int	quadrant(t_map **map)
 		(*map)->v.cx += (*map)->v.dx;
 		(*map)->v.cy += (*map)->v.dy;
 	}
-	printf("%f h_cy : %d h_cx : %d v_cx : %d v_cy : %d\n", (*map)->r.alpha, (*map)->h.cy / 64, (*map)->h.cx / 64, (*map)->v.cx / 64, (*map)->v.cy / 64);
 	return (0);
 	}
 
