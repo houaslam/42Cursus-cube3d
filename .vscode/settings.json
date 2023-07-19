@@ -1,8 +1,5 @@
 {
     "files.associations": {
-        "MAIN.C": "cpp",
-        "raycasting.h": "c",
-        "__locale": "c",
-        "complex": "c"
+        "parsing.h": "c"
     }
 }
