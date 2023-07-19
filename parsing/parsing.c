@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 09:57:23 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/19 12:11:07 by fadermou         ###   ########.fr       */
+/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
+/*   Updated: 2023/07/19 12:33:12 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "parsing.h"
 
-#include <string.h>
-# include "../cube.h"
-# include "get_next_line/get_next_line.h"
+void parsing(t_map **map, char **av)
+{
+	(void)av;
 
-void	player_position(t_map **map);
-void parsing(t_map **map, char **av);
-
-#endif
+	(*map)->map = (char **)malloc(sizeof(char *) * 5);
+	(*map)->map[0] = "11111";
+	(*map)->map[1] = "100E1";
+	(*map)->map[2] = "10001";
+	(*map)->map[3] = "10001";
+	(*map)->map[4] = NULL;
+	// read_map(map);
+	// map_dimension(map);
+	player_position(map);
+}
