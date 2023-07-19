@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/07/17 13:15:18 by houaslam         ###   ########.fr        #
+#    Updated: 2023/07/18 13:28:11 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS = 	raycasting/distances.c \
 		rendering/floor.c \
 		rendering/ceilling.c \
 		rendering/render_setup.c \
+		raycasting/view.c \
 
 OBJ = ${SRCS:.c=.o}
 

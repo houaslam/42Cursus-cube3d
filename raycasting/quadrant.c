@@ -6,129 +6,149 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/18 08:11:03 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:27:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	quadrant(t_map **map)
+int	quadrant(t_map **map)
 {
-	if (0 < (*map)->r.ang && (*map)->r.ang < 90)
-	{
-		(*map)->r.up = 1;
-		(*map)->r.right = 0;
-	}
+	if (0 < (*map)->r.ang && (*map)->r.ang <= 90)
+		case_one(map);
 	else if (91 <= (*map)->r.ang && (*map)->r.ang <= 179)
+		case_two(map);
+	while (check_case_h(map))
 	{
-		(*map)->r.up = 1;
-		(*map)->r.left = 1;
+		(*map)->h.cx += (*map)->h.dx;
+		(*map)->h.cy += (*map)->h.dy;
 	}
-	else if (181 <= (*map)->r.ang && (*map)->r.ang <= 179)
+	while (check_case_v(map))
 	{
-		(*map)->r.down = 1;
-		(*map)->r.left = 1;
+		(*map)->v.cx += (*map)->v.dx;
+		(*map)->v.cy += (*map)->v.dy;
 	}
-	else if (271 <= (*map)->r.ang && (*map)->r.ang <= 359)
+	// printf("%f h_cy : %d h_cx : %d v_cx : %d v_cy : %d\n", (*map)->r.alpha, (*map)->h.cy / 64, (*map)->h.cx / 64, (*map)->v.cx / 64, (*map)->v.cy / 64);
+	return (0);
+	}
+
+// int	quadrant(t_map **map)
+// {
+// 	(*map)->r.up = 0;
+// 	(*map)->r.down = 0;
+// 	(*map)->r.right = 0;
+// 	(*map)->r.left = 0;
+// 	if (0 < (*map)->r.ang && (*map)->r.ang < 90)
+// 	{
+// 		printf("FOR ANG = %f\n", (*map)->r.ang);
+// 		printf("H CX %d CY %d\n", (*map)->h.cx/ 64, (*map)->h.cy / 64);
+// 		printf("H DX %d DY %d\n", (*map)->h.dx/ 64, (*map)->h.dy / 64);
+// 		printf("V CX %d CY %d\n", (*map)->v.cx/ 64, (*map)->v.cy / 64);
+// 		printf("V DX %d DY %d\n", (*map)->v.dx/ 64, (*map)->v.dy / 64);
+// 		(*map)->r.alpha = (*map)->r.ang * (M_PI / 180);
+// 		(*map)->r.up = 1;
+// 		(*map)->r.right = 1;
+// 		return (1);
+// 	}
+// 	else if (91 <= (*map)->r.ang && (*map)->r.ang <= 179)
+// 	{
+// 		(*map)->r.alpha = ((*map)->r.ang - 90) * (M_PI / 180);
+// 		(*map)->r.up = 1;
+// 		(*map)->r.left = 1;
+// 		return (2);
+// 	}
+// 	else if (181 <= (*map)->r.ang && (*map)->r.ang <= 179)
+// 	{
+// 		(*map)->r.alpha = ((*map)->r.ang - 180) * (M_PI / 180);
+// 		(*map)->r.down = 1;
+// 		(*map)->r.left = 1;
+// 		return (3);
+// 	}
+// 	else if (271 <= (*map)->r.ang && (*map)->r.ang <= 359)
+// 	{
+// 		(*map)->r.alpha = ((*map)->r.ang - 270) * (M_PI / 180);
+// 		(*map)->r.down = 1;
+// 		(*map)->r.right = 1;
+// 		return (4);
+// 	}
+// 	return (0);
+// 	}
+
+void	horizental_inter_d(t_map **map)
+{
+	// x
+	(*map)->h.dx = UNIT;
+	if ((*map)->r.left)
+		(*map)->h.dx *= -1;
+	if ((*map)->r.up)
+		(*map)->h.dx *= tan((*map)->r.alpha);
+	else if ((*map)->r.down)
+		(*map)->h.dx /= tan((*map)->r.alpha);
+		//y
+	(*map)->h.dy = UNIT;
+	if ((*map)->r.up)
+		(*map)->h.dy *= -1;
+	while (check_case_h(map))
 	{
-		(*map)->r.down = 1;
-		(*map)->r.right = 1;
+		(*map)->h.cx += (*map)->h.dx;
+		(*map)->h.cy += (*map)->h.dy;
 	}
 }
 
-// void	quadrant_1(t_map **map)
-// {
-// 	int	dx;
-// 	int	dy;
+void	horizental_inter_c(t_map **map)
+{
+	// y
+	(*map)->h.cy = (floor((*map)->pu_y / UNIT) * UNIT);
+	if ((*map)->r.up)
+		(*map)->h.cy += 64;
+	else if ((*map)->r.down)
+		(*map)->h.cy -= 1;
+	// x
+	(*map)->h.cx = abs((*map)->h.cy - (*map)->pu_y);
+	if (((*map)->r.right && (*map)->r.up) || ((*map)->r.left && (*map)->r.down))
+		(*map)->h.cx /= tan((*map)->r.alpha);
+	else if (((*map)->r.left && (*map)->r.down) \
+	|| ((*map)->r.right && (*map)->r.up))
+		(*map)->h.cx *= tan((*map)->r.alpha);
+	(*map)->h.cx += (*map)->pu_x;
+}
 
-// 	(*map)->c_hy = (floor((*map)->pu_y / UNIT) * UNIT) - 1;
-// 	(*map)->c_hx = (((*map)->pu_y - (*map)->c_hy) \
-// 	/ tan((*map)->alpha)) + (*map)->pu_x;
-// 	dx = UNIT / tan((*map)->alpha);
-// 	dy = -UNIT;
-// 	while (check_case(map))
-// 	{
-// 		(*map)->c_hx += dx;
-// 		(*map)->c_hy += dy;
-// 	}
-// }
+void	vertical_inter_d(t_map **map)
+{
+	// x
+	(*map)->v.dx = UNIT;
+	if ((*map)->r.left)
+		(*map)->v.dx *= -1;
+	// y
+	(*map)->v.dy = UNIT;
+	if ((*map)->r.up)
+		(*map)->v.dy *= -1;
+	if (((*map)->r.right && (*map)->r.up) || ((*map)->r.left && (*map)->r.down))
+		(*map)->v.dy *= tan((*map)->r.alpha);
+	else if (((*map)->r.left && (*map)->r.down) \
+	|| ((*map)->r.right && (*map)->r.up))
+		(*map)->v.dy /= tan((*map)->r.alpha);
+}
 
-// void	quadrant_2(t_map **map)
-// {
-// 	int	dx;
-// 	int	dy;
-
-// 	(*map)->alpha = ((*map)->r.ang - 90) * (M_PI / 180);
-// 	(*map)->c_hy = ((floor((*map)->pu_y / UNIT)) * UNIT) - 1;
-// 	(*map)->c_hx = (int)(tan((*map)->alpha) / ((*map)->c_hy - (*map)->pu_y)) + (*map)->pu_x;
-// 	dx = -UNIT / tan((*map)->alpha);
-// 	dy = -UNIT;
-// 	while (check_case(map))
-// 	{
-// 		(*map)->c_hx += dx;
-// 		(*map)->c_hy += dy;
-// 	}
-// }
-
-// void	quadrant_3(t_map **map)
-// {
-// 	int	dx;
-// 	int	dy;
-
-// 	(*map)->alpha = ((*map)->r.ang - 180) * M_PI / 180;
-// 	(*map)->pu_x = (*map)->p_x * UNIT + (UNIT / 2);
-// 	(*map)->pu_y = (*map)->p_y * UNIT + (UNIT / 2);
-// 	(*map)->c_hy = (((*map)->pu_y / UNIT) * UNIT) + 64;
-// 	(*map)->c_hx = (*map)->pu_x - ((*map)->c_hy - (*map)->pu_y) / tan((*map)->alpha);
-// 	dx = -UNIT * tan((*map)->alpha);
-// 	dy = UNIT;
-// 	while (check_case(map))
-// 	{
-// 		(*map)->c_hx += dx;
-// 		(*map)->c_hy += dy;
-// 	}
-// }
-
-// void	quadrant_4(t_map **map)
-// {
-// 	int	dx;
-// 	int	dy;
-
-// 	(*map)->alpha = (*map)->r.ang - 270 * M_PI / 180;
-// 	(*map)->pu_x = (*map)->p_x * UNIT + (UNIT / 2);
-// 	(*map)->pu_y = (*map)->p_y * UNIT + (UNIT / 2);
-// 	(*map)->c_hy = (((*map)->pu_y / UNIT) * UNIT) + 64;
-// 	(*map)->c_hx = (*map)->pu_x + tan((*map)->alpha) * ((*map)->c_hy - (*map)->pu_y);
-// 	dx = UNIT / tan((*map)->alpha);
-// 	dy = UNIT;
-// 	while (check_case(map))
-// 	{
-// 		(*map)->c_hx += dx;
-// 		(*map)->c_hy += dy;
-// 	}
-// }
-
-// void horizental_inter(t_map **map)
-// {
-// 	int	x;
-// 	int y;
-
-// 	(*map)->c_hy = floor((*map)->pu_y / 64) * 64;
-// 	// if ((*map)->r.ang > 0 && (*map)->r.ang < 180)
-// 	(*map)->c_hy -= 1;
-// 	// else
-// 	// (*map)->c_hy += 64;
-// 	(*map)->c_hx = (tan((*map)->alpha) * ((*map)->c_hy - (*map)->p_y)) + (*map)->p_x;
-// 	y = -UNIT;
-// 	x = y / tan((*map)->alpha);
-// 	while (check_case(map))
-// 	{
-// 		(*map)->c_hx += x;
-// 		(*map)->c_hy += y;
-// 	}
-// 	// if ((*map)->r.ang > 90 && (*map)->r.ang < 270)
-// 	// 	(*map)->c_hx -= 1;
-// 	// else
-// 	// 	(*map)->c_hy += 64;
-// }
-
+void	vertical_inter_c(t_map **map)
+{
+	// x
+	(*map)->v.cx = (floor((*map)->pu_y / UNIT) * UNIT);
+	if ((*map)->r.right)
+		(*map)->v.cx += 64;
+	else if ((*map)->r.left)
+		(*map)->v.cx -= 1;
+	// y
+	(*map)->v.cy = abs((*map)->pu_x - (*map)->v.cy);
+	if (((*map)->r.right && (*map)->r.up) || ((*map)->r.left && (*map)->r.down))
+		(*map)->v.cy *= tan((*map)->r.alpha);
+	else if (((*map)->r.left && (*map)->r.down) \
+	|| ((*map)->r.right && (*map)->r.up))
+		(*map)->v.cy /= tan((*map)->r.alpha);
+	(*map)->v.cy += (*map)->pu_y;
+		while (check_case_h(map))
+	{
+		(*map)->v.cx += (*map)->v.dx;
+		(*map)->v.cy += (*map)->v.dy;
+	}
+}
