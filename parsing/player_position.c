@@ -6,7 +6,7 @@
 /*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:05 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/19 12:20:25 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:39:02 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	player_position(t_map **map)
 		{
 			if (ft_player(*map, i, j))
 				s++;////no need if or..
+			if ((*map)->m_x < j)
 			j++;
 		}
 		i++;
