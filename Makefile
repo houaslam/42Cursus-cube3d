@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+         #
+#    By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/07/19 12:37:31 by fadermou         ###   ########.fr        #
+#    Updated: 2023/07/21 13:21:49 by macbookair       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,13 @@ R_SRCS = 	raycasting/distances.c \
 		raycasting/view.c \
 		cube.c
 
+
 P_SRCS = parsing/player_position.c \
-		 parsing/read_map.c \
-		 parsing/parsing.c \
+		parsing/read_map.c \
+		parsing/parsing.c \
+		parsing/map_dimension.c \
+		parsing/get_next_line/get_next_line.c \
+		parsing/get_next_line/get_next_line_utils.c
 
 OBJ = ${R_SRCS:.c=.o} ${P_SRCS:.c=.o}
 
