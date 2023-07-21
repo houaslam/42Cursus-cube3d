@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 09:36:20 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:32:39 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	player_view(t_map **map)
 		printf("ERROR\n");
 		exit(1);
 	}
+	(*map)->r.cast= (*map)->r.ang - 30;
 }

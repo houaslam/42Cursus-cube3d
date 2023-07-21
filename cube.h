@@ -6,10 +6,9 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 11:53:05 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/21 13:22:23 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUBE_H
 # define CUBE_H
@@ -20,11 +19,11 @@
 # include <stdio.h>
 # include <math.h>
 
-# define PP_HEIGHT 1000
-# define PP_WIDTH 1600
+# define PP_HEIGHT 500
+# define PP_WIDTH 800
 # define UNIT 320
 # define VIEW_D 60
-# define PLAYER_H 320
+# define PLAYER_H 320 
 # define PURPLE 0x581845 //floor
 # define PINK 0xC70039 //wall
 # define YELLOW 0xFFC300 //ceiling
@@ -41,6 +40,7 @@ typedef struct s_ray
 {
 	float				alpha;
 	float				ang;
+	float				cast;
 	int					up;
 	int					down;
 	int					left;
@@ -54,7 +54,6 @@ typedef struct s_player
 	int					u_x;
 	int					u_y;
 }	t_player;
-
 
 typedef struct s_map
 {

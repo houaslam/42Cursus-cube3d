@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/19 12:07:05 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/21 14:40:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,39 @@ int	p_to_wall(t_map *map)
 	c = map->v.cx - map->p.u_x;
 	v = sqrt(pow(a, 2) + pow(c, 2));
 	if (map->its_h)
+	{
+		printf("H1\n");
 		return (h);
+	}
 	if (map->its_v)
-		return (h);
-	if (h >= v)
+	{
+		printf("V1\n");
 		return (v);
+	}
+	if (h >= v)
+	{
+		printf("V->%d < h->%d\n", v, h);
+		return (v);
+	}
+	printf("V->%d > h->%d\n", v, h);
 	return (h);
 }
 
 void	set_distance(t_map **map, t_window *window)
 {
 	int	i;
-	int k;
 
-	i = 0;
+	i = PP_WIDTH;
 	(*map)->p.u_x = (*map)->p.x * UNIT + (UNIT / 2);
 	(*map)->p.u_y = (*map)->p.y * UNIT + (UNIT / 2);
-	k = 0;
-	while (i < PP_WIDTH)
+	while (i)
 	{
 		quadrant(map);
-		// printf("alpha : %f ang : %f\n", (*map)->r.alpha, (*map)->r.ang);
 		(*map)->p_to_w = p_to_wall(*map);
+		(*map)->wall_h = wall_height(*map);
 		draw_ray(window, i);
-		(*map)->r.ang -= (float)VIEW_D / PP_WIDTH;
-		// break ;
-		
-		i++;
+		(*map)->r.cast += (float)VIEW_D / PP_WIDTH;
+		i--;
 	}
 }
 
@@ -61,8 +67,8 @@ int	wall_height(t_map *map)
 	int	b;
 	int	ret;
 
-	map->p_to_w *= cos(map->r.alpha);
-	b = 277;
+	// map->p_to_w *= cos(map->r.alpha);
+	b = (PP_WIDTH / 2) / tan((VIEW_D / 2) * (M_PI / 180));
 	ret = (UNIT * b) / map->p_to_w;
 	return (ret);
 }

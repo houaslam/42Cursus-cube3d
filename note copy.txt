@@ -1,57 +1,53 @@
 case one 
-// done       c_h.y = (floor(player_pos.y / 64) * 64) - 1
+c_h.y = (floor(player_pos.y / 64) * 64) - 1
 c_h.x = ((c_h.y - player.y) / Tan(alpha)) + player.x
-
-d_h.x = 64 / Tan(alpha)
-d_h.y = -64 (Since we travel in the negative direction along the y-axis)
 
 c_v.x = (floor(player.x / 64) * 64) + 64
 c_v.y = Tan(alpha)(c_v.x - player.x) + player.y
+
+d_h.x = 64 / Tan(alpha)
+d_h.y = -64 (Since we travel in the negative direction along the y-axis)
 
 d_v.x = 64
 d_v.y = -Tan(alpha)(d_v.x)
 
 case two 
-// done       c_h.y = (floor(player.y / 64) * 64) - 1
+c_h.y = (floor(player.y / 64) * 64) - 1
 c_h.x = Tan(alpha) * (player.y - c_h.y)
-
-d_h.y = -64 (Since we travel in the negative direction along the y-axis)
-d_h.x = -64 * Tan(alpha)
 
 c_v.x = (floor(player.x / 64) * 64) - 1
 c_v.y = player.y - ((player.x - c_v.x)/ Tan(alpha))
+
+d_h.y = -64 (Since we travel in the negative direction along the y-axis)
+d_h.x = -64 * Tan(alpha)
 
 d_v.x = -64
 d_v.y = -64 / Tan(alpha)
 
 case three
-// done       c_h.y = (floor(player.y / 64) * 64) + 64
+c_h.y = (floor(player.y / 64) * 64) + 64
 c_h.x = player.x - (c_h.y - player.y) / Tan(alpha)
-
-d_h.y = 64 (Since we travel in the positive direction along the y-axis)
-d_h.x = -64 * Tan(alpha) (Since we travel in the negative direction along the x-axis)
 
 c_v.x = (floor(player.x / 64) * 64) - 1
 c_v.y = Tan(alpha)(player.x - c_v.x) + player.y
+
+d_h.y = 64 (Since we travel in the positive direction along the y-axis)
+d_h.x = -64 * Tan(alpha) (Since we travel in the negative direction along the x-axis)
 
 d_v.x = -64
 d_v.y = 64 * Tan(alpha)
 
 case five
-// done       c_h.y = (floor(player.y / 64) * 64) + 64
+c_h.y = (floor(player.y / 64) * 64) + 64
 c_h.x = player.x + Tan(alpha)*(c_h.y - player.y)
-
-d_h.y = 64 (Since we travel in the positive y direction)
-d_h.x = 64 * Tan(alpha)
 
 c_v.x = (floor(player.x / 64) * 64) - 64
 c_v.y = player.y + (c_v.x - player.x) / Tan(alpha)
 
+d_h.y = 64 (Since we travel in the positive y direction)
+d_h.x = 64 * Tan(alpha)
+
 d_v.x = 64 (Since we travel in the positive x direction)
 d_v.y = 64 / Tan(alpha)
-
-conclusion
-c_h.y = (floor(player_pos.y / 64) * 64) (+ 64)<- facing up | (-1)<- facing down
-
 
 
