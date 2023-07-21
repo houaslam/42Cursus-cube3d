@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:05 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/19 12:39:02 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/07/20 22:01:27 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ void	player_position(t_map **map)
 			if (ft_player(*map, i, j))
 				s++;////no need if or..
 			if ((*map)->m_x < j)
+				(*map)->m_x = j;
 			j++;
 		}
+		if ((*map)->m_y < i)
+			(*map)->m_y = i;
 		i++;
 	}
 	if (s > 1)
@@ -51,4 +54,5 @@ void	player_position(t_map **map)
 	}
 	(*map)->m_x = j;
 	(*map)->m_y = i;
+	//printf("%d\n",(*map)->m_x, (*map)->m_y);
 }

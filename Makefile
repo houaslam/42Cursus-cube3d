@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/07/21 08:36:25 by houaslam         ###   ########.fr        #
+#    Updated: 2023/07/21 14:43:09 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,13 @@ REND_SRCS = rendering/wall.c \
 			rendering/ceilling.c \
 			rendering/render_setup.c \
 
+
 P_SRCS = parsing/player_position.c \
-		 parsing/read_map.c \
-		 parsing/parsing.c \
+		parsing/read_map.c \
+		parsing/parsing.c \
+		parsing/map_dimension.c \
+		parsing/get_next_line/get_next_line.c \
+		parsing/get_next_line/get_next_line_utils.c
 
 OBJ = ${R_SRCS:.c=.o} ${P_SRCS:.c=.o} ${REND_SRCS:.c=.o}
 

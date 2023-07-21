@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:48:02 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/16 16:46:47 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/07/20 23:37:32 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
