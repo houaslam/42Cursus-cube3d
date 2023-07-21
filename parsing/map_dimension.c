@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_dimension.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:05:14 by macbookair        #+#    #+#             */
-/*   Updated: 2023/07/21 15:04:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:55:03 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,4 @@ void    map_dimension(t_map **map)
         (*map)->map[i] = ft_fill_it((*map)->map[i], (*map)->m_x);
 		i++;
     }
-    i = 0;
-	while ((*map)->map[i])
-		i++;
 }

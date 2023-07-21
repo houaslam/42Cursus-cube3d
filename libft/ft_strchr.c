@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:12:05 by macbookair       ###   ########.fr       */
+/*   Created: 2022/10/23 15:24:28 by fadermou          #+#    #+#             */
+/*   Updated: 2022/11/02 23:37:15 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void parsing(t_map **map, char **av)
+char	*ft_strchr(const char *s, int c)
 {
-	read_map(map, av);
-	player_position(map);
-	map_dimension(map);
-	// int	i;
-	// i = 0;
-	// while ((*map)->map[i])
-	// {
-	// 	printf("%s\n", (*map)->map[i]);
-	// 	i++;
-	// }
+	int		i;
+
+	i = 0;
+	if (!(unsigned char)c)
+		return ((char *)(s + ft_strlen(s)));
+	while (s[i])
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (NULL);
 }

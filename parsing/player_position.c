@@ -6,7 +6,7 @@
 /*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:05 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/20 22:01:27 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/21 16:57:57 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ int	ft_player(t_map *map, int i, int j)
 	return (0);
 }
 
+void	check_player(int s)
+{
+	if (!s)
+	{
+		printf("∆  we need a player here! ∆\n");
+		exit (1);
+	}
+	if (s > 1)
+	{
+		printf("∆  there is more than one player! ∆\n");
+		exit (1);
+	}
+}
 void	player_position(t_map **map)
 {
 	int	i;
@@ -38,7 +51,7 @@ void	player_position(t_map **map)
 		while ((*map)->map[i][j])
 		{
 			if (ft_player(*map, i, j))
-				s++;////no need if or..
+				s++;
 			if ((*map)->m_x < j)
 				(*map)->m_x = j;
 			j++;
@@ -47,12 +60,7 @@ void	player_position(t_map **map)
 			(*map)->m_y = i;
 		i++;
 	}
-	if (s > 1)
-	{
-		printf("∆  there is more than one player! ∆\n");
-		exit (1);
-	}
+	check_player(s);
 	(*map)->m_x = j;
 	(*map)->m_y = i;
-	//printf("%d\n",(*map)->m_x, (*map)->m_y);
 }

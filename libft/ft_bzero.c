@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:12:05 by macbookair       ###   ########.fr       */
+/*   Created: 2022/10/18 10:33:15 by fadermou          #+#    #+#             */
+/*   Updated: 2022/11/02 23:17:48 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void parsing(t_map **map, char **av)
+void	ft_bzero(void *s, size_t n)
 {
-	read_map(map, av);
-	player_position(map);
-	map_dimension(map);
-	// int	i;
-	// i = 0;
-	// while ((*map)->map[i])
-	// {
-	// 	printf("%s\n", (*map)->map[i]);
-	// 	i++;
-	// }
+	while (n--)
+		((char *) s)[n] = '\0';
 }

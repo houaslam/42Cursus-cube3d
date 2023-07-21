@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:12:05 by macbookair       ###   ########.fr       */
+/*   Created: 2022/10/23 15:24:20 by fadermou          #+#    #+#             */
+/*   Updated: 2022/10/27 20:25:49 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void parsing(t_map **map, char **av)
+void	ft_putendl_fd(char *s, int fd)
 {
-	read_map(map, av);
-	player_position(map);
-	map_dimension(map);
-	// int	i;
-	// i = 0;
-	// while ((*map)->map[i])
-	// {
-	// 	printf("%s\n", (*map)->map[i]);
-	// 	i++;
-	// }
+	if (fd <= -1 || !s)
+		return ;
+	ft_putstr_fd(s, fd);
+	write (fd, "\n", 1);
 }

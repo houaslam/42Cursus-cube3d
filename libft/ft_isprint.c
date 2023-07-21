@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:12:05 by macbookair       ###   ########.fr       */
+/*   Created: 2022/10/23 15:23:59 by fadermou          #+#    #+#             */
+/*   Updated: 2022/10/27 21:30:26 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void parsing(t_map **map, char **av)
+int	ft_isprint(int c)
 {
-	read_map(map, av);
-	player_position(map);
-	map_dimension(map);
-	// int	i;
-	// i = 0;
-	// while ((*map)->map[i])
-	// {
-	// 	printf("%s\n", (*map)->map[i]);
-	// 	i++;
-	// }
+	if (c >= 32 && c < 127)
+		return (1);
+	else
+		return (0);
 }

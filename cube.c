@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/21 13:23:15 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:12:25 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ int	main(int ac, char **av)
 	t_window	*window;
 	t_map		*map;
 
-	(void)ac;
+	if (ac != 2)
+	{
+		printf("∆ invalid number of arguments! ∆\n");
+		exit(1);
+	}
 	window = (t_window *)malloc(sizeof(t_window));
 	map = (t_map *)malloc(sizeof(t_map));
 	window->map = map;

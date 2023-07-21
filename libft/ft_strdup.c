@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:12:05 by macbookair       ###   ########.fr       */
+/*   Created: 2022/10/23 15:24:31 by fadermou          #+#    #+#             */
+/*   Updated: 2022/11/02 23:37:54 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-void parsing(t_map **map, char **av)
+char	*ft_strdup(char *str)
 {
-	read_map(map, av);
-	player_position(map);
-	map_dimension(map);
-	// int	i;
-	// i = 0;
-	// while ((*map)->map[i])
-	// {
-	// 	printf("%s\n", (*map)->map[i]);
-	// 	i++;
-	// }
+	int		i;
+	char	*dup;
+
+	i = -1;
+	dup = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (!dup)
+		return (NULL);
+	while (str[++i])
+		dup[i] = str[i];
+	dup[i] = '\0';
+	return (dup);
 }
