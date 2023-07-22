@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/21 13:22:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/22 08:00:32 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define PURPLE 0x581845 //floor
 # define PINK 0xC70039 //wall
 # define YELLOW 0xFFC300 //ceiling
+# define BLACK 0x000000 //ceiling
 
 typedef struct s_wall
 {

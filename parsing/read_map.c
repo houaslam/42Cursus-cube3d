@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:56:12 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/21 18:10:10 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/22 08:43:30 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int    check_file(char **av)
+int	check_file(char **av)
 {
 	int	i;
 	int	fd;
