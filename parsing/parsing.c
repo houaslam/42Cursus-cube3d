@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/22 08:24:02 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/22 09:13:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void parsing(t_map **map, char **av)
 {
 	// read_map(map, av);
 	(void)av;
-	(*map)->map = (char **)malloc(sizeof(char *) * 5);
+	(*map)->map = (char **)malloc(sizeof(char *) * 6);
 	(*map)->map[0] = "11111";
 	(*map)->map[1] = "10001";
 	(*map)->map[2] = "10N01";
