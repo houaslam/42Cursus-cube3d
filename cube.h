@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/22 08:00:32 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/23 11:25:59 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define PP_WIDTH 800
 # define UNIT 320
 # define VIEW_D 60
-# define PLAYER_H 320 
 # define PURPLE 0x581845 //floor
 # define PINK 0xC70039 //wall
 # define YELLOW 0xFFC300 //ceiling
@@ -42,8 +41,6 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
-	int					up;
-	int					down;
 	int					left;
 	int					right;
 }	t_ray;
@@ -67,8 +64,8 @@ typedef struct s_map
 	int					wall_h;
 	int					k;
 	int					saveit;
-	int					its_v;
-	int					its_h;
+	int					n_v;
+	int					n_h;
 	// render
 	int					ceiling;
 	t_ray				r;
@@ -83,7 +80,5 @@ typedef struct s_window{
 	void				*mlx_win;
 	struct s_map		*map;
 }	t_window;
-
-
 
 #endif
