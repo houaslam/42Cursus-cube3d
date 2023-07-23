@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/23 11:25:59 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:19:24 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ typedef struct s_map
 	int					wall_h;
 	int					k;
 	int					saveit;
+	int					its_v;
 	int					n_v;
+	int					its_h;
 	int					n_h;
 	// render
 	int					ceiling;
