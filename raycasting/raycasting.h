@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/22 09:05:15 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/23 16:41:59 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void					draw_wall(t_map *map, t_window *window);
 
 // quadrant
 void					quadrant(t_map **map);;
-void					case_one(t_map **map);
-void					case_two(t_map **map);
-void					case_three(t_map **map);
-void					case_four(t_map **map);
+void				    up_left(t_map **map);
+void				    up_right(t_map **map);
+void					down_right(t_map **map);
+void					down_left(t_map **map);
 
 //external outil
 int						check_case_h(t_map **map);

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/23 16:32:57 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/24 14:27:32 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	quadrant(t_map **map)
 {
 	check_angles(map);
 	if (0 <= (*map)->r.cast && (*map)->r.cast < 90)
-		case_one(map);
+		up_right(map);
 	else if (90 < (*map)->r.cast && (*map)->r.cast < 180)
-		case_two(map);
+		up_left(map);
 	else if (180 < (*map)->r.cast && (*map)->r.cast < 270)
-		case_three(map);
+		down_right(map);
 	else if (270 < (*map)->r.cast && (*map)->r.cast < 360)
-		case_four(map);
+		down_left(map);
 	while (check_case_h(map))
 	{
 		(*map)->h.cx += (*map)->h.dx;
@@ -35,13 +35,13 @@ void	quadrant(t_map **map)
 	}
 }
 
-void	case_one(t_map **map)
+void	up_right(t_map **map)
 {
 	static int	i;
 
 	(*map)->r.alpha = (*map)->r.cast;
 	(*map)->h.cy = (((int)(*map)->p.u_y / UNIT) * UNIT) - 1;
-	(*map)->h.cx = (*map)->p.u_x + (((*map)->p.u_y - (*map)->h.cy) \
+	(*map)->h.cx = (*map)->p.u_x + (((*map)->h.cy - (*map)->p.u_y) \
 	/ tan((*map)->r.alpha * (M_PI / 180)));
 	(*map)->v.cx = ((int)((*map)->p.u_x / UNIT) * UNIT) + UNIT;
 	(*map)->v.cy = tan((*map)->r.alpha * (M_PI / 180)) * \
@@ -58,40 +58,39 @@ void	case_one(t_map **map)
 	}
 }
 
-void	case_two(t_map **map)
+void	up_left(t_map **map)
 {
 	static int	i;
 
 	(*map)->r.alpha = (*map)->r.cast - (*map)->r.ang;
 	(*map)->h.cy = ((int)((*map)->p.u_y / UNIT) * UNIT) - 1;
-	(*map)->h.cx = (*map)->p.u_x + (((*map)->h.cy - (*map)->p.u_y) \
+	(*map)->h.cx = (*map)->p.u_x - (((*map)->p.u_y - (*map)->h.cy) \
 	* tan((*map)->r.alpha * (M_PI / 180)));
 	(*map)->v.cx = ((int)((*map)->p.u_x / UNIT) * UNIT) - 1;
-	(*map)->v.cy = (*map)->p.u_y - (((*map)->p.u_x - (*map)->v.cx) \
+	(*map)->v.cy = (*map)->p.u_y + (((*map)->p.u_x - (*map)->v.cx) \
 	/ tan((*map)->r.alpha * (M_PI / 180)));
 	if (i == 0)
 	{
 		(*map)->n_v = 0;
 		(*map)->n_h = 0;
-		(*map)->h.dy = -UNIT;
-		(*map)->h.dx = -UNIT * tan((*map)->r.alpha * (M_PI / 180));
-		(*map)->v.dx = -UNIT;
-		(*map)->v.dy = -UNIT / tan((*map)->r.alpha * (M_PI / 180));
+		(*map)->h.dy = (-UNIT);
+		(*map)->h.dx = (-UNIT) * tan((*map)->r.alpha * (M_PI / 180));
+		(*map)->v.dx = (-UNIT);
+		(*map)->v.dy = (-UNIT) / (tan((*map)->r.alpha * (M_PI / 180)));
 		i++;
 	}
 }
 
-void	case_three(t_map **map)
+void	down_right(t_map **map)
 {
 	static int	i;
 
 	(*map)->r.alpha = (*map)->r.cast - (*map)->r.ang;
 	(*map)->h.cy = ((int)((*map)->p.u_y / UNIT) * UNIT) + UNIT;
-	(*map)->h.cx = (((*map)->h.cy - (*map)->p.u_y) \
-	/ tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_x;
+	(*map)->h.cx = (((*map)->h.cy - (*map)->p.u_y) * tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_x;
+
 	(*map)->v.cx = ((int)((*map)->p.u_x / UNIT) * UNIT) - 1;
-	(*map)->v.cy = tan((*map)->r.alpha * (M_PI / 180)) \
-	* ((*map)->p.u_x - (*map)->v.cx) + (*map)->p.u_y;
+	(*map)->v.cy = ((*map)->v.cx - (*map)->p.u_x)/ (tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_y;
 	if (i == 0)
 	{
 		(*map)->n_v = 0;
@@ -104,17 +103,18 @@ void	case_three(t_map **map)
 	}
 }
 
-void	case_four(t_map **map)
+void	down_left(t_map **map)
 {
 	static int	i;
 
 	(*map)->r.alpha = (*map)->r.cast - (*map)->r.ang;
+	
 	(*map)->h.cy = ((int)((*map)->p.u_y / UNIT) * UNIT) + UNIT;
-	(*map)->h.cx = (((*map)->h.cy - (*map)->p.u_y) \
-	* tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_x;
+	(*map)->h.cx = (((*map)->h.cy - (*map)->p.u_y) * tan((*map)->r.alpha * (M_PI / 180))) + (*map)->p.u_x;
+	
 	(*map)->v.cx = ((int)((*map)->p.u_x / UNIT) * UNIT) - UNIT;
-	(*map)->v.cy = ((*map)->p.u_x - (*map)->v.cx) \
-	/ tan((*map)->r.alpha * (M_PI / 180)) + (*map)->p.u_y;
+	(*map)->v.cy = ((*map)->p.u_x - (*map)->v.cx) / tan((*map)->r.alpha * (M_PI / 180)) + (*map)->p.u_y;
+	
 	if (i == 0)
 	{
 		(*map)->n_v = 0;
