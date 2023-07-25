@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 14:50:02 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:48:34 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,23 @@ void	draw_square(int color, int x, int y, t_window *window)
 	}
 }
 
-void	draw_player(int x, int y, t_window *window)
-{
-	int	a;
-	int	b;
+// void	draw_player(int x, int y, t_window *window)
+// {
+// 	int	a;
+// 	int	b;
 
-	x *= 10;
-	y *= 10;
-	a = -1;
-	while (++a < 10)
-	{
-		b = -1;
-		while (++b < 10)
-			mlx_pixel_put(window->mlx, window->mlx_win, x++, y, BLACK);
-		x -= 5;
-		y++;
-	}
-}
+// 	x *= 10;
+// 	y *= 10;
+// 	a = -1;
+// 	while (++a < 5)
+// 	{
+// 		b = -1;
+// 		while (++b < 5)
+// 			mlx_pixel_put(window->mlx, window->mlx_win, x++, y, YELLOW);
+// 		x -= 5;
+// 		y++;
+// 	}
+// }
 
 void	draw_minimap(t_map *map)
 {
@@ -59,14 +59,16 @@ void	draw_minimap(t_map *map)
 	int	y;
 
 	y = 0;
-	draw_square(PURPLE, map->p.u_x / UNIT, map->p.u_y / UNIT, map->window);
+	draw_square(PURPLE, map->minimap.px, map->minimap.py, map->window);
 	while (map->map[y])
 	{
 		x = 0;
 		while (map->map[y][x])
 		{
 			if (map->map[y][x] == '1')
-				draw_square(10, x, y, map->window);
+				draw_square(YELLOW, x, y, map->window);
+			// if (map->map[y][x] == 'N')
+			// 	draw_square(PURPLE, x, y, map->window);
 			x++;
 		}
 		y++;

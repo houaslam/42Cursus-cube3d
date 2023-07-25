@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 11:24:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:46:26 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,33 @@ int	ft_exit(t_window *mlx)
 	exit(0);
 }
 
+int	turn_move(int keycode, t_map *map)
+{
+	if (keycode == ARROW_LEFT)
+		map->r.ang += 7;
+	else if (keycode == ARROW_RIGHT)
+		map->r.ang -= 7;
+	return (0);
+}
+
 int	which_move(int keycode, t_map *map)
 {
+	// t_data *data;
+
+	// data->addr = mlx_get_data_addr(map->window->mlx_win, &data->bits_per_pixel, &data->line_length, &data->endian);
 	if (keycode == LEFT)
-	{
-		map->minimap.px -= 2;
 		map->p.u_x -= SPEED;
-	}
 	else if (keycode == RIGHT)
-	{
-		map->minimap.px += 2;
 		map->p.u_x += SPEED;
-	}
 	else if (keycode == UP)
-	{
-		map->minimap.py -= 2;
 		map->p.u_y -= SPEED;
-	}
 	else if (keycode == DOWN)
-	{
-		map->minimap.py += 2;
 		map->p.u_y += SPEED;
-	}
 	else if (keycode == 53)
 		ft_exit(map->window);
+	else
+		turn_move(keycode, map);
+	
 	rays_casting(&map, map->window);
 	return (0);
 }
