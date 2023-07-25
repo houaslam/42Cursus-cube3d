@@ -6,11 +6,57 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/24 11:52:25 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:15:42 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+void	check_angles(t_map **map)
+{
+	if ((*map)->r.cast >= 360)
+		(*map)->r.cast -= 360;
+	else if ((*map)->r.cast < 0)
+		(*map)->r.cast += 360;
+	if ((*map)->r.alpha >= 360)
+		(*map)->r.alpha -= 360;
+	else if ((*map)->r.alpha < 0)
+		(*map)->r.alpha += 360;
+}
+
+int	check_case_h(t_map **map)
+{
+	(*map)->n_h = 1;
+	if ((*map)->h.y < 0)
+		return (0);
+	if ((*map)->h.x / UNIT >= (*map)->m_x)
+		return (0);
+	if ((*map)->h.x < 0)
+		return (0);
+	if ((*map)->h.y / UNIT >= (*map)->m_y)
+		return (0);
+	(*map)->n_h = 0;
+	if ((*map)->map[(int)(*map)->h.y / UNIT][(int)(*map)->h.x / UNIT] == '1')
+		return (0);
+	return (1);
+}
+
+int	check_case_v(t_map **map)
+{
+	(*map)->n_v = 1;
+	if ((*map)->v.y < 0)
+		return (0);
+	if ((*map)->v.x / UNIT >= (*map)->m_x)
+		return (0);
+	if ((*map)->v.x / UNIT < 0)
+		return (0);
+	if ((*map)->v.y / UNIT >= (*map)->m_y)
+		return (0);
+	(*map)->n_v = 0;
+	if ((*map)->map[(int)(*map)->v.y / UNIT][(int)(*map)->v.x / UNIT] == '1')
+		return (0);
+	return (1);
+}
 
 int	p_to_wall(t_map *map)
 {
@@ -19,59 +65,25 @@ int	p_to_wall(t_map *map)
 	int	h;
 	int	v;
 
-	x = map->p.u_x - map->h.cx;
-	y = map->p.u_y - map->h.cy;
-	if ((map)->r.cast <= 100.350800 && (map)->r.cast > 99)
-		printf("H x = %d y = %d\n", x, y);
+	x = map->p.u_x - map->h.x;
+	y = map->p.u_y - map->h.y;
 	h = sqrt(pow(x, 2) + pow(y, 2));
-	y = map->p.u_y - map->v.cy;
-	x = map->p.u_x - map->v.cx;
-	if ((map)->r.cast <= 100.350800 && (map)->r.cast > 99)
-		printf("V x = %d y = %d\n", x, y);
+	y = map->p.u_y - map->v.y;
+	x = map->p.u_x - map->v.x;
 	v = sqrt(pow(x, 2) + pow(y, 2));
 	if (map->n_v || h < v)
 		return (h);
 	if (map->n_h || h >= v)
-	{
-		if ((map)->r.cast <= 100.350800 && (map)->r.cast > 99)
-		{
-			printf("3for angle %f\n",(map)->r.cast);
-			printf("0P (%d, %d)  h (%d, %d) v (%d, %d) \n", map->p.u_x,map->p.u_y, (map)->h.cx, (map)->h.cy, (map)->v.cx, (map)->v.cy);
-			printf("4its v = %d but h = %d\n", v, h);
-		}
 		return (v);
-	}
 	return (0);
 }
 
-void	set_distance(t_map **map, t_window *window)
-{
-	int	i;
-
-	i = 0;
-	(*map)->p.u_x = ((*map)->p.x * UNIT) + (UNIT / 2);
-	(*map)->p.u_y = ((*map)->p.y * UNIT) + (UNIT / 2);
-	while (i < PP_WIDTH)
-	{
-		quadrant(map);
-		(*map)->p_to_w = p_to_wall(*map);
-		(*map)->wall_h = wall_height(*map);
-		draw_ray(window, i);
-		if ((*map)->r.cast <= 100.350800 && (*map)->r.cast > 99)
-			printf("==============\n");
-			// break;
-		(*map)->r.cast -= (float)VIEW_D / PP_WIDTH;
-		i++;
-	}
-}
-
-// map->p_to_w *= cos(map->r.alpha); fish eye
 int	wall_height(t_map *map)
 {
-	int	b;
-	int	ret;
+	double	b;
+	double	ret;
 
 	b = (PP_WIDTH / 2) / tan((VIEW_D / 2) * (M_PI / 180));
-	ret = (UNIT * b) / map->p_to_w;
+	ret = (UNIT * b) / map->p.to_w;
 	return (ret);
 }

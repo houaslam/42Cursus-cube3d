@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/07/22 09:13:37 by houaslam         ###   ########.fr        #
+#    Updated: 2023/07/25 15:41:01 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ R_SRCS = 	raycasting/distances.c \
 			raycasting/raycasting.c \
 	    	raycasting/player.c \
 	    	raycasting/quadrant.c \
-	    	raycasting/external_outil.c \
-			cube.c
+	    	raycasting/minimap.c \
+			main.c
 
 REND_SRCS = rendering/wall.c \
 			rendering/floor.c \

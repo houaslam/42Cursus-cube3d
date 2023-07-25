@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/22 09:05:08 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:22:52 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	main(int ac, char **av)
 	window->mlx = mlx_init();
 	window->mlx_win = mlx_new_window(window->mlx, PP_WIDTH, PP_HEIGHT, "Cube");
 	player_view(&window->map);
-	set_distance(&map, window);
+	map->p.u_x = ((map)->p.x * UNIT) + (UNIT / 2);
+	map->p.u_y = ((map)->p.y * UNIT) + (UNIT / 2);
+	map->minimap.px = (map)->p.x * 5;
+	map->minimap.py = (map)->p.y * 5;
+	rays_casting(&map, window);
+	mlx_hook(window->mlx_win, 17, 0, ft_exit, map);
+	mlx_hook(window->mlx_win, 2, 0, which_move, map);
 	mlx_loop(window->mlx);
 }
