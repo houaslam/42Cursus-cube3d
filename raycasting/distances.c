@@ -6,23 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 14:15:42 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/26 10:09:03 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-void	check_angles(t_map **map)
-{
-	if ((*map)->r.cast >= 360)
-		(*map)->r.cast -= 360;
-	else if ((*map)->r.cast < 0)
-		(*map)->r.cast += 360;
-	if ((*map)->r.alpha >= 360)
-		(*map)->r.alpha -= 360;
-	else if ((*map)->r.alpha < 0)
-		(*map)->r.alpha += 360;
-}
 
 int	check_case_h(t_map **map)
 {

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 17:46:26 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:15:53 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,31 @@ int	turn_move(int keycode, t_map *map)
 
 int	which_move(int keycode, t_map *map)
 {
-	// t_data *data;
-
-	// data->addr = mlx_get_data_addr(map->window->mlx_win, &data->bits_per_pixel, &data->line_length, &data->endian);
+	// printf("***%d\n", keycode);
 	if (keycode == LEFT)
-		map->p.u_x -= SPEED;
+	{
+		map->p.u_x -= sin((90 - map->r.alpha) * M_PI / 180) * SPEED;
+		map->p.u_y -= cos((90 - map->r.alpha) * M_PI / 180) * SPEED;
+	}
 	else if (keycode == RIGHT)
-		map->p.u_x += SPEED;
-	else if (keycode == UP)
-		map->p.u_y -= SPEED;
-	else if (keycode == DOWN)
-		map->p.u_y += SPEED;
-	else if (keycode == 53)
-		ft_exit(map->window);
+	{
+		map->p.u_x += cos((90 - map->r.ang) * M_PI / 180) * SPEED;
+		map->p.u_y += sin((90 - map->r.ang) * M_PI / 180) * SPEED;
+	}
+	else if (keycode == UP || keycode == ARROW_UP)
+	{
+		map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
+		map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
+	}
+	else if (keycode == DOWN || keycode == ARROW_DOWN)
+	{
+		map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
+		map->p.u_y += sin(map->r.ang * M_PI / 180) * SPEED;
+	}
 	else
 		turn_move(keycode, map);
-	
+	if (keycode == 53)
+		ft_exit(map->window);
 	rays_casting(&map, map->window);
 	return (0);
 }

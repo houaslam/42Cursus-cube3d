@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 15:48:34 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:14:15 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_minimap(t_map *map)
 		while (map->map[y][x])
 		{
 			if (map->map[y][x] == '1')
-				draw_square(YELLOW, x, y, map->window);
+				draw_square(BLACK, x, y, map->window);
 			// if (map->map[y][x] == 'N')
 			// 	draw_square(PURPLE, x, y, map->window);
 			x++;

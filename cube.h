@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 17:24:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:44:08 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@
 # define YELLOW 0xFFC300 //ceiling
 # define BLACK 0x000000 //ceiling
 
-
 enum {
 	ARROW_LEFT = 123,
 	ARROW_RIGHT = 124,
+	ARROW_UP = 126,
+	ARROW_DOWN = 125,
 	UP = 13,
 	LEFT = 0,
 	DOWN = 1,
@@ -40,7 +41,6 @@ enum {
 	SPEED = 10
 };
 
-
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
@@ -48,7 +48,6 @@ typedef struct	s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
-
 
 typedef struct s_minimap
 {

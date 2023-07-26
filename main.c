@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/25 17:46:33 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:59:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	map->minimap.py = (map)->p.y;
 	map->img.img = mlx_new_image(window->mlx, PP_WIDTH, PP_HEIGHT);
 	rays_casting(&map, window);
-	mlx_hook(window->mlx_win, 17, 0, ft_exit, map);
 	mlx_hook(window->mlx_win, 2, 0, which_move, map);
+	mlx_hook(window->mlx_win, 17, 0, ft_exit, map);
 	mlx_loop(window->mlx);
 }
