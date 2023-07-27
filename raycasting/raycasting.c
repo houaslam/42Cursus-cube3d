@@ -6,12 +6,18 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 10:53:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:41:27 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
+int	ft_exit(t_window *mlx)
+{
+	printf("GAME OVER !!");
+	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+	exit(0);
+}
 
 void	check_angles(t_map **map)
 {
@@ -51,6 +57,7 @@ void	rays_casting(t_map **map, t_window *window)
 		(*map)->r.cast -= (float)VIEW_D / PP_WIDTH;
 		i++;
 	}
-	mlx_put_image_to_window(window->mlx, window->mlx_win, (*map)->img.img, 0, 0);
-    draw_minimap(*map);
+	mlx_put_image_to_window(window->mlx, \
+	window->mlx_win, (*map)->img.img, 0, 0);
+	draw_minimap(*map);
 }

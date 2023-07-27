@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/26 14:40:48 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:41:49 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void					draw_square(int color, int x, int y, t_window *window);
 int						which_move(int keycode, t_map *map);
 int						ft_exit(t_window *mlx);
 
-void                    my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

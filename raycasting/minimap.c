@@ -6,16 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/26 11:14:15 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:40:51 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-// void	draw_mini_rays(t_map *map)
-// {
-	
-// }
 
 void	draw_square(int color, int x, int y, t_window *window)
 {
@@ -67,8 +62,6 @@ void	draw_minimap(t_map *map)
 		{
 			if (map->map[y][x] == '1')
 				draw_square(BLACK, x, y, map->window);
-			// if (map->map[y][x] == 'N')
-			// 	draw_square(PURPLE, x, y, map->window);
 			x++;
 		}
 		y++;

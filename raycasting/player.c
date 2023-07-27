@@ -6,18 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 10:39:13 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:39:44 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-int	ft_exit(t_window *mlx)
-{
-	printf("GAME OVER !!");
-	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
-	exit(0);
-}
 
 int	turn_move(int keycode, t_map *map)
 {
@@ -28,51 +21,55 @@ int	turn_move(int keycode, t_map *map)
 	return (0);
 }
 
-void	move_up(t_map *map)
+void	move_up_down(t_map *map, int keycode)
 {
-	int sinvalue;
-	int cosvalue;
+	int	sinvalue;
+	int	cosvalue;
 
 	sinvalue = sin(map->r.ang * M_PI / 180) * SPEED;
 	cosvalue = cos(map->r.ang * M_PI / 180) * SPEED;
-	if (map->map[map->p.u_y / UNIT][(map->p.u_x + cosvalue) / UNIT] != '1')
-		map->p.u_x += cosvalue;
-	if (map->map[(map->p.u_y - sinvalue)/ UNIT][map->p.u_x / UNIT] != '1')
-		map->p.u_y -= sinvalue;
-}
-
-int	which_move(int keycode, t_map *map)
-{
-	int sinn;
-	int coss;
-
-	if (keycode == LEFT)
+	if ((keycode == UP || keycode == ARROW_UP) && map->map[(map->p.u_y - \
+	sinvalue) / UNIT][(map->p.u_x + cosvalue) / UNIT] != '1')
 	{
-		map->p.u_x -= cos((90 - map->r.ang) * M_PI / 180) * SPEED;
-		map->p.u_y -= sin((90 - map->r.ang) * M_PI / 180) * SPEED;
+		map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
+		map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
 	}
-	else if (keycode == RIGHT)
-	{
-		map->p.u_x += cos((90 - map->r.ang) * M_PI / 180) * SPEED;
-		map->p.u_y += sin((90 - map->r.ang) * M_PI / 180) * SPEED;
-	}
-	else if (keycode == UP || keycode == ARROW_UP)
-	{
-		sinn = sin(map->r.ang * M_PI / 180) * SPEED;
-		coss = cos(map->r.ang * M_PI / 180) * SPEED;
-		// printf("[%d][%d]\n",(map->p.u_y - sinn) / UNIT,  (map->p.u_x + coss) / UNIT);
-		// printf("[%c]\n",(map->p.u_y - sinn) / UNIT,  (map->p.u_x + coss) / UNIT);
-		if (map->map[(map->p.u_y - sinn) / UNIT][(map->p.u_x + coss) / UNIT] != '1')
-		{
-			map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
-			map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
-		}
-	}
-	else if (keycode == DOWN || keycode == ARROW_DOWN)
+	if ((keycode == DOWN || keycode == ARROW_DOWN) && map->map[(map->p.u_y + \
+	sinvalue) / UNIT][(map->p.u_x - cosvalue) / UNIT] != '1')
 	{
 		map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
 		map->p.u_y += sin(map->r.ang * M_PI / 180) * SPEED;
 	}
+}
+
+void	move_left_right(t_map *map, int keycode)
+{
+	int	sinvalue;
+	int	cosvalue;
+
+	sinvalue = sin((90 - map->r.ang) * M_PI / 180) * SPEED;
+	cosvalue = cos((90 - map->r.ang) * M_PI / 180) * SPEED;
+	if (keycode == LEFT && map->map[(map->p.u_y - \
+	sinvalue) / UNIT][(map->p.u_x - cosvalue) / UNIT] != '1')
+	{
+		map->p.u_x -= cosvalue;
+		map->p.u_y -= sinvalue;
+	}
+	if (keycode == RIGHT && map->map[(map->p.u_y + \
+	sinvalue) / UNIT][(map->p.u_x + cosvalue) / UNIT] != '1')
+	{
+		map->p.u_x += cosvalue;
+		map->p.u_y += sinvalue;
+	}
+}
+
+int	which_move(int keycode, t_map *map)
+{
+	if (keycode == LEFT || keycode == RIGHT)
+		move_left_right(map, keycode);
+	else if (keycode == UP || keycode == ARROW_UP \
+	|| keycode == DOWN || keycode == ARROW_DOWN)
+		move_up_down(map, keycode);
 	else
 		turn_move(keycode, map);
 	if (keycode == 53)
