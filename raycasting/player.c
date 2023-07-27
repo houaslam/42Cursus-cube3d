@@ -6,12 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/26 15:15:53 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 06:52:44 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
 
 int	ft_exit(t_window *mlx)
 {
@@ -29,9 +28,21 @@ int	turn_move(int keycode, t_map *map)
 	return (0);
 }
 
+void	move_up(t_map *map)
+{
+	int sinvalue;
+	int cosvalue;
+
+	sinvalue = sin(map->r.ang * M_PI / 180) * SPEED;
+	cosvalue = cos(map->r.ang * M_PI / 180) * SPEED;
+	if (map->map[map->p.u_y / UNIT][(map->p.u_x + cosvalue) / UNIT] != '1')
+		map->p.u_x += cosvalue;
+	if (map->map[(map->p.u_y - sinvalue)/ UNIT][map->p.u_x / UNIT] != '1')
+		map->p.u_y -= sinvalue;
+}
+
 int	which_move(int keycode, t_map *map)
 {
-	// printf("***%d\n", keycode);
 	if (keycode == LEFT)
 	{
 		map->p.u_x -= sin((90 - map->r.alpha) * M_PI / 180) * SPEED;
