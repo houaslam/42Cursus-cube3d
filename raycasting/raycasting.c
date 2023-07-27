@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/26 13:53:49 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:53:23 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ void	rays_casting(t_map **map, t_window *window)
 		(*map)->n_v = 0;
 		(*map)->n_h = 0;
 		quadrant(map);
-		(*map)->p.to_w = p_to_wall(*map) * cos(((*map)->r.ang - (*map)->r.cast) * M_PI / 180);
-		// printf("pto_wall = [%d] cos = [%f]\n", p_to_wall(*map), cos(((*map)->r.ang - (*map)->r.cast) * M_PI / 180)));
-		printf("and = %f  cast = %f\n", (*map)->r.ang, (*map)->r.cast);
-		// printf("res = [%d]\n", (*map)->p.to_w);
+		(*map)->p.to_w = p_to_wall(*map);
 		(*map)->wall_h = wall_height(*map);
 		draw_ray(window, i);
 		(*map)->r.cast -= (float)VIEW_D / PP_WIDTH;

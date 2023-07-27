@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/26 10:09:03 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:54:04 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	p_to_wall(t_map *map)
 	x = map->p.u_x - map->v.x;
 	v = sqrt(pow(x, 2) + pow(y, 2));
 	if (map->n_v || h < v)
-		return (h);
+		return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));
 	if (map->n_h || h >= v)
-		return (v);
+		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
 	return (0);
 }
 

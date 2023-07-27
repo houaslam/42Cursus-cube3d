@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 06:52:44 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:39:13 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ void	move_up(t_map *map)
 
 int	which_move(int keycode, t_map *map)
 {
+	int sinn;
+	int coss;
+
 	if (keycode == LEFT)
 	{
-		map->p.u_x -= sin((90 - map->r.alpha) * M_PI / 180) * SPEED;
-		map->p.u_y -= cos((90 - map->r.alpha) * M_PI / 180) * SPEED;
+		map->p.u_x -= cos((90 - map->r.ang) * M_PI / 180) * SPEED;
+		map->p.u_y -= sin((90 - map->r.ang) * M_PI / 180) * SPEED;
 	}
 	else if (keycode == RIGHT)
 	{
@@ -55,8 +58,15 @@ int	which_move(int keycode, t_map *map)
 	}
 	else if (keycode == UP || keycode == ARROW_UP)
 	{
-		map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
-		map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
+		sinn = sin(map->r.ang * M_PI / 180) * SPEED;
+		coss = cos(map->r.ang * M_PI / 180) * SPEED;
+		// printf("[%d][%d]\n",(map->p.u_y - sinn) / UNIT,  (map->p.u_x + coss) / UNIT);
+		// printf("[%c]\n",(map->p.u_y - sinn) / UNIT,  (map->p.u_x + coss) / UNIT);
+		if (map->map[(map->p.u_y - sinn) / UNIT][(map->p.u_x + coss) / UNIT] != '1')
+		{
+			map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
+			map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
+		}
 	}
 	else if (keycode == DOWN || keycode == ARROW_DOWN)
 	{
