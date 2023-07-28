@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:56:10 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:32:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define PP_HEIGHT 1000
 # define PP_WIDTH 1600
-# define UNIT 60
+# define UNIT 64
 # define VIEW_D 60
 # define PURPLE 0x9facb7 //floor
 # define PINK 0x00406c //wall

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 17:01:22 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:32:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_case_h(t_map *map)
 	if (map->h.x < 0 || map->h.y / UNIT >= map->m_y)
 		return (0);
 	map->n_h = 0;
-	if (map->map[(int)map->h.y / UNIT][(int)map->h.x / UNIT] == '1')
+	if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x / UNIT] == '1')
 		return (0);
 	return (1);
 }
@@ -33,7 +33,7 @@ int	check_case_v(t_map *map)
 	if (map->v.x / UNIT < 0 || map->v.y / UNIT >= map->m_y)
 		return (0);
 	map->n_v = 0;
-	if (map->map[(int)map->v.y / UNIT][(int)map->v.x / UNIT] == '1')
+	if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) / UNIT] == '1')
 		return (0);
 	return (1);
 }
