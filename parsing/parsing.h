@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:23 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/22 08:46:44 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 16:54:06 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../external_outils/get_next_line/get_next_line.h"
 
 void	player_position(t_map **map);
-void    parsing(t_map **map, char **av);
+void    parsing(t_map *map, char **av);
 void    map_dimension(t_map **map);
 void	read_map(t_map **map, char **av);
 
