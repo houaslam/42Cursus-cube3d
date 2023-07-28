@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 11:41:27 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 07:43:17 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	rays_casting(t_map **map, t_window *window)
 	}
 	mlx_put_image_to_window(window->mlx, \
 	window->mlx_win, (*map)->img.img, 0, 0);
-	draw_minimap(*map);
+	// draw_minimap(*map);
 }

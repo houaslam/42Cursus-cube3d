@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 11:57:39 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:31:35 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	quadrant(t_map **map)
 {
 	if (0 < (*map)->r.cast && (*map)->r.cast < 90)
 		up_right(map);
-	else if (90 < (*map)->r.cast && (*map)->r.cast < 180)
+	else if (90 <= (*map)->r.cast && (*map)->r.cast < 180)
 		up_left(map);
-	else if (180 < (*map)->r.cast && (*map)->r.cast < 270)
+	else if (180 <= (*map)->r.cast && (*map)->r.cast < 270)
 		down_left(map);
-	else if (270 < (*map)->r.cast && (*map)->r.cast < 360)
+	else if (270 <= (*map)->r.cast && (*map)->r.cast < 360)
 		down_right(map);
 	while (check_case_h(map))
 	{
@@ -38,11 +38,11 @@ void	up_right(t_map **map)
 {
 	(*map)->r.alpha = (*map)->r.cast;
 	(*map)->h.y = ((floor((*map)->p.u_y / UNIT)) * UNIT) - 1;
-	(*map)->h.x = (*map)->p.u_x + (((*map)->p.u_y - (*map)->h.y) \
-	/ tan((*map)->r.alpha * M_PI / 180));
+	(*map)->h.x = (*map)->p.u_x + (((*map)->p.u_y - (*map)->h.y) / tan((*map)->r.alpha * M_PI / 180));
+
 	(*map)->v.x = (floor((*map)->p.u_x / UNIT) * UNIT) + UNIT;
-	(*map)->v.y = tan((*map)->r.alpha * (M_PI / 180)) * \
-	((*map)->p.u_x - (*map)->v.x) + (*map)->p.u_y;
+	(*map)->v.y = tan((*map)->r.alpha * (M_PI / 180)) * ((*map)->p.u_x - (*map)->v.x) + (*map)->p.u_y;
+
 	(*map)->h.step_y = -UNIT;
 	(*map)->h.step_x = UNIT / tan((*map)->r.alpha * M_PI / 180);
 	(*map)->v.step_x = UNIT;
@@ -52,16 +52,19 @@ void	up_right(t_map **map)
 void	up_left(t_map **map)
 {
 	(*map)->r.alpha = (*map)->r.cast - 90;
+
 	(*map)->h.y = (floor((*map)->p.u_y / UNIT) * UNIT) - 1;
 	(*map)->h.x = (*map)->p.u_x - (((*map)->p.u_y - (*map)->h.y) \
-	* tan((*map)->r.alpha * (M_PI / 180)));
+	* tan((*map)->r.alpha * M_PI / 180));
+
 	(*map)->v.x = (floor((*map)->p.u_x / UNIT) * UNIT) - 1;
 	(*map)->v.y = (*map)->p.u_y - (((*map)->p.u_x - (*map)->v.x) \
-	/ tan((*map)->r.alpha * (M_PI / 180)));
+	/ tan((*map)->r.alpha * M_PI / 180));
+	
 	(*map)->h.step_y = (-UNIT);
-	(*map)->h.step_x = (-UNIT) * tan((*map)->r.alpha * (M_PI / 180));
+	(*map)->h.step_x = (-UNIT) * tan((*map)->r.alpha * M_PI / 180);
 	(*map)->v.step_x = (-UNIT);
-	(*map)->v.step_y = (-UNIT) / (tan((*map)->r.alpha * (M_PI / 180)));
+	(*map)->v.step_y = (-UNIT) / (tan((*map)->r.alpha * M_PI / 180));
 }
 
 void	down_left(t_map **map)

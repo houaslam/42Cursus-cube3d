@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 11:39:31 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:26:07 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
 # define PP_HEIGHT 1000
 # define PP_WIDTH 1600
-# define UNIT 64
+# define UNIT 60
 # define VIEW_D 60
-# define PURPLE 0xDC6400 //floor
-# define PINK 0xC70039 //wall
-# define YELLOW 0xFFC300 //ceiling
+# define PURPLE 0x9facb7 //floor
+# define PINK 0x00406c //wall
+# define YELLOW 0xfafefd //ceiling
 # define BLACK 0x000000 //ceiling
 
 enum {
@@ -52,16 +52,18 @@ typedef struct s_data
 
 typedef struct s_minimap
 {
+	int					height;
+	int					width;
 	int					px;
 	int					py;
 }	t_minimap;
 
 typedef struct s_wall
 {
-	double					x;
-	double					y;
-	double					step_x;
-	double					step_y;
+	float					x;
+	float					y;
+	float					step_x;
+	float					step_y;
 }	t_wall;
 
 typedef struct s_ray
@@ -69,19 +71,17 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
-	int					left;
-	int					right;
 }	t_ray;
 
 typedef struct s_player
 {
-	int					x;
-	int					y;
-	int					u_x;
-	int					u_y;
-	int					rot_speed;
-	int					mov_speed;
-	int					to_w;
+	float					x;
+	float					y;
+	float					u_x;
+	float					u_y;
+	float					to_w;
+	int						rot_speed;
+	int						mov_speed;
 }	t_player;
 
 typedef struct s_map
@@ -91,10 +91,9 @@ typedef struct s_map
 	int					m_x;
 	int					m_y;
 	// wall var
-	int					wall_h;
+	float				wall_h;
 	int					n_v;
 	int					n_h;
-	// render
 	t_ray				r;
 	t_wall				h;
 	t_wall				v;

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 11:40:51 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/27 13:16:28 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ void	draw_minimap(t_map *map)
 	int	y;
 
 	y = 0;
+	map->minimap.height = floor((map)->p.u_x / UNIT) * 2;
+	map->minimap.width = floor((map)->p.u_y / UNIT) * 2;
 	draw_square(PURPLE, map->minimap.px, map->minimap.py, map->window);
-	while (map->map[y])
+	while (map->map[y] && y < map->minimap.height)
 	{
 		x = 0;
-		while (map->map[y][x])
+		while (map->map[y][x] && x < map->minimap.width)
 		{
 			if (map->map[y][x] == '1')
 				draw_square(BLACK, x, y, map->window);

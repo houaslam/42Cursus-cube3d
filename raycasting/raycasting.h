@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/27 11:41:49 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 07:35:42 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void					setup(t_map **map);
 void					player_view(t_map **map);
 
 //wallcast
-int						wall_height(t_map *map);
+float					wall_height(t_map *map);
 void					find_wall(t_map *map);
 void					rays_casting(t_map **map, t_window *window);
-int						p_to_wall(t_map *map);
+float					p_to_wall(t_map *map);
 void					draw_wall(t_map *map, t_window *window);
 int						check_case_h(t_map **map);
 int						check_case_v(t_map **map);
