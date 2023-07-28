@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:56:27 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 17:01:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,15 @@ float	p_to_wall(t_map *map)
 	float	h;
 	float	v;
 
+	// horizental
 	y = map->p.u_y - map->h.y;
-	if (0 <= (map)->r.cast && (map)->r.cast <= 180)
-		y = map->p.u_y - map->h.y++;
 	x = map->p.u_x - map->h.x;
 	h = sqrt(pow(x, 2) + pow(y, 2));
+	// vertical
 	y = map->p.u_y - map->v.y;
 	x = map->p.u_x - map->v.x;
-	if (90 <= (map)->r.cast && (map)->r.cast <= 270)
-		x = map->p.u_x - map->v.x++;
 	v = sqrt(pow(x, 2) + pow(y, 2));
+	// calcul
 	if (map->n_h || h >= v)
 		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
 	return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));

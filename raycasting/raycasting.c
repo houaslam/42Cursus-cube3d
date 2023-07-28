@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:57:59 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 16:59:17 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	rays_casting(t_map *map, t_window *window)
 	while (i < PP_WIDTH)
 	{
 		check_angles(map);
+		map->r.up = 0;
+		map->r.down = 0;
+		map->r.right = 0;
+		map->r.left = 0;
 		map->n_v = 0;
 		map->n_h = 0;
 		quadrant(map);
