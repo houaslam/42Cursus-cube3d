@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:50:55 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 16:57:59 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,8 @@ int	ft_exit(t_window *mlx)
 
 void	check_angles(t_map *map)
 {
-	if (map->r.ang >= 360)
-	{
-		map->r.ang -= 360;
-		map->r.cast = map->r.ang + 30;
-	}
-	else if (map->r.ang < 0)
-	{
-		map->r.ang += 360;
-		map->r.cast = map->r.ang + 30;
-	}
-	else if (map->r.cast >= 360)
-		map->r.cast -= 360;
-	else if (map->r.cast < 0)
+	map->r.cast = remainder(map->r.cast, 360);
+	if (map->r.cast < 0)
 		map->r.cast += 360;
 }
 
@@ -51,7 +40,7 @@ void	rays_casting(t_map *map, t_window *window)
 		map->n_v = 0;
 		map->n_h = 0;
 		quadrant(map);
-		map->p.to_w = p_to_wall(map);
+		map->r.distance = p_to_wall(map);
 		map->wall_h = wall_height(map);
 		draw_ray(window, i);
 		map->r.cast -= (float)VIEW_D / PP_WIDTH;

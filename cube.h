@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 12:26:07 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 16:56:10 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
+	float				distance;
+	int					up;
+	int					down;
+	int					right;
+	int					left;
 }	t_ray;
 
 typedef struct s_player
@@ -79,7 +84,6 @@ typedef struct s_player
 	float					y;
 	float					u_x;
 	float					u_y;
-	float					to_w;
 	int						rot_speed;
 	int						mov_speed;
 }	t_player;
@@ -91,8 +95,8 @@ typedef struct s_map
 	int					m_x;
 	int					m_y;
 	// wall var
-	float				wall_h;
 	int					n_v;
+	float				wall_h;
 	int					n_h;
 	t_ray				r;
 	t_wall				h;

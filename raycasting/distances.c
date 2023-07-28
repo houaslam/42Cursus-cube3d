@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:47:38 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/28 16:56:27 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ float	wall_height(t_map *map)
 	double	ret;
 
 	b = (PP_WIDTH / 2) / tan((VIEW_D / 2) * (M_PI / 180));
-	ret = (UNIT * b) / map->p.to_w;
+	ret = (UNIT * b) / map->r.distance;
 	return (ret);
 }
