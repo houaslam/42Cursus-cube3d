@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 17:32:55 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 10:24:43 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # define PP_WIDTH 1600
 # define UNIT 64
 # define VIEW_D 60
-# define PURPLE 0x9facb7 //floor
-# define PINK 0x00406c //wall
-# define YELLOW 0xfafefd //ceiling
-# define BLACK 0x000000 //ceiling
+# define PURPLE 0x9facb7
+# define PINK 0x00406c
+# define YELLOW 0xfafefd
+# define BLACK 0x000000
 
 enum {
 	ARROW_LEFT = 123,
@@ -38,7 +38,8 @@ enum {
 	DOWN = 1,
 	RIGHT = 2,
 	DESTROY = 17,
-	SPEED = 10
+	SPEED = 10,
+	MINI_UNIT = 5
 };
 
 typedef struct s_data
@@ -50,13 +51,6 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
-typedef struct s_minimap
-{
-	int					height;
-	int					width;
-	int					px;
-	int					py;
-}	t_minimap;
 
 typedef struct s_wall
 {
@@ -87,6 +81,13 @@ typedef struct s_player
 	int						rot_speed;
 	int						mov_speed;
 }	t_player;
+
+typedef struct s_minimap
+{
+	int					height;
+	int					width;
+	t_player		mini_p;
+}	t_minimap;
 
 typedef struct s_map
 {

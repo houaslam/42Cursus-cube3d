@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/28 16:52:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 10:00:28 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ void	move_up_down(t_map *map, int keycode)
 	{
 		map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
 		map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
-		map->minimap.py--;
 	}
-	if ((keycode == DOWN || keycode == ARROW_DOWN) && map->map[(int)(map->p.u_y + \
-	sinvalue) / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
+	if ((keycode == DOWN || keycode == ARROW_DOWN) && map->map[(int) \
+	(map->p.u_y + sinvalue) / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
 	{
 		map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
 		map->p.u_y += sin(map->r.ang * M_PI / 180) * SPEED;
-		map->minimap.py++;
 	}
 }
 
@@ -56,14 +54,12 @@ void	move_left_right(t_map *map, int keycode)
 	{
 		map->p.u_x -= cosvalue;
 		map->p.u_y -= sinvalue;
-		map->minimap.px--;
 	}
 	if (keycode == RIGHT && map->map[(int)(map->p.u_y + \
 	sinvalue) / UNIT][(int)(map->p.u_x + cosvalue) / UNIT] != '1')
 	{
 		map->p.u_x += cosvalue;
 		map->p.u_y += sinvalue;
-		map->minimap.px++;
 	}
 }
 
