@@ -3,42 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/29 11:41:56 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:30:54 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void parsing(t_map *map, char **av)
+void parsing(t_map **map, char **av)
 {
-	// read_map(map, av);
-	(void)av;
-	map->map = (char **)malloc(sizeof(char *) * 15);
-	map->map[0] =  "111111111111111111111";
-	map->map[1] =  "100000000000100000001";
-	map->map[2] =  "100000000000100000001";
-	map->map[3] =  "100000000000D00000001";
-	map->map[4] =  "1N0000000000100000001";
-	map->map[5] =  "100000000000100000001";
-	map->map[6] =  "100000001000000000001";
-	map->map[7] =  "100000000000000000001";
-	map->map[8] =  "100000000000000100001";
-	map->map[9] =  "100000001000000100001";
-	map->map[10] = "100000000000000000001";
-	map->map[11] = "100000000000000000001";
-	map->map[12] = "100001000000000100001";
-	map->map[13] = "111111111111111111111";
-	map->map[14] = NULL;
-	player_position(&map);
-	map_dimension(&map);
-	// int	i;
-	// i = 0;
-	// while (map->map[i])
-	// {
-	// 	printf("%s\n", map->map[i]);
-	// 	i++;
-	// }
+	read_map(map, av);
+	player_position(map);
+	map_dimension(map);
 }

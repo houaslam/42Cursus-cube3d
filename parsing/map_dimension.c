@@ -6,7 +6,7 @@
 /*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:05:14 by macbookair        #+#    #+#             */
-/*   Updated: 2023/07/21 16:55:03 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/29 15:33:16 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_fill_it(char *str, int len)
 	char	*ret;
 	int		i;
 
-	ret = malloc(sizeof(char) * len + 1);
+	ret = malloc(sizeof(char) * len + 2);
 	i = 0;
 	while (str[i])
 	{
