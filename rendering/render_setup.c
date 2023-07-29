@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:09:17 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 08:28:11 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 10:42:06 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	draw_ray(t_window *window, int pos)
 		my_mlx_pixel_put(&window->map->img, pos, i++, PINK);
 		window->map->wall_h--;
 	}
-	printf("%d \n", i);
-	//sleep (1);
 	while (i < PP_HEIGHT)
 		my_mlx_pixel_put(&window->map->img, pos, i++, PURPLE);
 }

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 10:24:43 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 11:34:10 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ enum {
 	DOWN = 1,
 	RIGHT = 2,
 	DESTROY = 17,
-	SPEED = 10,
+	SPEED = 30,
 	MINI_UNIT = 5
 };
 
@@ -50,7 +50,6 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }				t_data;
-
 
 typedef struct s_wall
 {
@@ -70,6 +69,7 @@ typedef struct s_ray
 	int					down;
 	int					right;
 	int					left;
+	int					content;
 }	t_ray;
 
 typedef struct s_player

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 10:00:28 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/29 11:29:15 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@ void	move_up_down(t_map *map, int keycode)
 
 	sinvalue = sin(map->r.ang * M_PI / 180) * SPEED;
 	cosvalue = cos(map->r.ang * M_PI / 180) * SPEED;
-	if ((keycode == UP || keycode == ARROW_UP) && map->map[(int)(map->p.u_y - \
-	sinvalue) / UNIT][(int)(map->p.u_x + cosvalue) / UNIT] != '1')
+	if ((keycode == UP || keycode == ARROW_UP) && map->r.distance > 0)
 	{
-		map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
-		map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
+		if( map->map[(int)map->p.u_y / UNIT][(int)(map->p.u_x + cosvalue) / UNIT] != '1')
+			map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
+		if (map->map[(int)(map->p.u_y - sinvalue) / UNIT][(int)map->p.u_x / UNIT] != '1')
+			map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
 	}
-	if ((keycode == DOWN || keycode == ARROW_DOWN) && map->map[(int) \
-	(map->p.u_y + sinvalue) / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
+	if ((keycode == DOWN || keycode == ARROW_DOWN))
 	{
-		map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
+		if ( map->map[(int)map->p.u_y  / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
+			map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
+		if ( map->map[(int)(map->p.u_y + sinvalue) / UNIT][(int)map->p.u_x/ UNIT] != '1')
 		map->p.u_y += sin(map->r.ang * M_PI / 180) * SPEED;
 	}
 }
@@ -49,17 +51,19 @@ void	move_left_right(t_map *map, int keycode)
 
 	sinvalue = sin((90 - map->r.ang) * M_PI / 180) * SPEED;
 	cosvalue = cos((90 - map->r.ang) * M_PI / 180) * SPEED;
-	if (keycode == LEFT && map->map[(int)(map->p.u_y - \
-	sinvalue) / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
+	if (keycode == LEFT)
 	{
-		map->p.u_x -= cosvalue;
-		map->p.u_y -= sinvalue;
+		if ( map->map[(int)map->p.u_y / UNIT][(int)(map->p.u_x - cosvalue) / UNIT] != '1')
+			map->p.u_x -= cosvalue;
+		if (map->map[(int)(map->p.u_y - sinvalue) / UNIT][(int)map->p.u_x / UNIT] != '1')
+			map->p.u_y -= sinvalue;
 	}
-	if (keycode == RIGHT && map->map[(int)(map->p.u_y + \
-	sinvalue) / UNIT][(int)(map->p.u_x + cosvalue) / UNIT] != '1')
+	if (keycode == RIGHT)
 	{
-		map->p.u_x += cosvalue;
-		map->p.u_y += sinvalue;
+		if (map->map[(int)map->p.u_y / UNIT][(int)(map->p.u_x + cosvalue) / UNIT] != '1')
+			map->p.u_x += cosvalue;
+		if (map->map[(int)(map->p.u_y + sinvalue) / UNIT][(int)map->p.u_x/ UNIT] != '1')
+			map->p.u_y += sinvalue;
 	}
 }
 
