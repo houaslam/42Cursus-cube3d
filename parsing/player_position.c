@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:05 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/25 12:58:03 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/30 07:39:34 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,15 @@ int	ft_player(t_map *map, int i, int j)
 void	check_player(int s)
 {
 	if (!s)
-		put_error("∆  we need a player here!");
+	{
+		printf("∆  we need a player here!");
+		exit(0);
+	}
 	if (s > 1)
-		put_error("∆  there is more than one player!");
+	{
+		printf("∆  there is more than one player!");
+		exit(0);
+	}
 }
 
 void	player_position(t_map **map)

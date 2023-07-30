@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:56:12 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/22 12:13:00 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/30 07:39:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,16 @@ int	check_file(char **av)
 	}
 	if (i == 0 || av[1][i + 1] != 'c' || av[1][i + 2] != 'u' \
 	|| av[1][i + 3] != 'b' || av[1][i + 4] != '\0')
-		put_error("∆ file must be ended with \".cub\"!");
+	{
+		printf("∆ file must be ended with \".cub\"!");
+		exit(0);
+	}
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		put_error("∆ there is no such a file or directory!");
+	{
+		printf("∆ there is no such a file or directory!");
+		exit(0);
+	}
 	return (fd);
 }
 
@@ -45,8 +51,8 @@ void	read_map(t_map **map, char **av)
 	while (1)
 	{
 		// if (tmp[0] == '\n')
-		// 	put_error("there is an empty line");
-		str = ft_stjoin(str, tmp);
+		// 	printf("there is an empty line");
+		str = ft_strjoin(str, tmp);
 		free(tmp);
 		tmp = get_next_line(fd);
 		if (!tmp)

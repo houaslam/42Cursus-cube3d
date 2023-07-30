@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 11:34:10 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/30 07:47:30 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ enum {
 	RIGHT = 2,
 	DESTROY = 17,
 	SPEED = 30,
-	MINI_UNIT = 5
+	MINI_UNIT = 5,
+	DOOR = 111,
+	WALL = 222
 };
 
 typedef struct s_data

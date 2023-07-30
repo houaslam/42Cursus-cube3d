@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:23 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/25 13:03:19 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/07/30 07:36:24 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../external_outils/get_next_line/get_next_line.h"
 
 void	player_position(t_map **map);
-void    parsing(t_map **map, char **av);
+void    parsing(t_map *map, char **av);
 void    map_dimension(t_map **map);
 void	read_map(t_map **map, char **av);
 void    wall_parsing(t_map *map);

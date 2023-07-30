@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 14:25:25 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/02 23:46:04 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/07/30 07:35:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *str, const char *tofind, size_t len);
-char	*ft_strjoin(const char	*s1, const char *ss2);
+char	*ft_strjoin(char	*s1, char *ss2);
 int		ft_isprint(int c);
 
 #endif

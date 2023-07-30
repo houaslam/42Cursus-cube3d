@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 10:50:55 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/30 10:12:44 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	rays_casting(t_map *map, t_window *window)
 		map->n_h = 0;
 		quadrant(map);
 		map->r.distance = p_to_wall(map);
-		printf("distance = %f\n", map->r.distance);
 		map->wall_h = wall_height(map);
 		draw_ray(window, i);
 		map->r.cast -= (float)VIEW_D / PP_WIDTH;
