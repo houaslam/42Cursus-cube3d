@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/30 08:19:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/31 07:25:32 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int	check_case_h(t_map *map)
 {
 	map->n_h = 1;
-	if (map->h.y < 0 || map->h.x / UNIT >= map->m_x)
-		return (0);
-	if (map->h.x < 0 || map->h.y / UNIT >= map->m_y)
+	if (map->h.y < 0 || map->h.x / UNIT >= map->m_x \
+	|| map->h.x < 0 || map->h.y / UNIT >= map->m_y)
 		return (0);
 	map->n_h = 0;
 	if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
@@ -29,6 +28,7 @@ int	check_case_h(t_map *map)
 	else if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
 	/ UNIT] == 'D')
 	{
+		printf("DOOR\n");
 		map->r.content = DOOR;
 		return (0);
 	}
@@ -38,9 +38,8 @@ int	check_case_h(t_map *map)
 int	check_case_v(t_map *map)
 {
 	map->n_v = 1;
-	if (map->v.y < 0 || map->v.x / UNIT >= map->m_x)
-		return (0);
-	if (map->v.x / UNIT < 0 || map->v.y / UNIT >= map->m_y)
+	if (map->v.y < 0 || map->v.x / UNIT >= map->m_x \
+	|| map->v.x / UNIT < 0 || map->v.y / UNIT >= map->m_y)
 		return (0);
 	map->n_v = 0;
 	if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) \

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/30 10:30:59 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/31 07:19:50 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int ac, char **av)
 	rays_casting(&map, &window);
 	mlx_hook(window.mlx_win, 17, 0, ft_exit, &window);
 	mlx_hook(window.mlx_win, 2, 0, which_move, &map);
-	// mlx_loop_hook(window.mlx, sprite, &window);
 	mlx_hook(window.mlx_win, 6, 0, mouse, &window);
 	mlx_loop(window.mlx);
 }

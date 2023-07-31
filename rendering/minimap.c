@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/29 10:31:13 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/31 07:21:00 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_square(int color, int x, int y, t_window *window)
 		b = -1;
 		while (++b < 10)
 		{
-			mlx_pixel_put(window->mlx, window->mlx_win, (x ),  y, color);
+			mlx_pixel_put(window->mlx, window->mlx_win, x, y, color);
 			x++;
 		}
 		x -= 10;
@@ -43,7 +43,8 @@ void	draw_minimap(t_map *map)
 	map->minimap.width = floor((map)->p.u_y / UNIT) * 2;
 	map->minimap.mini_p.u_x = (map->p.u_x / 64) / MINI_UNIT;
 	map->minimap.mini_p.u_y = (map->p.u_y / 64) / MINI_UNIT;
-	draw_square(PURPLE, map->minimap.mini_p.u_x, map->minimap.mini_p.u_y, map->window);
+	draw_square(PURPLE, map->minimap.mini_p.u_x, \
+	map->minimap.mini_p.u_y, map->window);
 	while (map->map[y])
 	{
 		x = 0;

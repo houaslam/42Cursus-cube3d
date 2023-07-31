@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/30 07:47:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/31 07:19:37 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,17 @@ typedef struct s_minimap
 {
 	int					height;
 	int					width;
-	t_player		mini_p;
+	t_player			mini_p;
 }	t_minimap;
 
 typedef struct s_map
 {
-	//map
 	char				**map;
 	int					m_x;
 	int					m_y;
-	// wall var
 	int					n_v;
-	float				wall_h;
 	int					n_h;
+	float				wall_h;
 	t_ray				r;
 	t_wall				h;
 	t_wall				v;
