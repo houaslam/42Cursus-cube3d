@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/31 07:18:52 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/07/31 10:13:13 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	initialize(t_map *map)
 	map->r.left = 0;
 	map->n_v = 0;
 	map->n_h = 0;
-	if (0 < map->r.cast && map->r.cast <= 180)
+	if (0 <= map->r.cast && map->r.cast <= 180)
 		map->r.up = 1;
-	if (90 <= map->r.cast && map->r.cast < 270)
+	if (90 <= map->r.cast && map->r.cast <= 270)
 		map->r.left = 1;
 	map->h.y = (floor(map->p.u_y / UNIT) * UNIT) + (!map->r.up) * UNIT;
 	map->v.x = (floor(map->p.u_x / UNIT) * UNIT) + (!map->r.left) * UNIT;

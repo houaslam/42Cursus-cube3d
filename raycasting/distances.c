@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/31 07:25:32 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/02 07:12:16 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	check_case_h(t_map *map)
 	else if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
 	/ UNIT] == 'D')
 	{
-		printf("DOOR\n");
 		map->r.content = DOOR;
 		return (0);
 	}

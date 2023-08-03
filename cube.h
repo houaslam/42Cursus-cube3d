@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/31 07:19:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/03 07:00:03 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ enum {
 	RIGHT = 2,
 	DESTROY = 17,
 	SPEED = 30,
-	MINI_UNIT = 5,
+	MINI_UNIT = 16,
 	DOOR = 111,
 	WALL = 222
 };
@@ -55,10 +55,10 @@ typedef struct s_data
 
 typedef struct s_wall
 {
-	float					x;
-	float					y;
-	float					step_x;
-	float					step_y;
+	double					x;
+	double					y;
+	double					step_x;
+	double					step_y;
 }	t_wall;
 
 typedef struct s_ray
@@ -66,7 +66,7 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
-	float				distance;
+	double				distance;
 	int					up;
 	int					down;
 	int					right;
@@ -76,10 +76,10 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	float					x;
-	float					y;
-	float					u_x;
-	float					u_y;
+	double					x;
+	double					y;
+	double					u_x;
+	double					u_y;
 	int						rot_speed;
 	int						mov_speed;
 }	t_player;
@@ -105,6 +105,7 @@ typedef struct s_map
 	t_player			p;
 	t_minimap			minimap;
 	t_data				img;
+	t_data				mini;
 	struct s_window		*window;
 }	t_map;
 
