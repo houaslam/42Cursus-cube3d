@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/31 07:20:25 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/03 09:48:57 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int						check_case_v(t_map *map);
 void					check_angles(t_map *map);
 
 // quadrant
-void					quadrant(t_map *map);;
+void					quadrant(t_map *map, int ray);
 void					up_left(t_map *map);
 void					up_right(t_map *map);
 void					down_right(t_map *map);

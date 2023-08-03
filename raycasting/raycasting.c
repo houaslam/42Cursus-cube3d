@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/02 14:52:26 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/03 09:49:13 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rays_casting(t_map *map, t_window *window)
 	while (i < PP_WIDTH)
 	{
 		check_angles(map);
-		quadrant(map);
+		quadrant(map, map->r.cast);
 		map->r.distance = p_to_wall(map);
 		map->wall_h = wall_height(map);
 		draw_ray(window, i);

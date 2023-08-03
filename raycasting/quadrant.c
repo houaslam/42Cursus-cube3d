@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 12:34:20 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/31 10:13:13 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/03 09:48:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	find_wall(t_map *map)
 	}
 }
 
-void	initialize(t_map *map)
+void	initialize(t_map *map, int ray_to_cast)
 {
 	map->r.up = 0;
 	map->r.left = 0;
 	map->n_v = 0;
 	map->n_h = 0;
-	if (0 <= map->r.cast && map->r.cast <= 180)
+	if (0 <= ray_to_cast && ray_to_cast <= 180)
 		map->r.up = 1;
-	if (90 <= map->r.cast && map->r.cast <= 270)
+	if (90 <= ray_to_cast && ray_to_cast <= 270)
 		map->r.left = 1;
 	map->h.y = (floor(map->p.u_y / UNIT) * UNIT) + (!map->r.up) * UNIT;
 	map->v.x = (floor(map->p.u_x / UNIT) * UNIT) + (!map->r.left) * UNIT;
@@ -62,10 +62,10 @@ void	execute(t_map *map)
 	}
 }
 
-void	quadrant(t_map *map)
+void	quadrant(t_map *map, int ray_to_cast)
 {
-	initialize(map);
-	map->r.alpha = (map->r.cast - (int)(map->r.cast / 90) * 90) * M_PI / 180;
+	initialize(map, ray_to_cast);
+	map->r.alpha = (ray_to_cast - (int)(ray_to_cast / 90) * 90) * M_PI / 180;
 	execute(map);
 	find_wall(map);
 }
