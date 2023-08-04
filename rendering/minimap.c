@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:43:14 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:47:02 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void	draw_minimap(t_map *map)
 	}
 	mini_quadrant(map);
 	mlx_put_image_to_window(map->window->mlx, \
-	window->mlx_win, map->mini.img, 50, 50);
+	map->window->mlx_win, map->mini.img, 50, 50);
 }
