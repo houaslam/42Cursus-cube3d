@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/03 09:49:13 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:43:41 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	check_angles(t_map *map)
 	map->r.cast = remainder(map->r.cast, 360);
 	if (map->r.cast < 0)
 		map->r.cast += 360;
+	map->r.ang = remainder(map->r.ang, 360);
+	if (map->r.ang < 0)
+		map->r.ang += 360;
 }
 
 void	rays_casting(t_map *map, t_window *window)
@@ -37,12 +40,10 @@ void	rays_casting(t_map *map, t_window *window)
 	while (i < PP_WIDTH)
 	{
 		check_angles(map);
-		quadrant(map, map->r.cast);
+		quadrant(map);
 		map->r.distance = p_to_wall(map);
 		map->wall_h = wall_height(map);
 		draw_ray(window, i);
-		if (map->r.alpha == 0)
-			break;
 		map->r.cast -= (float)VIEW_D / PP_WIDTH;
 		i++;
 	}
@@ -51,6 +52,7 @@ void	rays_casting(t_map *map, t_window *window)
 	map->mini.addr = mlx_get_data_addr(map->mini.img, \
 	&map->mini.bits_per_pixel, &map->mini.line_length, &map->mini.endian);
 	draw_minimap(map);
-	mlx_put_image_to_window(window->mlx, \
-	window->mlx_win, map->mini.img, 50, 50);
+	mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, \
+	map->minimap.player, 50 + map->minimap.width / 2, \
+	50 + map->minimap.height / 2);
 }

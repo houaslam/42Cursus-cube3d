@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/03 09:48:57 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:44:15 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int						check_case_v(t_map *map);
 void					check_angles(t_map *map);
 
 // quadrant
-void					quadrant(t_map *map, int ray);
+void					quadrant(t_map *map);
 void					up_left(t_map *map);
 void					up_right(t_map *map);
 void					down_right(t_map *map);
@@ -54,5 +54,8 @@ int						ft_exit(t_window *mlx);
 int						turn_move(int keycode, t_map *map);
 
 void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void					draw_player(t_map *map);
+void					keep_adding(t_map *map);
+void					mini_quadrant(t_map *map);
 
 #endif

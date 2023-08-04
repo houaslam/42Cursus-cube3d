@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:25:47 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/02 07:12:16 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:27:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ float	p_to_wall(t_map *map)
 	if (map->n_h || h >= v)
 		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
 	return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));
-	return (0);
 }
 
 float	wall_height(t_map *map)

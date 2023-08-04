@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/08/02 10:15:01 by houaslam         ###   ########.fr        #
+#    Updated: 2023/08/03 12:39:06 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ R_SRCS = 	raycasting/distances.c \
 
 REND_SRCS = rendering/render_setup.c \
 	    	rendering/minimap.c \
+	    	rendering/mini_quadrant.c \
 
 
 P_SRCS = parsing/player_position.c \

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/03 07:00:03 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:41:17 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ enum {
 	RIGHT = 2,
 	DESTROY = 17,
 	SPEED = 30,
-	MINI_UNIT = 16,
+	MINI_UNIT = 15,
 	DOOR = 111,
 	WALL = 222
 };
@@ -89,6 +89,9 @@ typedef struct s_minimap
 	int					height;
 	int					width;
 	t_player			mini_p;
+	void				*player;
+	float				x;
+	float				y;
 }	t_minimap;
 
 typedef struct s_map
