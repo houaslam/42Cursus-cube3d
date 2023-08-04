@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:47:02 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:56:28 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,31 @@ void	base(t_map *map)
 	map->minimap.mini_p.u_y = (map->p.u_y / UNIT) * MINI_UNIT;
 }
 
-int	check(t_map *map, int x, int y)
+int	check(t_map *map, double x, double y)
 {
 	if (x / MINI_UNIT < 0 || y / MINI_UNIT < 0)
 		return (0);
-	if ((y + MINI_UNIT / 2) / MINI_UNIT >= map->m_y \
-	|| (x + MINI_UNIT / 2) / MINI_UNIT >= map->m_x)
+	if (y / MINI_UNIT >= map->m_y \
+	|| x / MINI_UNIT >= map->m_x)
 		return (0);
-	if (map->map[y / MINI_UNIT][x / MINI_UNIT] != '1')
-		return (0);
-	if (map->map[y / MINI_UNIT][x / MINI_UNIT] != '1')
+	if (map->map[(int)y / MINI_UNIT][(int)x / MINI_UNIT] != '1')
 		return (0);
 	return (1);
 }
 
 void	draw_minimap(t_map *map)
 {
-	int	x;
-	int	y;
-	int	x_mov;
-	int	y_mov;
+	double	x;
+	double	y;
+	int		x_mov;
+	int		y_mov;
 
 	base(map);
-	y = map->minimap.mini_p.u_y - map->minimap.height / 2;
+	y = floor(map->minimap.mini_p.u_y - map->minimap.height / 2);
 	y_mov = 0;
 	while (y_mov < map->minimap.height)
 	{
-		x = map->minimap.mini_p.u_x - map->minimap.width / 2;
+		x = floor(map->minimap.mini_p.u_x - map->minimap.width / 2);
 		x_mov = 0;
 		while (x_mov < map->minimap.width)
 		{
