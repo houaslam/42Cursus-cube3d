@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/03 14:52:11 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:46:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	which_move(int keycode, t_map *map)
 		move_up_down(map, keycode);
 	else
 		turn_move(keycode, map);
-	if (keycode == 53)
+	if (keycode == DESTROY)
 		ft_exit(map->window);
 	rays_casting(map, map->window);
 	return (0);

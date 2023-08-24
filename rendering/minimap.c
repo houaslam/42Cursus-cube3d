@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 08:59:03 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 12:56:28 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/23 20:02:39 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	base(t_map *map)
 {
 	int	x;
 	int	y;
+		int		k;
+
+	k = MINI_UNIT;
 
 	y = 0;
 	while (y < PP_HEIGHT / 5)
@@ -48,6 +51,10 @@ void	base(t_map *map)
 	map->minimap.width = PP_WIDTH / 5;
 	map->minimap.mini_p.u_x = (map->p.u_x / UNIT) * MINI_UNIT;
 	map->minimap.mini_p.u_y = (map->p.u_y / UNIT) * MINI_UNIT;
+	// map->minimap.player = mlx_xpm_file_to_image(map->window->mlx \
+	// , "rendering/player.xpm", &k, &k);
+	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win \
+	// , map->minimap.player, 90, 80);
 }
 
 int	check(t_map *map, double x, double y)
@@ -89,4 +96,7 @@ void	draw_minimap(t_map *map)
 	mini_quadrant(map);
 	mlx_put_image_to_window(map->window->mlx, \
 	map->window->mlx_win, map->mini.img, 50, 50);
+	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, \
+	// map->minimap.player, 50 + map->minimap.width / 2, \
+	// 50 + map->minimap.height / 2);
 }

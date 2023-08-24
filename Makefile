@@ -6,14 +6,15 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/08/03 12:39:06 by houaslam         ###   ########.fr        #
+#    Updated: 2023/08/23 18:56:42 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
-EXTRA_FLAGS =  -g3  -lmlx -framework OpenGL -framework AppKit
+cc += -fsanitize=address -g3
+CFLAGS = -I/usr/include -Imlx_linux -O3
+EXTRA_FLAGS =  -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
 
 R_SRCS = 	raycasting/distances.c \
 			raycasting/raycasting.c \
@@ -40,12 +41,12 @@ OBJ = ${R_SRCS:.c=.o} ${P_SRCS:.c=.o} ${REND_SRCS:.c=.o} ${O_SRCS:.c=.o}
 all : ${NAME}
 
 ${NAME} : ${OBJ}
-	${CC} ${CFLAGS} ${EXTRA_FLAGS} ${OBJ} external_outils/libft/libft.a -o ${NAME}
+	${CC} ${CFLAGS} ${EXTRA_FLAGS} ${OBJ} ${EXTRA_FLAGS} external_outils/libft/libft.a -o ${NAME}
 
 clean :
-	rm ${OBJ}
+	rm -rf ${OBJ}
 fclean : clean
-	rm -f ${NAME}
+	rm -rf ${NAME}
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:41:17 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:44:08 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@
 # define BLACK 0x000000
 
 enum {
-	ARROW_LEFT = 123,
-	ARROW_RIGHT = 124,
-	ARROW_UP = 126,
-	ARROW_DOWN = 125,
-	UP = 13,
-	LEFT = 0,
-	DOWN = 1,
-	RIGHT = 2,
-	DESTROY = 17,
+	ARROW_LEFT = 65361,
+	ARROW_UP = 65362,
+	ARROW_RIGHT = 65363,
+	ARROW_DOWN = 65364,
+	LEFT = 97,
+	UP = 119,
+	RIGHT = 100,
+	DOWN = 115,
+	DESTROY = 65307,
 	SPEED = 30,
 	MINI_UNIT = 15,
 	DOOR = 111,

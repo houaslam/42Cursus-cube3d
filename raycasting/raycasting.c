@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:43:41 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:57:59 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,5 @@ void	rays_casting(t_map *map, t_window *window)
 	map->mini.addr = mlx_get_data_addr(map->mini.img, \
 	&map->mini.bits_per_pixel, &map->mini.line_length, &map->mini.endian);
 	draw_minimap(map);
-	mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, \
-	map->minimap.player, 50 + map->minimap.width / 2, \
-	50 + map->minimap.height / 2);
+
 }

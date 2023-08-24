@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:45:13 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/08/23 18:46:17 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	map.mini.img = mlx_new_image(window.mlx, PP_WIDTH / 5, PP_HEIGHT / 5);
 	rays_casting(&map, &window);
 	mlx_hook(window.mlx_win, 17, 0, ft_exit, &window);
-	mlx_hook(window.mlx_win, 2, 0, which_move, &map);
-	mlx_hook(window.mlx_win, 6, 0, mouse, &window);
+	mlx_hook(window.mlx_win, 2, 1L<<0, which_move, &map);
+	mlx_hook(window.mlx_win, 6, 1L<<6, mouse, &window);
 	mlx_loop(window.mlx);
 }

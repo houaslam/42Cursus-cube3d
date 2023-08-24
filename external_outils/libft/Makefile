@@ -1,5 +1,4 @@
-NAME = libft.a
-CC = -Wall -Wextra -Werror
+NAME = libft.a 
 
 SRCS = ft_calloc.c ft_isdigit.c ft_memcmp.c ft_putchar_fd.c ft_split.c ft_strjoin.c ft_strmapi.c ft_strtrim.c \
 	ft_isalnum.c ft_isprint.c ft_memcpy.c ft_putendl_fd.c ft_strchr.c ft_strlcat.c ft_strncmp.c ft_substr.c\
@@ -13,7 +12,7 @@ $(NAME) : $(OBJ)
 	ar rc ${NAME} $(OBJ)
 
 $(OBJ) :$(SRCS)
-	gcc $(CC) -c $(SRCS)
+	gcc -c $(SRCS)
 
 clean :
 	rm -f $(OBJ)
