@@ -31,6 +31,7 @@ P_SRCS = parsing/player_position.c \
 		parsing/read_map.c \
 		parsing/parsing.c \
 		parsing/map_dimension.c \
+		cardinal_directions.c
 
 
 O_SRCS = external_outils/get_next_line/get_next_line.c \

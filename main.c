@@ -30,8 +30,9 @@ int	mouse(int x, int y, t_window *window)
 
 int	main(int ac, char **av)
 {
-	t_window	window;
-	t_map		map;
+	t_window		window;
+	t_map			map;
+	t_directions	directions;
 
 	if (ac != 2)
 	{
@@ -39,6 +40,7 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	window.map = &map;
+	window.directions = &directions;
 	map.window = &window;
 	parsing(&map, av);
 	window.mlx = mlx_init();

@@ -109,8 +109,18 @@ typedef struct s_map
 	t_minimap			minimap;
 	t_data				img;
 	t_data				mini;
+	struct s_directions *directions;
 	struct s_window		*window;
 }	t_map;
+
+typedef struct s_directions
+{
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	struct s_map	*map;
+}	t_directions;
 
 typedef struct s_window{
 	void				*mlx;
