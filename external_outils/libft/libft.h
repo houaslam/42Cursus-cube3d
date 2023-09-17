@@ -55,5 +55,6 @@ char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *str, const char *tofind, size_t len);
 char	*ft_strjoin(char	*s1, char *ss2);
 int		ft_isprint(int c);
+int     ft_strcmp(char *s1, char *s2);
 
 #endif

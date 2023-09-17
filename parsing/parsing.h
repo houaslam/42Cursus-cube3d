@@ -18,12 +18,17 @@
 # include "../external_outils/libft/libft.h"
 # include "../external_outils/get_next_line/get_next_line.h"
 
-void	player_position(t_map **map);
+void	player_position(t_map **map, int i);
 void    parsing(t_map *map, char **av);
-void    map_dimension(t_map **map);
+void    map_dimension(t_map **map, int i);
 void	read_map(t_map **map, char **av);
-void    wall_parsing(t_map *map);
-void	flood_fill(char **map, int yp, int xp);
-char	**make_area(t_map *map);
+void	cardinal_directions(t_map **map, int *s);
+void    map_parsing(t_map **map, int s);
+void	ea_and_colors(char **str, t_directions *dir, int *s, int i);
+void	check_cardinal(t_directions *dir);
+//      TOOLS
+void	put_error(char *str);
+int	    str_lenght(char **str);
+void	ft_free(char **str);
 
 #endif

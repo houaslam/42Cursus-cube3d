@@ -25,7 +25,7 @@
 // 			my_mlx_pixel_put(&map->mini, x++, y, 225111);
 // 		y--;
 // 	}
-// 	draw_square(225111, map->minimap.width / 2, \
+// 	draw_square(225111, map->minimap.width / 2, 
 // 	map->minimap.height / 2, map->window);
 // }
 
@@ -78,6 +78,8 @@ void	mini_quadrant(t_map *map)
 	map->minimap.x = map->minimap.width / 2 + MINI_UNIT / 2;
 	map->minimap.y = map->minimap.height / 2 + MINI_UNIT / 2;
 	// while (check_tip(map, y))
+	(void)k;
+	(void)y;
 	distance = map->r.distance * (float)(MINI_UNIT / UNIT);
 	printf("distance = %f\n", map->r.distance);
 	printf("factor = %f\n", (float)(MINI_UNIT / UNIT));

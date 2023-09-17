@@ -12,8 +12,8 @@
 
 NAME = cub3D
 CC = cc 
-cc += -fsanitize=address -g3
-CFLAGS = -I/usr/include -Imlx_linux -O3
+cc += -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra -fsanitize=address -g3
 EXTRA_FLAGS =  -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
 
 R_SRCS = 	raycasting/distances.c \
@@ -27,11 +27,14 @@ REND_SRCS = rendering/render_setup.c \
 	    	rendering/mini_quadrant.c \
 
 
-P_SRCS = parsing/player_position.c \
+P_SRCS = parsing/cardinal_directions2.c \
+		parsing/cardinal_directions.c \
+		parsing/player_position.c \
+		parsing/map_dimension.c \
+		parsing/map_parsing.c \
 		parsing/read_map.c \
 		parsing/parsing.c \
-		parsing/map_dimension.c \
-		cardinal_directions.c
+		
 
 
 O_SRCS = external_outils/get_next_line/get_next_line.c \

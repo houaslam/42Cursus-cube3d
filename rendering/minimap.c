@@ -32,7 +32,7 @@ void	base(t_map *map)
 {
 	int	x;
 	int	y;
-		int		k;
+	int		k;
 
 	k = MINI_UNIT;
 
@@ -51,9 +51,10 @@ void	base(t_map *map)
 	map->minimap.width = PP_WIDTH / 5;
 	map->minimap.mini_p.u_x = (map->p.u_x / UNIT) * MINI_UNIT;
 	map->minimap.mini_p.u_y = (map->p.u_y / UNIT) * MINI_UNIT;
-	// map->minimap.player = mlx_xpm_file_to_image(map->window->mlx \
+	(void)k;
+	// map->minimap.player = mlx_xpm_file_to_image(map->window->mlx 
 	// , "rendering/player.xpm", &k, &k);
-	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win \
+	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win 
 	// , map->minimap.player, 90, 80);
 }
 
@@ -96,7 +97,7 @@ void	draw_minimap(t_map *map)
 	mini_quadrant(map);
 	mlx_put_image_to_window(map->window->mlx, \
 	map->window->mlx_win, map->mini.img, 50, 50);
-	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, \
-	// map->minimap.player, 50 + map->minimap.width / 2, \
+	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, 
+	// map->minimap.player, 50 + map->minimap.width / 2, 
 	// 50 + map->minimap.height / 2);
 }

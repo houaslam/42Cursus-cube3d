@@ -27,25 +27,22 @@ int	ft_player(t_map *map, int i, int j)
 void	check_player(int s)
 {
 	if (!s)
-	{
-		printf("∆  we need a player here!");
-		exit(0);
-	}
+		// return;
+		put_error("∆  we need a player here!");
 	if (s > 1)
-	{
-		printf("∆  there is more than one player!");
-		exit(0);
-	}
+		// return;	
+		put_error("∆  there is more than one player!");
 }
 
-void	player_position(t_map **map)
+void	player_position(t_map **map, int i)
 {
-	int	i;
 	int	j;
+	int	h;
 	int	s;
 
-	i = 0;
 	s = 0;
+	// i = 0;
+	h = i;
 	(*map)->m_x = 0;
 	while ((*map)->map[i])
 	{
@@ -62,6 +59,25 @@ void	player_position(t_map **map)
 			(*map)->m_x = ft_strlen((*map)->map[i]) + 1;
 		i++;
 	}
-	(*map)->m_y = i;
+	(*map)->m_y = i - h;
+	// (*map)->m_y = i;
+	// printf("i == %d | h == %d\n", i, h);
+	// printf("%d\n", i);
 	check_player(s);
+}
+
+void	check_cardinal(t_directions *dir)
+{
+	if (!dir->no)
+		put_error("NORTH TEXTURE IS MISSING");
+	if (!dir->so)
+		put_error("SOUTH TEXTURE IS MISSING");
+	if (!dir->we)
+		put_error("WEST TEXTURE IS MISSING");
+	if (!dir->ea)
+		put_error("EAST TEXTURE IS MISSING");
+	if (!dir->c)
+		put_error("C COLOR IS MISSING");
+	if (!dir->f)
+		put_error("F COLOR IS MISSING");
 }

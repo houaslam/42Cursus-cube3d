@@ -119,6 +119,8 @@ typedef struct s_directions
 	char			*so;
 	char			*we;
 	char			*ea;
+	char			*f;
+	char			*c;
 	struct s_map	*map;
 }	t_directions;
 

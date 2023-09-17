@@ -30,15 +30,13 @@ char	*ft_fill_it(char *str, int len)
 		i++;
 	}
 	ret[i] = '\0';
-	// free (str);////leaks
+	free (str);////leaks
 	return (ret);
 }
 
-void    map_dimension(t_map **map)
+void    map_dimension(t_map **map, int i)
 {
-    int i;
-
-    i = 0;
+	// i = 0;
     while ((*map)->map[i])
 	{
         (*map)->map[i] = ft_fill_it((*map)->map[i], (*map)->m_x);

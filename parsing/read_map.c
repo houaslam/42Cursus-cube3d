@@ -26,16 +26,10 @@ int	check_file(char **av)
 	}
 	if (i == 0 || av[1][i + 1] != 'c' || av[1][i + 2] != 'u' \
 	|| av[1][i + 3] != 'b' || av[1][i + 4] != '\0')
-	{
-		printf("∆ file must be ended with \".cub\"!");
-		exit(0);
-	}
+		put_error("∆ file must be ended with \".cub\"!");
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-	{
-		printf("∆ there is no such a file or directory!");
-		exit(0);
-	}
+		put_error("∆ there is no such a file or directory!");
 	return (fd);
 }
 
