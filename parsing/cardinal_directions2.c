@@ -1,6 +1,20 @@
 
 #include "parsing.h"
 
+int	skipp_spaces(char *str, char to_find)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && ft_is_space(str[i]))
+	{
+		i++;
+	}
+	if (str[i] == to_find)
+		return (1);
+	return (0);
+}
+
 void	ea_and_colors(char **str, t_directions *dir, int *s, int i)
 {
     if (!ft_strcmp(str[0], "EA") && str_lenght(str) == 2)
@@ -21,11 +35,11 @@ void	ea_and_colors(char **str, t_directions *dir, int *s, int i)
 			put_error("TOO MANY C COLORS");////C ??
 		dir->c = ft_strdup(str[1]);//// protect numb
 	}
-	else if (!*s && str[0][0] == '1')////not always the first we can find tabs
+	else if (!*s && skipp_spaces(str[0], '1'))////not always the first we can find tabs
 	{
 		check_cardinal(dir);
 		*s = i;
 	}
-	else if (str[0][0] != '1')
+	else if (!skipp_spaces(str[0], '1'))
 		put_error("MAP NOT VALID");
 }

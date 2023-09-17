@@ -82,7 +82,7 @@ void	parsing(t_map *map, char **av)
 	map_dimension(&map, s);
 	////fill with the new map starting with s == after
 	fill_new_map(&map, s);
-	map_parsing(&map, s);
+	map_parsing(&map);
 	int	i = 0;
 	while (map->map[i])
 	{
@@ -91,5 +91,4 @@ void	parsing(t_map *map, char **av)
 	}
 	printf("%d | %d\n", i, map->m_y);
 	// open_map(map);
-
 }

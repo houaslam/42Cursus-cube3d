@@ -12,13 +12,13 @@
 
 #include "parsing.h"
 
-int	ft_player(t_map *map, int i, int j)
+int	ft_player(t_map *map, int i, int j, int h)
 {
 	if (map->map[i][j] == 'N' || map->map[i][j] == 'S' \
 	|| map->map[i][j] == 'E' || map->map[i][j] == 'W')
 	{
 		map->p.x = j;
-		map->p.y = i;
+		map->p.y = i - h;
 		return (1);
 	}
 	return (0);
@@ -49,7 +49,7 @@ void	player_position(t_map **map, int i)
 		j = 0;
 		while ((*map)->map[i][j])
 		{
-			if (ft_player(*map, i, j))
+			if (ft_player(*map, i, j, h))
 				s++;
 			// if ((*map)->m_x < j)
 			// 	(*map)->m_x = j;////doesnt hold the longest lenght

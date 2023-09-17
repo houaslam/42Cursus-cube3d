@@ -1,26 +1,33 @@
 
 #include "parsing.h"
 
-void    map_parsing(t_map **map, int s)
+int	ft_is_space(char c)
+{
+	if (c == ' ' || c == '\t')
+		return (1);
+	return (0);
+}
+
+void    map_parsing(t_map **map)
 {
 	int j;
+	int i;
 
-	while ((*map)->map[s])
+	i = 0;
+	while ((*map)->map[i])
 	{
+		printf("->%s\n", (*map)->map[i]);
 		j = 0;
-		while ((*map)->map[s][j])
+		while ((*map)->map[i][j])
 		{
-			if ((*map)->map[s][j] == '0')
+			if ((*map)->map[i][j] == '0')
 			{
-				if ((*map)->map[s][j - 1] == ' ' || (*map)->map[s][j + 1] == ' '\
-				|| (*map)->map[s - 1][j] == ' ' || (*map)->map[s + 1][j] == ' ')
-				{
-					printf("[%s]\n", (*map)->map[s]);
-					// put_error("MAP ISN'T SURRPOUNDED BY WALLS");
-				}
+				if ((*map)->map[i][j - 1] == ' ' || (*map)->map[i][j + 1] == ' '\
+				|| (*map)->map[i - 1][j] == ' ' || (*map)->map[i + 1][j] == ' ')
+					put_error("MAP ISN'T SURRPOUNDED BY WALLS");
 			}
 			j++;
 		}
-		s++;
+		i++;
 	}
 }
