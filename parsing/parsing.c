@@ -51,14 +51,30 @@ void	s_directions_initialization(t_map **map)
 	(*map)->directions->so = NULL;
 }
 
+void	affiche(t_directions *d)
+{
+	if (d->no)
+		printf("NORTH = [%s]\n", d->no);
+	if (d->ea)
+		printf("EAST  = [%s]\n", d->ea);
+	if (d->so)
+		printf("SOUTH = [%s]\n", d->so);
+	if (d->we)
+		printf("WEST  = [%s]\n", d->we);
+	if (d->f)
+		printf("F     = [%s]\n", d->f);
+	if (d->c)
+		printf("C     = [%s]\n", d->c);
+}
+
 void	fill_new_map(t_map **map, int s)
 {
 	char	**new;
 	int		i;
 
 	i = 0;
-	new = malloc(sizeof(char *) * ((*map)->m_y + 100));
-	while ((*map)->map[s])
+	new = malloc(sizeof(char *) * ((*map)->m_y + 2));//// edit 100
+	while ((*map)->map[s] && i < (*map)->m_y + 1)
 	{
 		new[i] = ft_strdup((*map)->map[s]);
 		s++;
@@ -67,8 +83,8 @@ void	fill_new_map(t_map **map, int s)
 	new[i] = NULL;
 	ft_free((*map)->map);
 	(*map)->map = new;
-	// (*map)->map = new;//// NEW
 }
+
 
 void	parsing(t_map *map, char **av)
 {
@@ -80,8 +96,8 @@ void	parsing(t_map *map, char **av)
 	cardinal_directions(&map, &s);
 	player_position(&map, s);
 	map_dimension(&map, s);
-	////fill with the new map starting with s == after
 	fill_new_map(&map, s);
+	////fill with the new map starting with s == after
 	map_parsing(&map);
 	int	i = 0;
 	while (map->map[i])
@@ -90,5 +106,6 @@ void	parsing(t_map *map, char **av)
 		i++;
 	}
 	printf("%d | %d\n", i, map->m_y);
+	affiche(map->directions);
 	// open_map(map);
 }

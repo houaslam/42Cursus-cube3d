@@ -12,27 +12,25 @@
 
 #include "parsing.h"
 
-int	replace_tabs(char *ret, int i)
+void	end_of_map(t_map **map)
 {
+	int	i;
 	int	j;
 
-	j = 4;
-	while (j--)
+	i = (*map)->m_y;
+	j = 0;
+	while ((*map)->map[i] && !ft_strcmp((*map)->map[i], ";"))
 	{
-		ret[i] = ' ';
-		i++;
+		i--;
+		j++;
 	}
-	return (4);
+	(*map)->m_y = (*map)->m_y - j;
 }
 
-char	*ft_join(char *ret, char c, t_map **map)
+char	*ft_join(char *ret, char c)
 {
 	if (c == '1')
-	{
-		printf("here\n");
 		ret = ft_strjoin(ret, "1");
-		printf("%s\n", ret);
-	}
 	else if (c == '0')
 		ret = ft_strjoin(ret, "0");
 	else if (c == 'N')
@@ -46,10 +44,9 @@ char	*ft_join(char *ret, char c, t_map **map)
 	else if (c == ' ')
 		ret = ft_strjoin(ret, " ");
 	else if (c == '\t')
-	{
-		(*map)->m_x += 3;
-		ret = ft_strjoin(ret, "\t");
-	}
+		ret = ft_strjoin(ret, "    ");
+	else
+		put_error("INVALID CHARACTER");
 	return (ret);
 }
 
@@ -57,42 +54,34 @@ char	*ft_fill_it(char *str, t_map **map)
 {
 	char	*ret;
 	int		i;
-	// int		j;
 
-	// ret = malloc(sizeof(char) * len + 100);
 	ret = NULL;
 	i = 0;
-	// j = 0;
 	while (str[i])
 	{
-		// if (str[i] == '\t')
-		// 	// j += replace_tabs(ret, j);
-		// 	ret = ft_strjoin(ret, "    ");
-		// else
-			// ret[j] = str[i];
-			ret = (ft_join(ret, str[i], map));
+		if (!ft_strcmp(str, ";"))
+			put_error("EMPTY LINE");
+		ret = ft_join(ret, str[i]);
 		i++;
-		// j++;
 	}
 	while (i < (*map)->m_x)
+	// while ((int)ft_strlen(ret) < (*map)->m_x - 1)
 	{
-		// ret[j] = ' ';
-		if ((int)ft_strlen(ret) < (*map)->m_x)/////TO CHECK FIRST
-		ret = ft_strjoin(ret, " ");
-		printf("->%zu\n", ft_strlen(ret));
+		if ((int)ft_strlen(ret) < (*map)->m_x - 1)/////TO CHECK FIRST
+			ret = ft_strjoin(ret, " ");
 		i++;
 	}
-	// ret[j] = '\0';
-	free (str);////leaks
+	free (str);
 	return (ret);
 }
 
 void    map_dimension(t_map **map, int i)
 {
-	// i = 0;
-    while ((*map)->map[i])
+	end_of_map(map);
+	while ((*map)->map[i])
 	{
-        (*map)->map[i] = ft_fill_it((*map)->map[i], map);
+		(*map)->map[i] = ft_fill_it((*map)->map[i], map);
 		i++;
-    }
+	}
+	
 }

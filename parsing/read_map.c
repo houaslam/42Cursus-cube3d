@@ -26,10 +26,10 @@ int	check_file(char **av)
 	}
 	if (i == 0 || av[1][i + 1] != 'c' || av[1][i + 2] != 'u' \
 	|| av[1][i + 3] != 'b' || av[1][i + 4] != '\0')
-		put_error("∆ file must be ended with \".cub\"!");
+		put_error("FILE MUST BE ENDED BY \".cub\"!");
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		put_error("∆ there is no such a file or directory!");
+		put_error("NO SUCH A FILE OR DIRECTORY");
 	return (fd);
 }
 
@@ -44,8 +44,12 @@ void	read_map(t_map **map, char **av)
 	str = NULL;
 	while (1)
 	{
-		// if (tmp[0] == '\n')
-		// 	printf("there is an empty line");
+		if (tmp[0] == '\n')
+		{
+			free(tmp);
+			tmp = ft_strdup(";\n");
+			// printf("there is an empty line");
+		}
 		str = ft_strjoin(str, tmp);
 		free(tmp);
 		tmp = get_next_line(fd);

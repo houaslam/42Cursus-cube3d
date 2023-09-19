@@ -27,11 +27,26 @@ int	ft_player(t_map *map, int i, int j, int h)
 void	check_player(int s)
 {
 	if (!s)
-		// return;
-		put_error("∆  we need a player here!");
+		put_error("WE NEED A PLAYER");
 	if (s > 1)
-		// return;	
-		put_error("∆  there is more than one player!");
+		put_error("TEHRE IS MORE THAN ONE PLAYER");
+}
+
+int	ft_len(char *str)
+{
+	int	i;
+	int	ret;
+
+	ret = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\t')
+			ret += 3;
+		ret++;
+		i++;
+	}
+	return (ret);
 }
 
 void	player_position(t_map **map, int i)
@@ -41,7 +56,6 @@ void	player_position(t_map **map, int i)
 	int	s;
 
 	s = 0;
-	// i = 0;
 	h = i;
 	(*map)->m_x = 0;
 	while ((*map)->map[i])
@@ -51,18 +65,13 @@ void	player_position(t_map **map, int i)
 		{
 			if (ft_player(*map, i, j, h))
 				s++;
-			// if ((*map)->m_x < j)
-			// 	(*map)->m_x = j;////doesnt hold the longest lenght
 			j++;
 		}
 		if ((int)ft_strlen((*map)->map[i]) > (*map)->m_x)
-			(*map)->m_x = ft_strlen((*map)->map[i]) + 1;
+			(*map)->m_x = ft_len((*map)->map[i]) + 1;
 		i++;
 	}
 	(*map)->m_y = i - h;
-	// (*map)->m_y = i;
-	// printf("i == %d | h == %d\n", i, h);
-	// printf("%d\n", i);
 	check_player(s);
 }
 

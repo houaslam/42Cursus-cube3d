@@ -36,20 +36,12 @@ int	main(int ac, char **av)
 	t_directions	directions;
 
 	if (ac != 2)
-		put_error("∆ invalid number of arguments! ∆\n");
+		put_error("INVALID NUMBER OF ARGUMENTS\n");
 	window.map = &map;
 	map.window = &window;
 	directions.map = &map;
 	map.directions = &directions;
 	parsing(&map, av);
-	// exit(1);
-	// int	i = 0;
-	// while (map.map[i])
-	// {
-	// 	printf("[%s]\n", map.map[i]);
-	// 	i++;
-	// }
-	// printf("%d | %d\n", i, map.m_y);
 	window.mlx = mlx_init();
 	window.mlx_win = mlx_new_window(window.mlx, PP_WIDTH, PP_HEIGHT, "Cub3D");
 	player_view(&window.map);
