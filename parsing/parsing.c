@@ -73,6 +73,7 @@ void	fill_new_map(t_map **map, int s)
 	int		i;
 
 	i = 0;
+	// printf("%")
 	new = malloc(sizeof(char *) * ((*map)->m_y + 2));//// edit 100
 	while ((*map)->map[s] && i < (*map)->m_y + 1)
 	{

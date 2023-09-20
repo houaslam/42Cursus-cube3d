@@ -82,3 +82,4 @@ void	cardinal_directions(t_map **map, int *s)
 //// check textures in parsing(strtrim(" " && "\t"))
 //// RGB
 //// I should free when there is an error
+//// if i solved empty line there's no need for ";" 

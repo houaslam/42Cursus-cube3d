@@ -1,6 +1,8 @@
 {
   "files.associations": {
-    "raycasting.h": "c"
+    "raycasting.h": "c",
+    "parsing.h": "c",
+    "get_next_line.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

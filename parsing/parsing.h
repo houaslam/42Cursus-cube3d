@@ -27,6 +27,7 @@ void    map_parsing(t_map **map);
 void	ea_and_colors(char **str, t_directions *dir, int *s, int i);
 int     ft_is_space(char c);
 char	*ft_dup(char *str);
+int     skipp_spaces(char *str, char to_find);
 void	check_cardinal(t_directions *dir);
 //      TOOLS
 void	put_error(char *str);

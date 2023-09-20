@@ -72,6 +72,8 @@ void	player_position(t_map **map, int i)
 		i++;
 	}
 	(*map)->m_y = i - h;
+		printf("%d\n", (*map)->m_y);
+
 	check_player(s);
 }
 
