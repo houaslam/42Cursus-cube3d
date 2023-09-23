@@ -14,6 +14,7 @@
 # define PARSING_H
 
 # include <string.h>
+ #include <stdlib.h>
 # include "../cube.h"
 # include "../external_outils/libft/libft.h"
 # include "../external_outils/get_next_line/get_next_line.h"

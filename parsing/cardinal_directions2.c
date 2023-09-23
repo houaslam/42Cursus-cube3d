@@ -26,6 +26,7 @@ int	ft_int_dup(char *str, int num)
 		put_error("INVALID RGB");
 	if (num < 0)//// protections
 		num = 0;
+	ft_free(spl);
 	return (ft_atoi(res));
 }
 int	skipp_spaces(char *str, char to_find)
@@ -54,14 +55,14 @@ void	ea_and_colors(char **str, t_directions *dir, int *s, int i)
 	}
 	else if (!ft_strcmp(str[0], "F") && str_lenght(str) == 2)
 	{
-		// if (dir->f)
-		// 	put_error("TOO MANY F COLORS");////F ??
+		if (dir->f != -1)
+			put_error("TOO MANY F COLORS");////F ??
 		dir->f = ft_int_dup(str[1], dir->f);//// protect numb
 	}
 	else if (!ft_strcmp(str[0], "C") && str_lenght(str) == 2)
 	{
-		// if (dir->c)////repars it
-		// 	put_error("TOO MANY C COLORS");////C ??
+		if (dir->c != -1)////repars it
+			put_error("TOO MANY C COLORS");////C ??
 		dir->c = ft_int_dup(str[1], dir->f);//// protect numb
 	}
 	else if (!*s && (skipp_spaces(str[0], '1') || \

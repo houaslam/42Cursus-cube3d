@@ -73,7 +73,7 @@ void	fill_new_map(t_map **map, int s)
 	int		i;
 
 	i = 0;
-	new = malloc(sizeof(char *) * ((*map)->m_y + 2));//// edit 100
+	new = malloc(sizeof(char *) * ((*map)->m_y + 1));//// edit 100
 	while ((*map)->map[s] && i < (*map)->m_y + 1)
 	{
 		new[i] = ft_strdup((*map)->map[s]);
@@ -92,7 +92,9 @@ void	parsing(t_map *map, char **av)
 
 	s = 0;
 	read_map(&map, av);
+
 	s_directions_initialization(&map);
+
 	cardinal_directions(&map, &s);
 	player_position(&map, s);
 	map_dimension(&map, s);

@@ -35,13 +35,15 @@ int	check_file(char **av)
 
 void	read_map(t_map **map, char **av)
 {
-	int	fd;
+	int		fd;
 	char	*tmp;
 	char	*str;
 
+	tmp = NULL;
 	fd = check_file(av);
 	tmp = get_next_line(fd);
 	str = ft_strdup("");///.to be changed 
+
 	while (1)
 	{
 		if (!tmp)
@@ -50,14 +52,12 @@ void	read_map(t_map **map, char **av)
 		{
 			free(tmp);
 			tmp = ft_strdup(";\n");
-			// printf("there is an empty line");
 		}
 		str = ft_strjoin(str, tmp);
-		// printf("-->%s\n", tmp);
-		// printf("-->%d\n", );
-		// free(tmp);
+		free(tmp);
 		tmp = get_next_line(fd);
 	}
 	(*map)->map = ft_split(str, '\n');
-	// free (str);
+	free (str);
+	free (tmp);
 }

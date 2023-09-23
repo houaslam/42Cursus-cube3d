@@ -85,8 +85,8 @@ void	check_cardinal(t_directions *dir)
 		put_error("WEST TEXTURE IS MISSING");
 	if (!dir->ea)
 		put_error("EAST TEXTURE IS MISSING");
-	// if (!dir->c)
-	// 	put_error("C COLOR IS MISSING");
-	// if (!dir->f)
-	// 	put_error("F COLOR IS MISSING");////remove comment
+	if (dir->c == -1)
+		put_error("C COLOR IS MISSING");
+	if (dir->f == -1)
+		put_error("F COLOR IS MISSING");////remove comment
 }

@@ -21,9 +21,12 @@ char	**split_it(char *map)
 
 	spl = NULL;
 	spl = ft_split(map, '\t');
+	// ft_free(spl);
+	// return (spl);
 	if (str_lenght(spl) == 1)
 	{
 		ft_free(spl);
+	exit(1);
 		spl = ft_split(map, ' ');
 	}
 	return(spl);
@@ -64,10 +67,13 @@ void	cardinal_directions(t_map **map, int *s)
 	while ((*map)->map[i])
 	{
 		spl = split_it((*map)->map[i]);
+
 		directions_compar(spl, (*map)->directions, s, i);
 		ft_free(spl);
 		i++;
 	}
+	exit(1);
+
 }
 
 //// [DONE]..fill directions with null and whenever it takes a value check if it has null first {split + lenght == 2}

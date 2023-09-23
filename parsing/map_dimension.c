@@ -58,7 +58,7 @@ char	*ft_fill_it(char *str, t_map **map)
 	char	*ret;
 	int		i;
 
-	ret = ft_strdup("\0");
+	ret = ft_strdup("");
 	i = 0;
 	while (str[i])
 	{
