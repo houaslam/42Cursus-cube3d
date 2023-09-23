@@ -79,7 +79,8 @@ void	cardinal_directions(t_map **map, int *s)
 //// [DONE]check if map has another character !(0 && 1 && E && W && S && N)
 //// [DONE]check empty line
 //// [DONE]resize map
+//// [DONE]m_y and m_x
 //// check textures in parsing(strtrim(" " && "\t"))
 //// RGB
 //// I should free when there is an error
-//// if i solved empty line there's no need for ";" 
+//// TEST this -> F    	220,100,0

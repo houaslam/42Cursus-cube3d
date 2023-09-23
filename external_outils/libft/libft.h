@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 14:25:25 by fadermou          #+#    #+#             */
-/*   Updated: 2023/08/14 10:59:52 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/19 21:34:02 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-#define SIZE_MAX 9223372036854775807
+// #define SIZE_MAX 9223372036854775807
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_atoi(const char *str);

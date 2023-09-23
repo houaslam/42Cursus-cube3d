@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:23 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/30 07:36:24 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:07:20 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int     ft_is_space(char c);
 char	*ft_dup(char *str);
 int     skipp_spaces(char *str, char to_find);
 void	check_cardinal(t_directions *dir);
+void    rgb_parse(char *str);
 //      TOOLS
 void	put_error(char *str);
 int	    str_lenght(char **str);

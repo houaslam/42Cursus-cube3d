@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/30 07:36:19 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:58:36 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	str_lenght(char **str)
 
 void	s_directions_initialization(t_map **map)
 {
-	(*map)->directions->f = NULL;
-	(*map)->directions->c = NULL;
+	(*map)->directions->f = -1;
+	(*map)->directions->c = -1;
 	(*map)->directions->ea = NULL;
 	(*map)->directions->we = NULL;
 	(*map)->directions->no = NULL;
@@ -60,11 +60,11 @@ void	affiche(t_directions *d)
 	if (d->so)
 		printf("SOUTH = [%s]\n", d->so);
 	if (d->we)
-		printf("WEST  = [%s]\n", d->we);
-	if (d->f)
-		printf("F     = [%s]\n", d->f);
-	if (d->c)
-		printf("C     = [%s]\n", d->c);
+		printf("WESTT  = [%s]\n", d->we);
+	// if (d->f)
+		printf("F     = [%d]\n", d->f);
+	// if (d->c)
+		printf("C     = [%d]\n", d->c);
 }
 
 void	fill_new_map(t_map **map, int s)
@@ -73,7 +73,6 @@ void	fill_new_map(t_map **map, int s)
 	int		i;
 
 	i = 0;
-	// printf("%")
 	new = malloc(sizeof(char *) * ((*map)->m_y + 2));//// edit 100
 	while ((*map)->map[s] && i < (*map)->m_y + 1)
 	{
@@ -97,16 +96,16 @@ void	parsing(t_map *map, char **av)
 	cardinal_directions(&map, &s);
 	player_position(&map, s);
 	map_dimension(&map, s);
-	fill_new_map(&map, s);
-	////fill with the new map starting with s == after
-	map_parsing(&map);
 	int	i = 0;
 	while (map->map[i])
 	{
 		printf("[%s]\n", map->map[i]);
 		i++;
 	}
-	printf("%d | %d\n", i, map->m_y);
+	printf("%d || %d\n", map->m_x, map->m_y);
+	fill_new_map(&map, s);
+	////fill with the new map starting with s == after
+	map_parsing(&map);
 	affiche(map->directions);
 	// open_map(map);
 }

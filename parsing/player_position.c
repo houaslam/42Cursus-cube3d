@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:57:05 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/30 07:39:34 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:10:49 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	player_position(t_map **map, int i)
 		i++;
 	}
 	(*map)->m_y = i - h;
-		printf("%d\n", (*map)->m_y);
-
 	check_player(s);
 }
 
@@ -87,8 +85,8 @@ void	check_cardinal(t_directions *dir)
 		put_error("WEST TEXTURE IS MISSING");
 	if (!dir->ea)
 		put_error("EAST TEXTURE IS MISSING");
-	if (!dir->c)
-		put_error("C COLOR IS MISSING");
-	if (!dir->f)
-		put_error("F COLOR IS MISSING");
+	// if (!dir->c)
+	// 	put_error("C COLOR IS MISSING");
+	// if (!dir->f)
+	// 	put_error("F COLOR IS MISSING");////remove comment
 }

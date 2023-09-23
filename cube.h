@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/23 18:44:08 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/22 01:47:53 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include <mlx.h>
+// # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -119,8 +119,8 @@ typedef struct s_directions
 	char			*so;
 	char			*we;
 	char			*ea;
-	char			*f;
-	char			*c;
+	int				f;
+	int				c;
 	struct s_map	*map;
 }	t_directions;
 

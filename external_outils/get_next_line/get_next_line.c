@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:49:56 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/17 20:43:48 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:31:00 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*update(char *sta_str)
 		free(sta_str);
 		return (NULL);
 	}
-	str = malloc(sizeof(char) * (ft_strlen(sta_str) - i));
+	str = malloc(sizeof(char) * (ft_stlen(sta_str) - i));
 	if (!str)
 		return (NULL);
 	i++;
@@ -75,7 +75,7 @@ char	*read_nd_join(char *str, int fd)
 	if (!buff)
 		return (NULL);
 	read_b = 1;
-	while (!ft_strchr(str, '\n') && read_b != 0)
+	while (!ft_stchr(str, '\n') && read_b != 0)
 	{
 		read_b = read(fd, buff, BUFFER_SIZE);
 		if (read_b == -1)
@@ -85,7 +85,7 @@ char	*read_nd_join(char *str, int fd)
 			return (NULL);
 		}
 		buff[read_b] = '\0';
-		str = ft_strjoin(str, buff);
+		str = ft_stjoin(str, buff);
 	}
 	free (buff);
 	return (str);

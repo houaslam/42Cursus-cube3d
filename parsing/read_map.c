@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:56:12 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/30 07:39:55 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:22:43 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ void	read_map(t_map **map, char **av)
 
 	fd = check_file(av);
 	tmp = get_next_line(fd);
-	str = NULL;
+	str = ft_strdup("");///.to be changed 
 	while (1)
 	{
+		if (!tmp)
+			break ;
 		if (tmp[0] == '\n')
 		{
 			free(tmp);
@@ -51,11 +53,11 @@ void	read_map(t_map **map, char **av)
 			// printf("there is an empty line");
 		}
 		str = ft_strjoin(str, tmp);
-		free(tmp);
+		// printf("-->%s\n", tmp);
+		// printf("-->%d\n", );
+		// free(tmp);
 		tmp = get_next_line(fd);
-		if (!tmp)
-			break ;
 	}
 	(*map)->map = ft_split(str, '\n');
-	free (str);
+	// free (str);
 }
