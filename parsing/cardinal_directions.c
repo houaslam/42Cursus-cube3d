@@ -21,12 +21,9 @@ char	**split_it(char *map)
 
 	spl = NULL;
 	spl = ft_split(map, '\t');
-	// ft_free(spl);
-	// return (spl);
 	if (str_lenght(spl) == 1)
 	{
 		ft_free(spl);
-	exit(1);
 		spl = ft_split(map, ' ');
 	}
 	return(spl);
@@ -72,7 +69,6 @@ void	cardinal_directions(t_map **map, int *s)
 		ft_free(spl);
 		i++;
 	}
-	exit(1);
 
 }
 

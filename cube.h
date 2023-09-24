@@ -13,7 +13,7 @@
 #ifndef CUBE_H
 # define CUBE_H
 
-// # include <mlx.h>
+# include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -27,6 +27,10 @@
 # define PINK 0x00406c
 # define YELLOW 0xfafefd
 # define BLACK 0x000000
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
 
 enum {
 	ARROW_LEFT = 65361,
@@ -88,10 +92,10 @@ typedef struct s_minimap
 {
 	int					height;
 	int					width;
-	t_player			mini_p;
 	void				*player;
 	float				x;
 	float				y;
+	t_player			mini_p;
 }	t_minimap;
 
 typedef struct s_map
@@ -110,8 +114,22 @@ typedef struct s_map
 	t_data				img;
 	t_data				mini;
 	struct s_directions *directions;
+	struct s_textures *textures;
 	struct s_window		*window;
 }	t_map;
+
+typedef struct s_textures
+{
+	void			*img;
+	char			*addr;
+	int				h;
+	int				w;
+    int  			*add;
+    int  			bits_per_pixel;
+    int  			line_length;
+    int  			endian;
+	struct s_map	*map;
+}	t_textures;
 
 typedef struct s_directions
 {

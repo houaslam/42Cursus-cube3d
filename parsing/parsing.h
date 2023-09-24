@@ -14,7 +14,7 @@
 # define PARSING_H
 
 # include <string.h>
- #include <stdlib.h>
+# include <stdlib.h>
 # include "../cube.h"
 # include "../external_outils/libft/libft.h"
 # include "../external_outils/get_next_line/get_next_line.h"
@@ -31,6 +31,7 @@ char	*ft_dup(char *str);
 int     skipp_spaces(char *str, char to_find);
 void	check_cardinal(t_directions *dir);
 void    rgb_parse(char *str);
+void    loads_textures(t_textures *txt);
 //      TOOLS
 void	put_error(char *str);
 int	    str_lenght(char **str);

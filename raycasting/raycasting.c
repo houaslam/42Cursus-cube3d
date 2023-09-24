@@ -52,5 +52,4 @@ void	rays_casting(t_map *map, t_window *window)
 	map->mini.addr = mlx_get_data_addr(map->mini.img, \
 	&map->mini.bits_per_pixel, &map->mini.line_length, &map->mini.endian);
 	draw_minimap(map);
-
 }

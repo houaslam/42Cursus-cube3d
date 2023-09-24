@@ -92,9 +92,7 @@ void	parsing(t_map *map, char **av)
 
 	s = 0;
 	read_map(&map, av);
-
 	s_directions_initialization(&map);
-
 	cardinal_directions(&map, &s);
 	player_position(&map, s);
 	map_dimension(&map, s);
@@ -104,7 +102,6 @@ void	parsing(t_map *map, char **av)
 		printf("[%s]\n", map->map[i]);
 		i++;
 	}
-	printf("%d || %d\n", map->m_x, map->m_y);
 	fill_new_map(&map, s);
 	////fill with the new map starting with s == after
 	map_parsing(&map);

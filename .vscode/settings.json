@@ -2,7 +2,10 @@
   "files.associations": {
     "raycasting.h": "c",
     "parsing.h": "c",
-    "get_next_line.h": "c"
+    "get_next_line.h": "c",
+    "libft.h": "c",
+    "stdlib.h": "c",
+    "cube.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

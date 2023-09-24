@@ -12,7 +12,7 @@
 
 #include "../raycasting/raycasting.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	 my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -22,24 +22,31 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	draw_ray(t_window *window, int pos)
 {
-	int					i;
-	float				ceiling;
-	int					color;
+	int		i;
+	float	ceiling;
+	int		*color;
 
 	i = 0;
+	color = malloc(sizeof(int) * PP_WIDTH * PP_HEIGHT);
 	ceiling = (PP_HEIGHT / 2) - (window->map->wall_h / 2);
 	if (ceiling > 0 && ceiling < PP_HEIGHT)
 	{
 		while (i <= ceiling && ceiling > 0)
 			my_mlx_pixel_put(&window->map->img, pos, i++, YELLOW);
 	}
-	if (window->map->r.content == DOOR)
-		color = BLACK;
-	if (window->map->r.content == WALL)
-		color = PINK;
+	// if (window->map->r.content == DOOR)
+	// 	color = BLACK;
+	// if (window->map->r.content == WALL)
+	// 	color = PINK;
 	while (window->map->wall_h >= 0 && i < PP_HEIGHT)
 	{
-		my_mlx_pixel_put(&window->map->img, pos, i++, color);
+		// color = (int)(vertic)
+		// textures(t_window *map)
+		*color = window->map->textures[0].add[(int)i];
+		// if (!((int)window->map->wall_h % 64) || (!(i % 64)))
+			my_mlx_pixel_put(&window->map->img, pos, i++, *color);
+		// else
+		// 	my_mlx_pixel_put(&window->map->img, pos, i++, BLACK);
 		window->map->wall_h--;
 	}
 	while (i < PP_HEIGHT)
