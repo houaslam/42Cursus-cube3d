@@ -6,7 +6,7 @@
 /*   By: hajarouaslam <hajarouaslam@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/09/24 15:05:45 by hajarouasla      ###   ########.fr       */
+/*   Updated: 2023/09/24 15:11:12 by hajarouasla      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 // # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdbool.h>
 # include <stdio.h>
 # include <math.h>
 
@@ -100,7 +99,8 @@ typedef struct s_map
 	char				**map;
 	int					m_x;
 	int					m_y;
-	bool				is_v;
+	int					n_v;
+	int					n_h;
 	float				wall_h;
 	t_ray				r;
 	t_wall				h;
