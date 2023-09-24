@@ -70,7 +70,11 @@ float	p_to_wall(t_map *map)
 	x = map->p.u_x - map->v.x;
 	v = sqrt(pow(x, 2) + pow(y, 2));
 	if (map->n_h || h >= v)
+	{
+		map->vert = true;
 		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
+	}
+	map->vert = false;
 	return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));
 }
 

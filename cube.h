@@ -14,6 +14,7 @@
 # define CUBE_H
 
 # include <mlx.h>
+#include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>

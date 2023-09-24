@@ -12,6 +12,7 @@
 
 #include "raycasting.h"
 
+
 void	find_wall(t_map *map)
 {
 	while (check_case_h(map))
@@ -30,7 +31,8 @@ void	initialize(t_map *map)
 {
 	map->r.up = 0;
 	map->r.left = 0;
-	map->is_v = true;
+	map->n_v = 0;
+	map->n_h = 0;
 	if (0 <= map->r.cast && map->r.cast <= 180)
 		map->r.up = 1;
 	if (90 <= map->r.cast && map->r.cast <= 270)

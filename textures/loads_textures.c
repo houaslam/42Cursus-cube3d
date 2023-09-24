@@ -16,7 +16,7 @@ void    loads_images(t_textures *txt, char *path)
 
 void    loads_textures(t_textures *txt)
 {
-	loads_images(&txt[NO],  txt->map->directions->no);
+	loads_images(&txt[NO], txt->map->directions->no);
 	loads_images(&txt[SO], txt->map->directions->so);
 	loads_images(&txt[EA], txt->map->directions->ea);
 	loads_images(&txt[WE], txt->map->directions->we);

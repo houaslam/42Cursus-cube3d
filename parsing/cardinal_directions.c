@@ -55,6 +55,31 @@ void	directions_compar(char **str, t_directions *dir, int *s, int i)
 		ea_and_colors(str, dir, s, i);
 }
 
+// void	cardinal_directions(t_map **map, int *s)//// after read last note
+// {
+// 	int		i;
+// 	int		start;
+// 	char	*crdl;
+
+// 	i = 0;
+// 	while ((*map)->map[i] == ' ' || (*map)->map[i] == '\t')
+// 		i++;
+// 	start = i;
+// 	while ((*map)->map[i])
+// 	{
+// 		if ((*map)->map[i] == ' ' || (*map)->map[i] == '\t')
+// 			break;
+// 		i++;
+// 	}
+// 	end = i;
+// 	card = ft_substr()
+// 		spl = split_it((*map)->map[i]);
+// 		directions_compar(spl, (*map)->directions, s, i);
+// 		ft_free(spl);
+// 		i++;
+// 	}
+// }
+
 void	cardinal_directions(t_map **map, int *s)
 {
 	int		i;
@@ -64,7 +89,6 @@ void	cardinal_directions(t_map **map, int *s)
 	while ((*map)->map[i])
 	{
 		spl = split_it((*map)->map[i]);
-
 		directions_compar(spl, (*map)->directions, s, i);
 		ft_free(spl);
 		i++;
@@ -86,3 +110,4 @@ void	cardinal_directions(t_map **map, int *s)
 //// RGB
 //// I should free when there is an error
 //// TEST this -> F    	220,100,0
+//// I should use substr in parsing
