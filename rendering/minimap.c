@@ -70,34 +70,54 @@ int	check(t_map *map, double x, double y)
 	return (1);
 }
 
-void	draw_minimap(t_map *map)
+void DrawCircle(int x, int y, int r, t_map *map)
 {
-	double	x;
-	double	y;
-	int		x_mov;
-	int		y_mov;
+    double i;
+    double angle;
+    double x1;
+    double y1;
 
-	base(map);
-	y = floor(map->minimap.mini_p.u_y - map->minimap.height / 2);
-	y_mov = 0;
-	while (y_mov < map->minimap.height)
-	{
-		x = floor(map->minimap.mini_p.u_x - map->minimap.width / 2);
-		x_mov = 0;
-		while (x_mov < map->minimap.width)
-		{
-			if (check(map, x, y))
-				my_mlx_pixel_put(&map->mini, x_mov, y_mov, BLACK);
-			x_mov++;
-			x++;
-		}
-		y_mov++;
-		y++;
-	}
-	mini_quadrant(map);
-	mlx_put_image_to_window(map->window->mlx, \
-	map->window->mlx_win, map->mini.img, 50, 50);
-	// mlx_put_image_to_window(map->window->mlx, map->window->mlx_win, 
-	// map->minimap.player, 50 + map->minimap.width / 2, 
-	// 50 + map->minimap.height / 2);
+    while (r > 0)
+    {
+        i = 0;
+        while(i < 360)
+        {
+            angle = i;
+            x1 = r * cos(angle * M_PI / 180);
+            y1 = r * sin(angle * M_PI / 180);
+            my_mlx_pixel_put(&map->mini, x + x1, y + y1, BLACK);
+            i += 0.1;
+        }
+        r--;
+    }
+}
+
+void    draw_minimap(t_map *map)
+{
+    double    x;
+    double    y;
+    int        x_mov;
+    int        y_mov;
+
+    base(map);
+    y = floor(map->minimap.mini_p.u_y - map->minimap.height / 2);
+    y_mov = 0;
+    while (y_mov < map->minimap.height)
+    {
+        x = floor(map->minimap.mini_p.u_x - map->minimap.width / 2);
+        x_mov = 0;
+        while (x_mov < map->minimap.width)
+        {
+            if (check(map, x, y))
+                my_mlx_pixel_put(&map->mini, x_mov, y_mov, BLACK);
+            x_mov++;
+            x++;
+        }
+        y_mov++;
+        y++;
+    }
+    mini_quadrant(map);
+    DrawCircle(map->minimap.width / 2, map->minimap.height/ 2,5, map);
+    mlx_put_image_to_window(map->window->mlx, \
+    map->window->mlx_win, map->mini.img, 50, 50);
 }
