@@ -39,6 +39,7 @@ void	rays_casting(t_map *map, t_window *window)
 	&map->img.bits_per_pixel, &map->img.line_length, &map->img.endian);
 	while (i < PP_WIDTH)
 	{
+		printf("%f\n", remainder(map->r.ang , 360));
 		check_angles(map);
 		quadrant(map);
 		map->r.distance = p_to_wall(map);

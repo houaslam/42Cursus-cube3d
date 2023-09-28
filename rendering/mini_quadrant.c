@@ -81,8 +81,8 @@ void	mini_quadrant(t_map *map)
 	(void)k;
 	(void)y;
 	distance = map->r.distance * (float)(MINI_UNIT / UNIT);
-	printf("distance = %f\n", map->r.distance);
-	printf("factor = %f\n", (float)(MINI_UNIT / UNIT));
+	// printf("distance = %f\n", map->r.distance);
+	// printf("factor = %f\n", (float)(MINI_UNIT / UNIT));
 	while (distance)
 	{
 		my_mlx_pixel_put(&map->mini, map->minimap.x, map->minimap.y, BLACK);

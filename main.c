@@ -12,7 +12,7 @@
 
 #include "raycasting/raycasting.h"
 
-
+int *addb;
 int	mouse(int x, int y, t_window *window)
 {
 	static int	hold_x;
@@ -51,6 +51,8 @@ int	main(int ac, char **av)
 	parsing(&map, av);
 	window.mlx = mlx_init();
 	window.mlx_win = mlx_new_window(window.mlx, PP_WIDTH, PP_HEIGHT, "Cub3D");
+addb = malloc(sizeof(int) * 64 * 64);
+	
 	loads_textures(textures);
 	player_view(&window.map);
 	map.p.u_x = (map.p.x * UNIT) + (UNIT / 2);

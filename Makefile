@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = cub3D
-CC =  cc -Wall -Werror -Wextra #-fsanitize=address -g3 
+CC =  cc -Wall -Werror -Wextra #=-fsanitize=address -g3  
 CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra 
 EXTRA_FLAGS =  -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 

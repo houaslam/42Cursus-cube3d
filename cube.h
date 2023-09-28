@@ -32,6 +32,7 @@
 # define SO 1
 # define WE 2
 # define EA 3
+extern int	*addb;
 
 enum {
 	ARROW_LEFT = 65361,

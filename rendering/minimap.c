@@ -85,7 +85,7 @@ void DrawCircle(int x, int y, int r, t_map *map)
             angle = i;
             x1 = r * cos(angle * M_PI / 180);
             y1 = r * sin(angle * M_PI / 180);
-            my_mlx_pixel_put(&map->mini, x + x1, y + y1, BLACK);
+            my_mlx_pixel_put(&map->mini, x + x1, y + y1, 0xFF777777);
             i += 0.1;
         }
         r--;
