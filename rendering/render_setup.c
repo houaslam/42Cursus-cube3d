@@ -65,7 +65,7 @@ void	 my_mlx_pixel_put(t_data *data, int x, int y, int color)
 void	draw_ray(t_window *window, int pos)
 {
 	int		i;
-	// int		dir;
+	int		dir;
 	// int		*addb;
 	int		y;
 	int		x;
@@ -115,13 +115,13 @@ void	draw_ray(t_window *window, int pos)
 	// (void)wall_h;
 	if (window->map->vert == true)
 	{
-		text_offset_x = (int)(window->map->v.y) % window->map->textures[0].h;//// check unit after
-		// dir = NO;
+		dir = NO;
+		text_offset_x = (int)(window->map->v.y) % window->map->textures[dir].h;//// check unit after
 	}
 	else
 	{
-		text_offset_x = (int)(window->map->h.x) % window->map->textures[0].w;
-		// dir = WE;
+		dir = WE;
+		text_offset_x = (int)(window->map->h.x) % window->map->textures[dir].w;
 	}
 	while (window->map->wall_h >= 0 && i < PP_HEIGHT)
 	{
@@ -131,8 +131,8 @@ void	draw_ray(t_window *window, int pos)
 		// float normalized_y = (float)(wall_h - window->map->wall_h) / wall_h;
 		// text_offset_y = normalized_y * (window->map->textures[dir].h);
 		int distanceFromTop = i + (wall_h / 2) - (PP_HEIGHT / 2);
-        text_offset_y = distanceFromTop * ((float)window->map->textures[0].h / wall_h);
-		color = addb[(window->map->textures[0].w * text_offset_y) + text_offset_x];
+        text_offset_y = distanceFromTop * ((float)window->map->textures[dir].h / wall_h);
+		color = window->map->textures[dir].add[(window->map->textures[dir].w * text_offset_y) + text_offset_x];
 		my_mlx_pixel_put(&window->map->img, pos, i++, color);
 		window->map->wall_h--;
 	}
