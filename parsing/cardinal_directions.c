@@ -29,72 +29,118 @@ char	**split_it(char *map)
 	return(spl);
 }
 
-void	directions_compar(char **str, t_directions *dir, int *s, int i)
+// void	directions_compar1(char **str, t_directions *dir, int *s, int i)
+// {
+// 	if (!str[0])
+// 		return ;
+// 	if (!ft_strcmp(str[0], "NO") && str_lenght(str) == 2)
+// 	{
+// 		if (dir->no)
+// 			put_error("TOO MANY CARDINAL DIRECTIONS");
+// 		dir->no = ft_dup(str[1]);
+// 	}
+// 	else if (!ft_strcmp(str[0], "SO") && str_lenght(str) == 2)
+// 	{
+// 		if (dir->so)
+// 			put_error("TOO MANY CARDINAL DIRECTIONS");
+// 		dir->so = ft_dup(str[1]);
+// 	}
+// 	else if (!ft_strcmp(str[0], "WE") && str_lenght(str) == 2)
+// 	{
+// 		if (dir->we)
+// 			put_error("TOO MANY CARDINAL DIRECTIONS");
+// 		dir->we = ft_dup(str[1]);
+// 	}
+// 	else
+// 		ea_and_colors(str, dir, s, i);
+// }
+
+int	directions_compar(char *str, t_directions *dir, int *s, int i)
 {
-	if (!str[0])
-		return ;
-	if (!ft_strcmp(str[0], "NO") && str_lenght(str) == 2)
+	if (!str)
+		return (0);
+	if (!ft_strcmp(str, "NO"))
 	{
 		if (dir->no)
 			put_error("TOO MANY CARDINAL DIRECTIONS");
-		dir->no = ft_dup(str[1]);
+		return (NO);
 	}
-	else if (!ft_strcmp(str[0], "SO") && str_lenght(str) == 2)
+	else if (!ft_strcmp(str, "SO"))
 	{
 		if (dir->so)
 			put_error("TOO MANY CARDINAL DIRECTIONS");
-		dir->so = ft_dup(str[1]);
+		return (SO);
 	}
-	else if (!ft_strcmp(str[0], "WE") && str_lenght(str) == 2)
+	else if (!ft_strcmp(str, "WE"))
 	{
 		if (dir->we)
 			put_error("TOO MANY CARDINAL DIRECTIONS");
-		dir->we = ft_dup(str[1]);
+		return (WE);
 	}
 	else
-		ea_and_colors(str, dir, s, i);
+		return (ea_and_colors(str, dir, s, i));
+	return (0);
 }
 
-// void	cardinal_directions(t_map **map, int *s)//// after read last note
+char	*parse_arg(char *map, int *end)
+{
+	int		j;
+	int		start;
+	char	*ret;
+
+	j = 0;
+	while (map[j] == ' ' || map[j] == '\t')
+		j++;
+	start = j;
+	while (map[j])
+	{
+		if (map[j] == ' ' || map[j] == '\t')
+			break;
+		j++;
+	}
+	*end = j;
+	ret = ft_substr(map, start , *end - start);
+	while (map[j] == ' ' || map[j] == '\t')
+		j++;
+	*end = j;
+	return (ret);
+}
+
+void	cardinal_directions(t_map **map, int *s)//// after read last note
+{
+	char	*crdl;
+	char	*content;
+	int		i;
+	int		j;
+	int		index;
+	(void)*s;
+
+	i = 0;
+	index = 0;
+	while ((*map)->map[i])
+	{
+		crdl = parse_arg((*map)->map[i], &j);
+		printf("->[%s]<-\n", crdl);
+		index = directions_compar(crdl, (*map)->directions, s, i);
+		content = ft_substr((*map)->map[i], j, ft_strlen((*map)->map[i]));
+		fill_struct(&(*map)->directions, content, index);
+		i++;
+	}
+}
+
+// void	cardinal_directions1(t_map **map, int *s)
 // {
 // 	int		i;
-// 	int		start;
-// 	char	*crdl;
-
+// 	char	**spl;
 // 	i = 0;
-// 	while ((*map)->map[i] == ' ' || (*map)->map[i] == '\t')
-// 		i++;
-// 	start = i;
 // 	while ((*map)->map[i])
 // 	{
-// 		if ((*map)->map[i] == ' ' || (*map)->map[i] == '\t')
-// 			break;
-// 		i++;
-// 	}
-// 	end = i;
-// 	card = ft_substr()
 // 		spl = split_it((*map)->map[i]);
 // 		directions_compar(spl, (*map)->directions, s, i);
 // 		ft_free(spl);
 // 		i++;
 // 	}
 // }
-
-void	cardinal_directions(t_map **map, int *s)
-{
-	int		i;
-	char	**spl;
-
-	i = 0;
-	while ((*map)->map[i])
-	{
-		spl = split_it((*map)->map[i]);
-		directions_compar(spl, (*map)->directions, s, i);
-		ft_free(spl);
-		i++;
-	}
-
-}
 
 //// [DONE]..fill directions with null and whenever it takes a value check if it has null first {split + lenght == 2}
 //// [DONE]at the end before i start with map check if my struct has no nall
@@ -106,8 +152,11 @@ void	cardinal_directions(t_map **map, int *s)
 //// [DONE]check empty line
 //// [DONE]resize map
 //// [DONE]m_y and m_x
-//// check textures in parsing(strtrim(" " && "\t"))
+//// [DONE]check textures in parsing(strtrim(" " && "\t"))
+//// [DONE]TEST this -> F    	220,100,0
+//// [DONE]I should use substr in parsing
 //// RGB
 //// I should free when there is an error
-//// TEST this -> F    	220,100,0
-//// I should use substr in parsing
+//// change gnl
+//// check leaks
+//// check norm

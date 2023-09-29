@@ -23,6 +23,7 @@ R_SRCS = 	raycasting/distances.c \
 REND_SRCS = rendering/render_setup.c \
 	    	rendering/minimap.c \
 	    	rendering/mini_quadrant.c \
+			rendering/loads_textures.c
 
 
 P_SRCS = parsing/cardinal_directions2.c \
@@ -34,8 +35,6 @@ P_SRCS = parsing/cardinal_directions2.c \
 		parsing/parsing.c \
 		parsing/rgb_parse.c \
 		main.c
-		
-T_SRCS = textures/loads_textures.c
 
 O_SRCS = external_outils/get_next_line/get_next_line.c \
 		 external_outils/get_next_line/get_next_line_utils.c

@@ -32,7 +32,10 @@
 # define SO 1
 # define WE 2
 # define EA 3
-extern int	*addb;
+# define F	4
+# define C	5
+
+// extern int	cast;
 
 enum {
 	ARROW_LEFT = 65361,
@@ -124,7 +127,7 @@ typedef struct s_map
 typedef struct s_textures
 {
 	void			*img;
-	char			*addr;
+	// char			*addr;
 	int				h;
 	int				w;
     int  			*add;

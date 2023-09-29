@@ -45,7 +45,7 @@ int	skipp_spaces(char *str, char to_find)
 	return (0);
 }
 
-void	ea_and_colors(char **str, t_directions *dir, int *s, int i)
+void	ea_and_colors1(char **str, t_directions *dir, int *s, int i)
 {
     if (!ft_strcmp(str[0], "EA") && str_lenght(str) == 2)
 	{
@@ -75,4 +75,77 @@ void	ea_and_colors(char **str, t_directions *dir, int *s, int i)
 		return ;
 	else if (!skipp_spaces(str[0], '1'))
 		put_error("MAP NOT VALID");
+}
+
+int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
+{
+	(void)i;
+    if (!ft_strcmp(str, "EA"))
+	{
+		if (dir->ea)
+			put_error("TOO MANY CARDINAL DIRECTIONS");
+		return (EA);
+	}
+	else if (!ft_strcmp(str, "F"))
+	{
+		if (dir->f != -1)
+			put_error("TOO MANY F COLORS");////F ??
+		return (F);//// protect numb
+	}
+	else if (!ft_strcmp(str, "C"))
+	{
+		if (dir->c != -1)////repars it
+			put_error("TOO MANY C COLORS");////C ??
+		return (C);//// protect numb
+	}
+	else if (!*s && skipp_spaces(str, '1'))
+	{
+		check_cardinal(dir);
+		*s = i;
+	}
+	else if (!ft_strcmp(str, ";"))
+		return (-2);
+	else if (!skipp_spaces(str, '1'))
+	{
+		printf("[%s]\n", str);
+		put_error("MAP NOT VALID");
+	}
+	return (-2);
+}
+
+void	fill_struct(t_directions **dir, char *crdl, int index)
+{
+	if (!crdl || !*crdl)
+		return;
+	if (index == NO)
+	{
+		(*dir)->no = ft_dup(crdl);
+		printf("NO = %s\n", (*dir)->no);
+		// exit(1);
+	}
+	else if (index == SO)
+	{
+		(*dir)->so = ft_dup(crdl);
+		printf("SO = %s\n", (*dir)->so);
+	}
+	else if (index == WE)
+	{
+		(*dir)->we = ft_dup(crdl);
+		printf("WE = %s\n", (*dir)->we);
+	}
+	else if (index == EA)
+	{
+		(*dir)->ea = ft_dup(crdl);
+		printf("EA = %s\n", (*dir)->ea);
+	}
+	else if (index == F)
+	{
+		(*dir)->f = ft_int_dup(crdl, (*dir)->f);
+		printf("F = %d\n", (*dir)->f);
+	}
+	else if (index == C)
+	{
+		(*dir)->c = ft_int_dup(crdl, (*dir)->c);
+		printf("C = %d\n", (*dir)->c);
+	}
 }

@@ -106,5 +106,6 @@ void	parsing(t_map *map, char **av)
 	//// fill with the new map starting with s == after
 	map_parsing(&map);
 	affiche(map->directions);
+	// exit(1);
 	// open_map(map);
 }

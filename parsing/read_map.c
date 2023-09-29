@@ -33,6 +33,19 @@ int	check_file(char **av)
 	return (fd);
 }
 
+void	check_empty_first(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ';')
+			put_error("INVALID MfAP");
+		i++;
+	}
+}
+
 void	read_map(t_map **map, char **av)
 {
 	int		fd;
@@ -42,12 +55,12 @@ void	read_map(t_map **map, char **av)
 	tmp = NULL;
 	fd = check_file(av);
 	tmp = get_next_line(fd);
-	str = ft_strdup("");///.to be changed 
-
+	str = ft_strdup("");///.to be changed
 	while (1)
 	{
 		if (!tmp)
 			break ;
+		check_empty_first(tmp);
 		if (tmp[0] == '\n')
 		{
 			free(tmp);

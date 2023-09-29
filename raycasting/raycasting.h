@@ -16,10 +16,11 @@
 # include "../parsing/parsing.h"
 
 //render
-void					render_ceiling(t_window *window, int pos);
-void					render_wall(t_window *window, int pos);
-void					render_floor(t_window *window, int pos);
-void					render_setup(t_window *window, int pos);
+// void                    render_ceiling(t_window *window, int pos, int *i);
+// void                    render_wall(t_window *window, int pos);
+// void                    render_floor(t_window *window, int pos);
+// void                    render_setup(t_window *window, int pos);
+void					loads_textures(t_textures *txt);
 void					draw_ray(t_window *window, int pos);
 
 //raycasting
