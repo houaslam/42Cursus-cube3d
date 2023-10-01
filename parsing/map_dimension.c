@@ -48,8 +48,8 @@ char	*ft_join(char *ret, char c)
 		ret = ft_strjoin(ret, "    ");
 	else if (c == ';')
 		ret = ft_strjoin(ret, ";");
-	// else 
-	// 	put_error("INVALID CHARACTER");
+	else 
+		put_error("INVALID CHARACTER");
 	return (ret);
 }
 

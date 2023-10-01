@@ -113,10 +113,11 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 	int		i;
 	int		j;
 	int		index;
-	(void)*s;
 
 	i = 0;
 	index = 0;
+	crdl = NULL;
+	content = NULL;
 	while ((*map)->map[i])
 	{
 		crdl = parse_arg((*map)->map[i], &j);
@@ -124,6 +125,8 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 		index = directions_compar(crdl, (*map)->directions, s, i);
 		content = ft_substr((*map)->map[i], j, ft_strlen((*map)->map[i]));
 		fill_struct(&(*map)->directions, content, index);
+		free(crdl);
+		free(content);
 		i++;
 	}
 }
@@ -160,3 +163,4 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 //// change gnl
 //// check leaks
 //// check norm
+//// F    	220,100       	,   0
