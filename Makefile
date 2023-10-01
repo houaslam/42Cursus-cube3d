@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/10/01 14:46:27 by houaslam         ###   ########.fr        #
+#    Updated: 2023/10/01 15:34:42 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ P_SRCS = parsing/cardinal_directions2.c \
 		main.c
 
 O_SRCS = external_outils/get_next_line/get_next_line.c \
-		 external_outils/get_next_line/get_next_line_utils.c
+		 external_outils/get_next_line/get_next_line_utils.c \
+		 
 
 OBJ =  ${P_SRCS:.c=.o} ${T_SRCS:.c=.o} ${O_SRCS:.c=.o} ${R_SRCS:.c=.o} ${REND_SRCS:.c=.o}
 
