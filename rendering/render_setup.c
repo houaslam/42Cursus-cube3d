@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_setup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:09:17 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/01 14:07:42 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 18:59:35 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,18 @@ int	render_ceiling(t_window *window, int pos)
 {
 	float	ceiling;
 	int		i;
+	// long long	f;
 
 	i = 0;
 	ceiling = (PP_HEIGHT / 2) - (window->map->wall_h / 2);
 	if (ceiling > 0 && ceiling < PP_HEIGHT)
 	{
 		while (i <= ceiling && ceiling > 0)
-			my_mlx_pixel_put(&window->map->img, pos, i++, YELLOW);
+			my_mlx_pixel_put(&window->map->img, pos, i++, window->map->directions->c);
 	}
+	// printf("%lld<-\n", window->map->directions->c);
+	// f = (233 << 16) + (208 << 8) + 200;
+	// printf("->%lld\n",f);
 	return (i);
 }
 
@@ -79,7 +83,6 @@ void	draw_ray(t_window *window, int pos)
 	// 	// 	text_offset_x = (int)(window->map->h.x) % window->map->textures[dir].w;
 	// 	// // text_offset_x = (int)(window->map->v.y) % window->map->textures[dir].w;
 	// get_offset_x(window->map, &dir, &text_offset_x);
-
 	// }
 	while (window->map->wall_h >= 0 && i < PP_HEIGHT)
 	{
@@ -90,5 +93,5 @@ void	draw_ray(t_window *window, int pos)
 		window->map->wall_h--;
 	}
 	while (i < PP_HEIGHT)
-		my_mlx_pixel_put(&window->map->img, pos, i++, PURPLE);
+		my_mlx_pixel_put(&window->map->img, pos, i++, window->map->directions->f);
 }

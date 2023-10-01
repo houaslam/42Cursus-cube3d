@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 02:16:17 by macbookair        #+#    #+#             */
-/*   Updated: 2023/09/22 13:16:25 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/01 18:14:42 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    rgb_parse(char *str)
 				put_error("INVALID RGB");
 			c++;
 		}
-		else if (!ft_isdigit(str[i]))
+		else if (str[i] != ' ' && str[i] != '\t' && !ft_isdigit(str[i]))
 			put_error("INVALID RGB");
 		i++;
 	}

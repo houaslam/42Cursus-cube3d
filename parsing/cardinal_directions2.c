@@ -1,35 +1,42 @@
 
 #include "parsing.h"
 
-int	ft_int_dup(char *str, int num)
+long long	ft_condition(char *str, int i)
+{
+	if (i == 0)
+		return (ft_atoi(str) << 16);
+	if (i == 1)
+		return (ft_atoi(str) << 8);
+	if (i == 2)
+		return (ft_atoi(str));
+	return (0);
+}
+
+int	ft_int_dup(char *str)
 {
 	char	*tmp;
-	char	*res;
 	char	**spl;
-	int		i;
+	long long	i;
+	long long	res;
 
-	tmp = ft_dup(str);
-	rgb_parse(tmp);
-	res = NULL;
-	spl = ft_split(tmp, ',');
 	i = 0;
+	res = 0;
+	tmp = NULL;
+	rgb_parse(str);
+	spl = ft_split(str, ',');
 	while (spl[i])
 	{
-		res = ft_strjoin(res, spl[i]);
-		if (ft_atoi(spl[i]) >= 255)
+		tmp = ft_dup(spl[i]);
+		if (ft_atoi(tmp) >= 255)
 			put_error("INVALID RGB");
+		res += ft_condition(tmp, i);
+		free(tmp);
 		i++;
 	}
 	if (i != 3)
 		put_error("INVALID RGB");
-	if (num < 0)//// protections
-		num = 0;
 	ft_free(spl);
-	i = ft_atoi(res);
-	free(res);
-	free(tmp
-	);
-	return (i);
+	return (res);
 }
 int	skipp_spaces(char *str, char to_find)
 {
@@ -45,38 +52,6 @@ int	skipp_spaces(char *str, char to_find)
 	if (!str[i])
 		return (-1);
 	return (0);
-}
-
-void	ea_and_colors1(char **str, t_directions *dir, int *s, int i)
-{
-    if (!ft_strcmp(str[0], "EA") && str_lenght(str) == 2)
-	{
-		if (dir->ea)
-			put_error("TOO MANY CARDINAL DIRECTIONS");
-		dir->ea = ft_dup(str[1]);
-	}
-	else if (!ft_strcmp(str[0], "F") && str_lenght(str) == 2)
-	{
-		if (dir->f != -1)
-			put_error("TOO MANY F COLORS");////F ??
-		dir->f = ft_int_dup(str[1], dir->f);//// protect numb
-	}
-	else if (!ft_strcmp(str[0], "C") && str_lenght(str) == 2)
-	{
-		if (dir->c != -1)////repars it
-			put_error("TOO MANY C COLORS");////C ??
-		dir->c = ft_int_dup(str[1], dir->f);//// protect numb
-	}
-	else if (!*s && (skipp_spaces(str[0], '1') || \
-		(skipp_spaces(str[0], '1') == -1 && skipp_spaces(str[1], '1'))))////not always the first we can find tabs
-	{
-		check_cardinal(dir);
-		*s = i;
-	}
-	else if (!ft_strcmp(str[0], ";") && str_lenght(str) == 1)
-		return ;
-	else if (!skipp_spaces(str[0], '1'))
-		put_error("MAP NOT VALID");
 }
 
 int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
@@ -127,7 +102,7 @@ void	fill_struct(t_directions **dir, char *crdl, int index)
 	else if (index == EA)
 		(*dir)->ea = ft_dup(crdl);
 	else if (index == F)
-		(*dir)->f = ft_int_dup(crdl, (*dir)->f);
+		(*dir)->f = ft_int_dup(crdl);
 	else if (index == C)
-		(*dir)->c = ft_int_dup(crdl, (*dir)->c);
+		(*dir)->c = ft_int_dup(crdl);
 }

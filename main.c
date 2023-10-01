@@ -6,7 +6,7 @@
 /*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/01 17:29:12 by fadermou         ###   ########.fr       */
+/*   Updated: 2023/10/01 18:08:02 by fadermou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 	rays_casting(&map, &window);
 	mlx_hook(window.mlx_win, 2, 1L<<0, which_move, &map);
 	mlx_hook(window.mlx_win, 17, 0, ft_exit, &window);
-	mlx_loop_hook(window.mlx, ft_animation, &window);
+	// mlx_loop_hook(window.mlx, ft_animation, &window);
 	mlx_hook(window.mlx_win, 6, 1L<<6, mouse, &window);
 	mlx_loop(window.mlx);
 }

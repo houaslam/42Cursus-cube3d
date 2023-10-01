@@ -103,21 +103,6 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 		i++;
 	}
 }
-
-// void	cardinal_directions1(t_map **map, int *s)
-// {
-// 	int		i;
-// 	char	**spl;
-// 	i = 0;
-// 	while ((*map)->map[i])
-// 	{
-// 		spl = split_it((*map)->map[i]);
-// 		directions_compar(spl, (*map)->directions, s, i);
-// 		ft_free(spl);
-// 		i++;
-// 	}
-// }
-
 //// [DONE]..fill directions with null and whenever it takes a value check if it has null first {split + lenght == 2}
 //// [DONE]at the end before i start with map check if my struct has no nall
 //// [DONE]don't forget to write "error\n" first
@@ -136,4 +121,4 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 //// change gnl
 //// check leaks
 //// check norm
-//// F    	220,100       	,   0
+//// IF I EDITED IN -> "C 233,   20 8 ,200\n F    0,   100,0" space on g in ceiling changes the color of floor
