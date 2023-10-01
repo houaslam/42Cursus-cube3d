@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/01 15:41:01 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:54:07 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	turn_move(int keycode, t_map *map)
 
 bool can_move(t_map *map, int y, int x)
 {
-	if (((map->map[y][x] != '1') && (map->map[y][x] != 'D')) || (map->map[y][x] == 'D'))
+	if ((map->map[y][x] != '1') && (map->map[y][x] != 'D'))
 		return true;
 	return false;
 }
@@ -78,16 +78,15 @@ int	which_move(int keycode, t_map *map)
 {
 	if (keycode == LEFT || keycode == RIGHT)
 		move_left_right(map, keycode);
-	else if (keycode == UP || keycode == ARROW_UP \
+	if (keycode == UP || keycode == ARROW_UP \
 	|| keycode == DOWN || keycode == ARROW_DOWN)
 		move_up_down(map, keycode);
-	else
+	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT)
 		turn_move(keycode, map);
 	if (keycode == SPACE && map->map[map->r.d_y][map->r.d_x] == 'D')
-	{
-		printf("%c\n", map->map[map->r.d_y][map->r.d_x]);
 		map->map[map->r.d_y][map->r.d_x] = 48;
-	}
+	if (keycode == FIRE)
+		perform_animation(map);
 	if (keycode == DESTROY)
 		ft_exit(map->window);
 	rays_casting(map, map->window);

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/01 15:06:14 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:43:43 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	rays_casting(t_map *map, t_window *window)
 		map->wall_h = wall_height(map);
 		draw_ray(window, i);
 		map->r.cast -= (float)VIEW_D / PP_WIDTH;
-		// map->r.OPEN_D = 0;
 		i++;
 	}
 	mlx_put_image_to_window(window->mlx, \
