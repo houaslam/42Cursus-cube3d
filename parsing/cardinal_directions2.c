@@ -27,7 +27,8 @@ int	ft_int_dup(char *str, int num)
 	ft_free(spl);
 	i = ft_atoi(res);
 	free(res);
-	free(tmp);
+	free(tmp
+	);
 	return (i);
 }
 int	skipp_spaces(char *str, char to_find)
