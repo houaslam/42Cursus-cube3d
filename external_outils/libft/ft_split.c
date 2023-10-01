@@ -3,86 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 21:53:35 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/03 00:25:10 by fadermou         ###   ########.fr       */
+/*   Created: 2022/10/14 11:18:44 by houaslam          #+#    #+#             */
+/*   Updated: 2023/10/01 14:49:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ftcount(char const *s, char c)
+static int	ft_dim1(char *s, char c)
 {
-	int	count;
 	int	i;
+	int	j;
 
-	count = 0;
 	i = 0;
+	j = 0;
+	while (s[i] == c)
+		i++;
+	if (s[i] == '\0')
+		return (0);
 	while (s[i])
 	{
-		if (s[i] != c)
-		{
-			count++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
-		while (s[i] && s[i] == c)
-			i++;
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+			j++;
+	i++;
 	}
-	return (count);
+	return (j + 1);
 }
 
-static int	ftstart(const char *s, char c, int i)
+static char	**ft_freestr(char **arr, int p)
 {
-	while (s[i] && s[i] == c)
-		i++;
-	return (i);
-}
-
-static int	ftend(const char *s, char c, int i)
-{
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
-static char	**ft_freestr(char **s, int i)
-{
-	while (s >= 0)
+	while (p >= 0)
 	{
-		free(s[i]);
-		i--;
+		free(arr[p]);
+		p--;
 	}
-	free(s);
+	free(arr);
 	return (NULL);
+}
+
+static char	**ft_func(char **arr, char *s, char c)
+{
+	int	i;
+	int	p;
+	int	k;
+
+	i = 0;
+	p = 0;
+	k = 0;
+	while (p < ft_dim1(s, c) && s[i])
+	{
+		while (s[k] == c && s[k] != '\0')
+			k++;
+		i = k;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		arr[p] = ft_substr(s, k, i - k);
+		k = i;
+		if (!arr[p])
+			return (ft_freestr(arr, p - 1));
+		p++;
+	}
+	arr[p] = NULL;
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		start;
-	int		count;
 	char	**p;
-	int		end;
+	size_t	size ;
 
 	if (!s)
 		return (NULL);
-	count = ftcount(s, c);
-	p = malloc(sizeof(char *) * (count + 1));
+	size = ft_dim1((char *)s, c);
+	p = malloc((size + 1) * sizeof(char *));
 	if (!p)
 		return (NULL);
-	i = -1;
-	start = 0;
-	while (++i < count)
-	{
-		start = ftstart(s, c, start);
-		end = ftend(s, c, start);
-		p[i] = ft_substr(s, start, end - start);
-		if (!p[i])
-			return (ft_freestr(p, i - 1));
-		start = end + 1;
-	}
-	p[i] = NULL;
+	if (!ft_func(p, (char *)s, c))
+		return (NULL);
 	return (p);
 }

@@ -3,17 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 10:33:15 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/02 23:17:48 by fadermou         ###   ########.fr       */
+/*   Created: 2022/10/08 09:46:52 by houaslam          #+#    #+#             */
+/*   Updated: 2022/10/30 08:55:03 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *str, size_t n )
 {
-	while (n--)
-		((char *) s)[n] = '\0';
+	size_t	i;
+	char	*s;
+
+	s = str;
+	i = 0;
+	while (i < n)
+	{
+		s[i] = '\0';
+		i++;
+	}
 }

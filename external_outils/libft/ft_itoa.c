@@ -3,55 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 15:24:05 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/02 23:41:46 by fadermou         ###   ########.fr       */
+/*   Created: 2022/10/15 13:40:59 by houaslam          #+#    #+#             */
+/*   Updated: 2023/10/01 14:49:23 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	nb_len(int nb)
+static char	*ft_sign(long int nb, int j, char *str)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	if (nb <= 0)
-		len++;
-	while (nb)
+	i = 0;
+	if (nb < 0)
 	{
-		len++;
-		nb = nb / 10;
+		nb *= -1;
+		str[i] = '-';
+		i++;
 	}
-	return (len);
+	if (nb >= 0)
+	{
+		while (j > 0)
+		{
+			str[i] = nb / j + 48;
+			nb %= j;
+			j /= 10;
+			i++;
+		}
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+static int	ft_count(long int nb)
+{
+	int	count;
+
+	count = 1;
+	if (nb < 0)
+	{
+		nb *= -1;
+		count++;
+	}
+	while (nb >= 10)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	char	*str;
-	long	nb;
+	int		j;
+	int		count;
+	char	*p;
 
-	len = nb_len(n);
-	nb = n;
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
+	j = 1;
+	count = ft_count(n);
+	p = (char *)malloc(sizeof(char) * (count + 1));
+	if (!p)
 		return (NULL);
-	if (nb < 0)
+	if (n < 0)
+		count--;
+	while (count - 1 > 0)
 	{
-		str[0] = '-';
-		nb = -nb;
+		j *= 10;
+		count--;
 	}
-	if (nb == 0)
-		str[0] = '0';
-	str[len] = '\0';
-	len--;
-	while (nb)
-	{
-		str[len] = nb % 10 + '0';
-		len--;
-		nb = nb / 10;
-	}
-	return (str);
+	ft_sign(n, j, p);
+	return (p);
 }

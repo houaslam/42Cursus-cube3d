@@ -3,70 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:49:56 by fadermou          #+#    #+#             */
-/*   Updated: 2023/09/20 13:31:00 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/01 14:50:56 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*update(char *sta_str)
+char	*update(char *sta_st)
 {
 	int		i;
 	int		j;
-	char	*str;
+	char	*st;
 
 	j = 0;
 	i = 0;
-	while (sta_str[i] != '\n' && sta_str[i])
+	while (sta_st[i] != '\n' && sta_st[i])
 		i++;
-	if (!sta_str[i])
+	if (!sta_st[i])
 	{
-		free(sta_str);
+		free(sta_st);
 		return (NULL);
 	}
-	str = malloc(sizeof(char) * (ft_strlen(sta_str) - i));
-	if (!str)
+	st = malloc(sizeof(char) * (ft_stlen(sta_st) - i));
+	if (!st)
 		return (NULL);
 	i++;
-	while (sta_str[i])
-		str[j++] = sta_str[i++];
-	str[j] = '\0';
-	free (sta_str);
-	return (str);
+	while (sta_st[i])
+		st[j++] = sta_st[i++];
+	st[j] = '\0';
+	free (sta_st);
+	return (st);
 }
 
-char	*str_n(char *sta_str)
+char	*st_n(char *sta_st)
 {
 	int		i;
-	char	*str;
+	char	*st;
 
 	i = 0;
-	if (!sta_str[i])
+	if (!sta_st[i])
 		return (NULL);
-	while (sta_str[i] && sta_str[i] != '\n')
+	while (sta_st[i] && sta_st[i] != '\n')
 		i++;
-	str = malloc(sizeof(char) * (i + 2));
-	if (!str)
+	st = malloc(sizeof(char) * (i + 2));
+	if (!st)
 		return (NULL);
 	i = 0;
-	while (sta_str[i] != '\n' && sta_str[i])
+	while (sta_st[i] != '\n' && sta_st[i])
 	{
-		str[i] = sta_str[i];
+		st[i] = sta_st[i];
 		i++;
 	}
-	if (sta_str[i] == '\n')
+	if (sta_st[i] == '\n')
 	{
-		str[i] = sta_str[i];
+		st[i] = sta_st[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	st[i] = '\0';
+	return (st);
 }
 
-char	*read_nd_join(char *str, int fd)
+char	*read_nd_join(char *st, int fd)
 {
 	int		read_b;
 	char	*buff;
@@ -75,33 +75,33 @@ char	*read_nd_join(char *str, int fd)
 	if (!buff)
 		return (NULL);
 	read_b = 1;
-	while (!ft_strchr(str, '\n') && read_b != 0)
+	while (!ft_stchr(st, '\n') && read_b != 0)
 	{
 		read_b = read(fd, buff, BUFFER_SIZE);
 		if (read_b == -1)
 		{
 			free(buff);
-			free(str);
+			free(st);
 			return (NULL);
 		}
 		buff[read_b] = '\0';
-		str = ft_strjoin(str, buff);
+		st = ft_stjoin(st, buff);
 	}
 	free (buff);
-	return (str);
+	return (st);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*sta_str;
+	static char	*sta_st;
 	char		*ret_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	sta_str = read_nd_join(sta_str, fd);
-	if (!sta_str)
+	sta_st = read_nd_join(sta_st, fd);
+	if (!sta_st)
 		return (NULL);
-	ret_line = str_n(sta_str);
-	sta_str = update(sta_str);
+	ret_line = st_n(sta_st);
+	sta_st = update(sta_st);
 	return (ret_line);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/09/22 01:47:53 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/01 15:06:36 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ enum {
 	ARROW_DOWN = 65364,
 	LEFT = 97,
 	UP = 119,
+	SPACE = 32,
 	RIGHT = 100,
 	DOWN = 115,
 	DESTROY = 65307,
 	SPEED = 30,
 	MINI_UNIT = 15,
 	DOOR = 111,
-	WALL = 222
+	WALL = 222,
 };
 
 typedef struct s_data
@@ -75,6 +76,8 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
+	int				d_x;
+	int				d_y;
 	double				distance;
 	int					up;
 	int					down;
@@ -127,7 +130,6 @@ typedef struct s_map
 typedef struct s_textures
 {
 	void			*img;
-	// char			*addr;
 	int				h;
 	int				w;
     int  			*add;

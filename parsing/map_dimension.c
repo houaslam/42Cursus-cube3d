@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_dimension.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 23:05:14 by macbookair        #+#    #+#             */
-/*   Updated: 2023/09/21 20:02:07 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/01 14:00:44 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	end_of_map(t_map **map)
 		j++;
 	}
 	(*map)->m_y = (*map)->m_y - j;
-	printf("%d\n", (*map)->m_y);
 }
 
 char	*ft_join(char *ret, char c)
@@ -48,6 +47,8 @@ char	*ft_join(char *ret, char c)
 		ret = ft_strjoin(ret, "    ");
 	else if (c == ';')
 		ret = ft_strjoin(ret, ";");
+	else if (c == 'D')
+		ret = ft_strjoin(ret, "D");
 	else 
 		put_error("INVALID CHARACTER");
 	return (ret);
@@ -66,9 +67,8 @@ char	*ft_fill_it(char *str, t_map **map)
 		i++;
 	}
 	while (i < (*map)->m_x)
-	// while ((int)ft_strlen(ret) < (*map)->m_x - 1)
 	{
-		if ((int)ft_strlen(ret) < (*map)->m_x)/////TO CHECK FIRST
+		if ((int)ft_strlen(ret) < (*map)->m_x)
 			ret = ft_strjoin(ret, " ");
 		i++;
 	}
@@ -78,7 +78,6 @@ char	*ft_fill_it(char *str, t_map **map)
 
 void    map_dimension(t_map **map, int i)
 {
-	// end_of_map(map);
 	while ((*map)->map[i])
 	{
 		(*map)->map[i] = ft_fill_it((*map)->map[i], map);

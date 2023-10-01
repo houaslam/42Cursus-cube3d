@@ -29,32 +29,6 @@ char	**split_it(char *map)
 	return(spl);
 }
 
-// void	directions_compar1(char **str, t_directions *dir, int *s, int i)
-// {
-// 	if (!str[0])
-// 		return ;
-// 	if (!ft_strcmp(str[0], "NO") && str_lenght(str) == 2)
-// 	{
-// 		if (dir->no)
-// 			put_error("TOO MANY CARDINAL DIRECTIONS");
-// 		dir->no = ft_dup(str[1]);
-// 	}
-// 	else if (!ft_strcmp(str[0], "SO") && str_lenght(str) == 2)
-// 	{
-// 		if (dir->so)
-// 			put_error("TOO MANY CARDINAL DIRECTIONS");
-// 		dir->so = ft_dup(str[1]);
-// 	}
-// 	else if (!ft_strcmp(str[0], "WE") && str_lenght(str) == 2)
-// 	{
-// 		if (dir->we)
-// 			put_error("TOO MANY CARDINAL DIRECTIONS");
-// 		dir->we = ft_dup(str[1]);
-// 	}
-// 	else
-// 		ea_and_colors(str, dir, s, i);
-// }
-
 int	directions_compar(char *str, t_directions *dir, int *s, int i)
 {
 	if (!str)
@@ -121,7 +95,6 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 	while ((*map)->map[i])
 	{
 		crdl = parse_arg((*map)->map[i], &j);
-		printf("->[%s]<-\n", crdl);
 		index = directions_compar(crdl, (*map)->directions, s, i);
 		content = ft_substr((*map)->map[i], j, ft_strlen((*map)->map[i]));
 		fill_struct(&(*map)->directions, content, index);

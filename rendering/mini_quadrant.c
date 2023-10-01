@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 09:54:58 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/24 14:32:57 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 14:54:27 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,9 @@ void	mini_quadrant(t_map *map)
 	k = MINI_UNIT;
 	map->minimap.x = map->minimap.width / 2 + MINI_UNIT / 2;
 	map->minimap.y = map->minimap.height / 2 + MINI_UNIT / 2;
-	// while (check_tip(map, y))
 	(void)k;
 	(void)y;
 	distance = map->r.distance * (float)(MINI_UNIT / UNIT);
-	// printf("distance = %f\n", map->r.distance);
-	// printf("factor = %f\n", (float)(MINI_UNIT / UNIT));
 	while (distance)
 	{
 		my_mlx_pixel_put(&map->mini, map->minimap.x, map->minimap.y, BLACK);

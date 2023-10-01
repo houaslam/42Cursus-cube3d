@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+         #
+#    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/09/22 13:08:17 by macbookair       ###   ########.fr        #
+#    Updated: 2023/10/01 14:46:27 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-CC =  cc -Wall -Werror -Wextra #=-fsanitize=address -g3  
+CC =  cc -Wall -Werror -Wextra -fsanitize=address -g3  
 CFLAGS = -I/usr/include -Imlx_linux -O3 -Wall -Werror -Wextra 
 EXTRA_FLAGS =  -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 

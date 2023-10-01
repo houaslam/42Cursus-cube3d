@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/23 18:46:55 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 14:54:37 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ int	turn_move(int keycode, t_map *map)
 	return (0);
 }
 
+bool can_move(t_map *map, int y, int x)
+{
+	if (((map->map[y][x] != '1') && (map->map[y][x] != 'D')) || (map->map[y][x] == 'D'))
+		return true;
+	return false;
+}
+
 void	move_up_down(t_map *map, int keycode)
 {
 	int	sinvalue;
@@ -30,21 +37,17 @@ void	move_up_down(t_map *map, int keycode)
 	cosvalue = cos(map->r.ang * M_PI / 180) * SPEED;
 	if ((keycode == UP || keycode == ARROW_UP) && map->r.distance > 0)
 	{
-		if (map->map[(int)map->p.u_y / UNIT][(int) \
-		(map->p.u_x + cosvalue) / UNIT] != '1')
-			map->p.u_x += cos(map->r.ang * M_PI / 180) * SPEED;
-		if (map->map[(int)(map->p.u_y - sinvalue) \
-		/ UNIT][(int)map->p.u_x / UNIT] != '1')
-			map->p.u_y -= sin(map->r.ang * M_PI / 180) * SPEED;
+		if (can_move(map, (int)(map->p.u_y / UNIT), (int)(map->p.u_x + cosvalue) / UNIT))
+			map->p.u_x += cosvalue;
+		if (can_move(map, (int)(map->p.u_y - sinvalue) / UNIT, (int)map->p.u_x / UNIT))
+			map->p.u_y -= sinvalue;
 	}
 	if ((keycode == DOWN || keycode == ARROW_DOWN))
 	{
-		if (map->map[(int)map->p.u_y / UNIT] \
-		[(int)(map->p.u_x - cosvalue) / UNIT] != '1')
-			map->p.u_x -= cos(map->r.ang * M_PI / 180) * SPEED;
-		if (map->map[(int)(map->p.u_y + sinvalue) \
-		/ UNIT][(int)map->p.u_x / UNIT] != '1')
-		map->p.u_y += sin(map->r.ang * M_PI / 180) * SPEED;
+		if (can_move(map,(int)map->p.u_y / UNIT, (int)(map->p.u_x - cosvalue) / UNIT))
+			map->p.u_x -= cosvalue;
+		if (can_move(map, (int)(map->p.u_y + sinvalue) / UNIT, (int)map->p.u_x / UNIT))
+			map->p.u_y += sinvalue;
 	}
 }
 
@@ -57,20 +60,16 @@ void	move_left_right(t_map *map, int keycode)
 	cosvalue = cos((90 - map->r.ang) * M_PI / 180) * SPEED;
 	if (keycode == LEFT)
 	{
-		if (map->map[(int)map->p.u_y / UNIT][(int) \
-		(map->p.u_x - cosvalue) / UNIT] != '1')
+		if (can_move(map, (int)map->p.u_y / UNIT, (int)(map->p.u_x - cosvalue) / UNIT))
 			map->p.u_x -= cosvalue;
-		if (map->map[(int)(map->p.u_y - sinvalue) \
-		/ UNIT][(int)map->p.u_x / UNIT] != '1')
+		if (can_move(map, (int)(map->p.u_y - sinvalue) / UNIT, (int)map->p.u_x / UNIT))
 			map->p.u_y -= sinvalue;
 	}
 	if (keycode == RIGHT)
 	{
-		if (map->map[(int)map->p.u_y / UNIT][(int) \
-		(map->p.u_x + cosvalue) / UNIT] != '1')
+		if (can_move(map, (int)map->p.u_y / UNIT, (int)(map->p.u_x + cosvalue) / UNIT))
 			map->p.u_x += cosvalue;
-		if (map->map[(int)(map->p.u_y + sinvalue) / \
-		UNIT][(int)map->p.u_x / UNIT] != '1')
+		if (can_move(map, (int)(map->p.u_y + sinvalue) / UNIT, (int)map->p.u_x / UNIT))
 			map->p.u_y += sinvalue;
 	}
 }
@@ -84,6 +83,8 @@ int	which_move(int keycode, t_map *map)
 		move_up_down(map, keycode);
 	else
 		turn_move(keycode, map);
+	if (keycode == SPACE)
+		map->map[map->r.d_y][map->r.d_x] = 48;
 	if (keycode == DESTROY)
 		ft_exit(map->window);
 	rays_casting(map, map->window);

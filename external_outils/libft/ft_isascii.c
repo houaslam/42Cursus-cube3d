@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_isasciI.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 14:38:52 by fadermou          #+#    #+#             */
-/*   Updated: 2022/10/23 14:38:53 by fadermou         ###   ########.fr       */
+/*   Created: 2022/10/07 13:47:24 by houaslam          #+#    #+#             */
+/*   Updated: 2022/10/15 11:40:12 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_isascii(int m)
 {
-	if (c >= 0 && c <= 127)
+	if (m >= 0 && m <= 127)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

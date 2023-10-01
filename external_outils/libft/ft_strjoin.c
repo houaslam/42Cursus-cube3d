@@ -5,38 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 15:24:37 by fadermou          #+#    #+#             */
-/*   Updated: 2023/07/30 07:35:13 by houaslam         ###   ########.fr       */
+/*   Created: 2022/10/11 13:02:49 by houaslam          #+#    #+#             */
+/*   Updated: 2023/10/01 14:58:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char	*s1, char *ss2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		j;
-	char	*result;
+	size_t	i;
+	size_t	c;
+	char	*str;
 
-	if (!s1 || !ss2)
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (!s1 && !s2)
 		return (NULL);
-	result = ((char *)malloc(ft_strlen(s1) + ft_strlen(ss2) + 1));
-	if (!result)
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	while (ss2[j])
-	{
-		result[i] = ss2[j];
-		i++;
-		j++;
-	}
-	result[i] = '\0';
+	i = -1;
+	c = 0;
+	while (s1[++i] != '\0')
+		str[i] = s1[i];
+	while (s2[c] != '\0')
+		str[i++] = s2[c++];
+	str[i] = '\0';
 	free(s1);
-	return (result);
+	return (str);
 }

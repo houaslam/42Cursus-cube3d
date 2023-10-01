@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:02:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/23 16:02:16 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 13:18:22 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	check_case_v(t_map *map)
 	return (1);
 }
 
+
 float	p_to_wall(t_map *map)
 {
 	float	x;
@@ -72,9 +73,13 @@ float	p_to_wall(t_map *map)
 	if (map->n_h || h >= v)
 	{
 		map->vert = true;
+		map->r.d_x = (map->v.x / UNIT) - 1;
+		map->r.d_y = (map->v.y/ UNIT) - 1;
 		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
 	}
 	map->vert = false;
+	map->r.d_x = (map->h.x / UNIT) - 1;
+	map->r.d_y = (map->h.y / UNIT) - 1;
 	return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));
 }
 

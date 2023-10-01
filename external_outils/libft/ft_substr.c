@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 15:25:04 by fadermou          #+#    #+#             */
-/*   Updated: 2022/11/02 23:40:20 by fadermou         ###   ########.fr       */
+/*   Created: 2022/10/11 09:53:52 by houaslam          #+#    #+#             */
+/*   Updated: 2022/11/04 15:40:00 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	unsigned int	i;
+	char			*p;
+	size_t			k;
 
 	if (!s)
-		return (NULL);
-	if (start > ft_strlen(s))
+		return (0);
+	k = ft_strlen((char *)s);
+	if (start > k)
 		return (ft_strdup(""));
-	if (len > ft_strlen((char *)s))
-		len = ft_strlen((char *)s) - start + 1;
-	str = malloc(sizeof(*s) * (len + 1));
-	if (!str)
+	if (len > ft_strlen((char *)s + start))
+		len = ft_strlen((char *)s + start);
+	p = (char *)malloc(sizeof(char) * (len + 1));
+	i = 0;
+	if (!p)
 		return (NULL);
-	i = -1;
-	j = 0;
-	while (s[++i])
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-	}
-	str[j] = '\0';
-	return (str);
+	while (i < len && start < k)
+		p[i++] = s[start++];
+	p[i] = '\0';
+	return (p);
 }

@@ -10,9 +10,7 @@ int	ft_int_dup(char *str, int num)
 
 	tmp = ft_dup(str);
 	rgb_parse(tmp);
-	printf("tmp == [%s]\n", tmp);
-	res = ft_strdup("\0");
-	// tmp = ft_atoi(num);
+	res = NULL;
 	spl = ft_split(tmp, ',');
 	i = 0;
 	while (spl[i])
@@ -27,7 +25,10 @@ int	ft_int_dup(char *str, int num)
 	if (num < 0)//// protections
 		num = 0;
 	ft_free(spl);
-	return (ft_atoi(res));
+	i = ft_atoi(res);
+	free(res);
+	free(tmp);
+	return (i);
 }
 int	skipp_spaces(char *str, char to_find)
 {
@@ -107,7 +108,6 @@ int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
 		return (-2);
 	else if (!skipp_spaces(str, '1'))
 	{
-		printf("[%s]\n", str);
 		put_error("MAP NOT VALID");
 	}
 	return (-2);
@@ -118,34 +118,15 @@ void	fill_struct(t_directions **dir, char *crdl, int index)
 	if (!crdl || !*crdl)
 		return;
 	if (index == NO)
-	{
 		(*dir)->no = ft_dup(crdl);
-		printf("NO = %s\n", (*dir)->no);
-		// exit(1);
-	}
 	else if (index == SO)
-	{
 		(*dir)->so = ft_dup(crdl);
-		printf("SO = %s\n", (*dir)->so);
-	}
 	else if (index == WE)
-	{
 		(*dir)->we = ft_dup(crdl);
-		printf("WE = %s\n", (*dir)->we);
-	}
 	else if (index == EA)
-	{
 		(*dir)->ea = ft_dup(crdl);
-		printf("EA = %s\n", (*dir)->ea);
-	}
 	else if (index == F)
-	{
 		(*dir)->f = ft_int_dup(crdl, (*dir)->f);
-		printf("F = %d\n", (*dir)->f);
-	}
 	else if (index == C)
-	{
 		(*dir)->c = ft_int_dup(crdl, (*dir)->c);
-		printf("C = %d\n", (*dir)->c);
-	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/09/22 15:58:36 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/01 13:00:33 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,6 @@ void	s_directions_initialization(t_map **map)
 	(*map)->directions->so = NULL;
 }
 
-void	affiche(t_directions *d)
-{
-	if (d->no)
-		printf("NORTH = [%s]\n", d->no);
-	if (d->ea)
-		printf("EAST  = [%s]\n", d->ea);
-	if (d->so)
-		printf("SOUTH = [%s]\n", d->so);
-	if (d->we)
-		printf("WESTT  = [%s]\n", d->we);
-	// if (d->f)
-		printf("F     = [%d]\n", d->f);
-	// if (d->c)
-		printf("C     = [%d]\n", d->c);
-}
-
 void	fill_new_map(t_map **map, int s)
 {
 	char	**new;
@@ -96,16 +80,6 @@ void	parsing(t_map *map, char **av)
 	cardinal_directions(&map, &s);
 	player_position(&map, s);
 	map_dimension(&map, s);
-	int	i = 0;
-	while (map->map[i])
-	{
-		printf("[%s]\n", map->map[i]);
-		i++;
-	}
 	fill_new_map(&map, s);
-	//// fill with the new map starting with s == after
 	map_parsing(&map);
-	affiche(map->directions);
-	// exit(1);
-	// open_map(map);
 }

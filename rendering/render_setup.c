@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:09:17 by houaslam          #+#    #+#             */
-/*   Updated: 2023/07/30 08:59:05 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 14:07:42 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,18 @@ void	draw_ray(t_window *window, int pos)
 	i = render_ceiling(window, pos);
 	wall_h = window->map->wall_h;
 	get_offset_x(window->map, &dir, &text_offset_x);
+	// if (window->map->r.content == DOOR)
+	// {
+	// 	// dir = EA;
+	// 	// s = 1;
+	// 	// if (window->map->vert == true)
+	// 	// 	text_offset_x = (int)(window->map->v.y) % window->map->textures[dir].h;
+	// 	// else
+	// 	// 	text_offset_x = (int)(window->map->h.x) % window->map->textures[dir].w;
+	// 	// // text_offset_x = (int)(window->map->v.y) % window->map->textures[dir].w;
+	// get_offset_x(window->map, &dir, &text_offset_x);
+
+	// }
 	while (window->map->wall_h >= 0 && i < PP_HEIGHT)
 	{
 		distanceFromTop = i + (wall_h / 2) - (PP_HEIGHT / 2);
