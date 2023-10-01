@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 12:47:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/08/04 07:44:15 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:58:48 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@
 # include "../parsing/parsing.h"
 
 //render
-// void                    render_ceiling(t_window *window, int pos, int *i);
-// void                    render_wall(t_window *window, int pos);
-// void                    render_floor(t_window *window, int pos);
-// void                    render_setup(t_window *window, int pos);
 void					loads_textures(t_textures *txt);
 void					draw_ray(t_window *window, int pos);
 
 //raycasting
-// void					setup(t_map **map);
 
 //player
+int						which_move(int keycode, t_map *map);
 void					player_view(t_map **map);
+int						turn_move(int keycode, t_map *map);
 
 //wallcast
 float					wall_height(t_map *map);
@@ -38,6 +35,7 @@ void					draw_wall(t_map *map, t_window *window);
 int						check_case_h(t_map *map);
 int						check_case_v(t_map *map);
 void					check_angles(t_map *map);
+void                    perform_animation(t_map *map);
 
 // quadrant
 void					quadrant(t_map *map);
@@ -50,9 +48,7 @@ void					down_left(t_map *map);
 void					draw_minimap(t_map *map);
 void					draw_square(int color, int x, int y, t_window *window);
 //player mov
-int						which_move(int keycode, t_map *map);
 int						ft_exit(t_window *mlx);
-int						turn_move(int keycode, t_map *map);
 
 void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void					draw_player(t_map *map);
