@@ -11,7 +11,7 @@ int	ft_is_space(char c)
 int		ft_is_valid(char c)
 {
 	if (c != 'N' && c != 'S' && c != 'W' &&\
-	c != 'E' && c != '0' && c != '1' && c != ' ')
+	c != 'E' && c != '0' && c != '1' && c != ' ' && c != 'D')
 		return (1);
 	return (0);
 }
@@ -19,7 +19,7 @@ int		ft_is_valid(char c)
 int		ft_is_player(char c)
 {
 	if (c != 'N' && c != 'S' && c != 'W' &&\
-	c != 'E' && c != '0')
+	c != 'E' && c != '0' && c != 'D')
 		return (1);
 	return (0);
 }
