@@ -116,7 +116,7 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 //// [DONE]check textures in parsing(strtrim(" " && "\t"))
 //// [DONE]TEST this -> F    	220,100,0
 //// [DONE]I should use substr in parsing
-//// [DONE]RGB
+//// [DONE]RGB   
 //// [DONE]change gnl
 //// [DONE]check leaks
 //// I should free when there is an error
