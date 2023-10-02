@@ -27,8 +27,8 @@ int	ft_int_dup(char *str)
 	while (spl[i])
 	{
 		tmp = ft_dup(spl[i]);
-		if (ft_atoi(tmp) >= 255)
-			put_error("INVALID RGB");
+		if (ft_atoi(tmp) > 255)
+			put_error("INVALID RGdB");
 		res += ft_condition(tmp, i);
 		free(tmp);
 		i++;
