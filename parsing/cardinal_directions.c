@@ -116,9 +116,9 @@ void	cardinal_directions(t_map **map, int *s)//// after read last note
 //// [DONE]check textures in parsing(strtrim(" " && "\t"))
 //// [DONE]TEST this -> F    	220,100,0
 //// [DONE]I should use substr in parsing
-//// RGB
+//// [DONE]RGB
+//// [DONE]change gnl
+//// [DONE]check leaks
 //// I should free when there is an error
-//// change gnl
-//// check leaks
 //// check norm
 //// IF I EDITED IN -> "C 233,   20 8 ,200\n F    0,   100,0" space on g in ceiling changes the color of floor
