@@ -14,7 +14,7 @@
 
 int	mouse(int x, int y, t_window *window)
 {
-	static int	hold_x;
+     	static int	hold_x;
 
 	if (x < PP_WIDTH && y < PP_HEIGHT && x > 0 && y > 0)
 	{
