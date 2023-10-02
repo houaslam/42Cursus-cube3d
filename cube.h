@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajarouaslam <hajarouaslam@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/02 13:23:24 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/02 22:06:03 by hajarouasla      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include <mlx.h>
+# include "mlx.h"
 #include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -38,17 +38,17 @@
 // extern int	cast;
 
 enum {
-	ARROW_LEFT = 65361,
-	ARROW_UP = 65362,
-	ARROW_RIGHT = 65363,
-	ARROW_DOWN = 65364,
-	LEFT = 97,
-	FIRE = 102,
-	UP = 119,
-	SPACE = 32,
-	RIGHT = 100,
-	DOWN = 115,
-	DESTROY = 65307,
+	ARROW_LEFT = 123,
+	ARROW_UP = 126,
+	ARROW_RIGHT = 124,
+	ARROW_DOWN = 125,
+	LEFT = 0,
+	UP = 13,
+	RIGHT = 2,
+	DOWN = 1,
+	FIRE = 3,
+	SPACE = 53,
+	DESTROY = 49,
 	SPEED = 30,
 	MINI_UNIT = 15,
 	DOOR = 111,
