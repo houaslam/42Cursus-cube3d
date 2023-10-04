@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 17:43:35 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:53:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 int	ft_exit(t_window *mlx)
 {
+	int i;
+
 	free(mlx->map->directions->no);
 	free(mlx->map->directions->so);
 	free(mlx->map->directions->we);
 	free(mlx->map->directions->ea);
-	// free(mlx->map->directions->door);
-	printf("GAME OVER !!");
+	free(mlx->map->directions->door);
+	i = write(2, "GAME OVER !!", ft_strlen("GAME OVER !!"));
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
+	return (i);
 }
 
 void	check_angles(t_map *map)

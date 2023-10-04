@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 16:39:48 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:51:08 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ int	main(int ac, char **av)
 	t_window		window;
 	t_map			map;
 	t_directions	directions;
-	t_textures		*textures;
+	t_textures		textures[5];
 
+	i = 5;
 	if (ac != 2)
 		put_error("INVALID NUMBER OF ARGUMENTS\n");
 	window.map = &map;
 	map.window = &window;
-	i = 5;
-	textures = malloc(sizeof(t_textures) * i);
 	while (i--)
 		textures[i].map = &map;
 	map.textures = textures;
