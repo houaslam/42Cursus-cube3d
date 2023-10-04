@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:00:10 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 15:12:20 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:35:54 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	animation_loop(int frame, int *weapon, int *dim, t_window *window)
 		free(res);
 		free(which);
 		(*weapon)++;
+		if (img)
+			mlx_put_image_to_window(window->mlx, window->mlx_win, img, \
+			PP_WIDTH / 2 - dim[1] / 2, PP_HEIGHT - dim[0]);
+		free(img);
 	}
-	if (img)
-		mlx_put_image_to_window(window->mlx, window->mlx_win, img, \
-		PP_WIDTH / 2 - dim[1] / 2, PP_HEIGHT - dim[0]);
-	free(img);
 }
 
 int	perform_animation(t_window *window)
