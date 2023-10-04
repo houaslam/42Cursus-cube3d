@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 16:26:38 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:43:24 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@
 # define PINK 0x00406c
 # define YELLOW 0xfafefd
 # define BLACK 0x000000
-# define NO 0
-# define SO 1
-# define WE 2
-# define EA 3
-# define F	4
-# define C	5
 
 enum {
+	NO = 0,
+	SO = 1,
+	WE = 2,
+	EA = 3,
+	DO =	4,
+	F =	5,
+	C =	6,
 	ARROW_LEFT = 65361,
 	ARROW_UP = 65362,
 	ARROW_RIGHT = 65363,
@@ -144,6 +145,7 @@ typedef struct s_directions
 	char				*so;
 	char				*we;
 	char				*ea;
+	char				*door;
 	long long			f;
 	long long			c;
 	struct s_map		*map;

@@ -21,4 +21,5 @@ void    loads_textures(t_textures *txt)
 	loads_images(&txt[SO], txt->map->directions->so);
 	loads_images(&txt[EA], txt->map->directions->ea);
 	loads_images(&txt[WE], txt->map->directions->we);
+	loads_images(&txt[DO], txt->map->directions->door);
 }
