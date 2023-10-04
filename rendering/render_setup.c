@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 10:09:17 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 16:48:04 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:44:25 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	get_offset_x(t_map *map, int *dir, int *text_offset_x)
 				*dir = NO;
 			else
 				*dir = SO;
-			*text_offset_x = (int)(map->h.x) % map->textures[*dir].w;
 		}
+		*text_offset_x = (int)(map->h.x) % map->textures[*dir].w;
 	}
 }
 
