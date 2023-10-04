@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/10/01 13:00:33 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:31:39 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	s_directions_initialization(t_map **map)
 	(*map)->directions->we = NULL;
 	(*map)->directions->no = NULL;
 	(*map)->directions->so = NULL;
+	(*map)->directions->door = ft_strdup("textures/door.xpm");
 }
 
 void	fill_new_map(t_map **map, int s)

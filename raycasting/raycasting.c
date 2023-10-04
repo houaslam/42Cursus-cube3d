@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 15:07:18 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:31:59 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_exit(t_window *mlx)
 	free(mlx->map->directions->so);
 	free(mlx->map->directions->we);
 	free(mlx->map->directions->ea);
+	free(mlx->map->directions->door);
 	printf("GAME OVER !!");
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
