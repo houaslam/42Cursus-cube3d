@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajarouaslam <hajarouaslam@student.42.f    +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/02 22:06:03 by hajarouasla      ###   ########.fr       */
+/*   Updated: 2023/10/04 16:02:50 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include "mlx.h"
-#include <stdbool.h>
+# include <mlx.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -35,20 +35,18 @@
 # define F	4
 # define C	5
 
-// extern int	cast;
-
 enum {
-	ARROW_LEFT = 123,
-	ARROW_UP = 126,
-	ARROW_RIGHT = 124,
-	ARROW_DOWN = 125,
-	LEFT = 0,
-	UP = 13,
-	RIGHT = 2,
-	DOWN = 1,
-	FIRE = 3,
-	SPACE = 53,
-	DESTROY = 49,
+	ARROW_LEFT = 65361,
+	ARROW_UP = 65362,
+	ARROW_RIGHT = 65363,
+	ARROW_DOWN = 65364,
+	LEFT = 97,
+	FIRE = 102,
+	UP = 119,
+	SPACE = 32,
+	RIGHT = 100,
+	DOWN = 115,
+	DESTROY = 65307,
 	SPEED = 30,
 	MINI_UNIT = 15,
 	DOOR = 111,
@@ -57,19 +55,19 @@ enum {
 
 typedef struct s_data
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void				*img;
+	char				*addr;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
 }				t_data;
 
 typedef struct s_wall
 {
-	double					x;
-	double					y;
-	double					step_x;
-	double					step_y;
+	double				x;
+	double				y;
+	double				step_x;
+	double				step_y;
 }	t_wall;
 
 typedef struct s_ray
@@ -77,8 +75,8 @@ typedef struct s_ray
 	float				alpha;
 	float				ang;
 	float				cast;
-	int				d_x;
-	int				d_y;
+	int					d_x;
+	int					d_y;
 	double				distance;
 	int					up;
 	int					down;
@@ -89,12 +87,12 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	double					x;
-	double					y;
-	double					u_x;
-	double					u_y;
-	int						rot_speed;
-	int						mov_speed;
+	double				x;
+	double				y;
+	double				u_x;
+	double				u_y;
+	int					rot_speed;
+	int					mov_speed;
 }	t_player;
 
 typedef struct s_minimap
@@ -123,39 +121,40 @@ typedef struct s_map
 	t_minimap			minimap;
 	t_data				img;
 	t_data				mini;
-	struct s_directions *directions;
-	struct s_textures *textures;
+	struct s_directions	*directions;
+	struct s_textures	*textures;
 	struct s_window		*window;
 }	t_map;
 
 typedef struct s_textures
 {
-	void			*img;
-	int				h;
-	int				w;
-    int  			*add;
-    int  			bits_per_pixel;
-    int  			line_length;
-    int  			endian;
-	struct s_map	*map;
+	void				*img;
+	int					h;
+	int					w;
+	int					*add;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
+	struct s_map		*map;
 }	t_textures;
 
 typedef struct s_directions
 {
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
-	long long		f;
-	long long		c;
-	struct s_map	*map;
+	char				*no;
+	char				*so;
+	char				*we;
+	char				*ea;
+	long long			f;
+	long long			c;
+	struct s_map		*map;
 }	t_directions;
 
 typedef struct s_window{
 	void				*mlx;
 	void				*mlx_win;
 	struct s_map		*map;
-	bool				DO_ANIMATION;
+	bool				s_animation;
+	t_data				animation;
 }	t_window;
 
 #endif

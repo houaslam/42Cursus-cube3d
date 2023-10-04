@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:37:04 by houaslam          #+#    #+#             */
-/*   Updated: 2022/11/03 09:59:01 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:18:02 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putendl_fd(char *s, int fd)
 	while (s[i])
 	{
 		write (fd, &s[i], 1);
-			i++;
+		i++;
 	}
 	write (fd, "\n", 1);
 }

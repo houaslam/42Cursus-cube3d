@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:02:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/01 15:40:14 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:03:30 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,10 @@ int	check_case_h(t_map *map)
 	map->n_h = 0;
 	if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
 	/ UNIT] == '1')
-	{
-		map->r.content = WALL;
 		return (0);
-	}
 	else if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
 	/ UNIT] == 'D')
-	{
-		map->r.content = DOOR;
 		return (0);
-	}
 	return (1);
 }
 
@@ -43,50 +37,57 @@ int	check_case_v(t_map *map)
 	map->n_v = 0;
 	if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) \
 	/ UNIT] == '1')
-	{
-		map->r.content = WALL;
 		return (0);
-	}
 	else if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) \
 	/ UNIT] == 'D')
-	{
-		map->r.content = DOOR;
 		return (0);
-	}
 	return (1);
 }
 
+int	*calcul_distance(t_map *map)
+{
+	int		*dist;
+	float	x;
+	float	y;
+
+	dist = malloc(sizeof(int) * 2);
+	map->r.content = WALL;
+	y = map->p.u_y - map->h.y;
+	x = map->p.u_x - map->h.x;
+	dist[0] = sqrt(pow(x, 2) + pow(y, 2));
+	y = map->p.u_y - map->v.y;
+	x = map->p.u_x - map->v.x;
+	dist[1] = sqrt(pow(x, 2) + pow(y, 2));
+	return (dist);
+}
 
 float	p_to_wall(t_map *map)
 {
-	float	x;
-	float	y;
-	float	h;
-	float	v;
+	int	*dis;
+	int	res;
 
-	y = map->p.u_y - map->h.y;
-	x = map->p.u_x - map->h.x;
-	h = sqrt(pow(x, 2) + pow(y, 2));
-	y = map->p.u_y - map->v.y;
-	x = map->p.u_x - map->v.x;
-	v = sqrt(pow(x, 2) + pow(y, 2));
-	if (map->n_h || h >= v)
+	dis = calcul_distance(map);
+	if (map->n_h || dis[0] >= dis[1])
 	{
 		map->vert = true;
-		if (map->map[(int)(map->v.y / UNIT) - 1][(int)(map->v.x / UNIT) - 1])
+		if (check(map, (map->v.x - map->r.left) / UNIT, map->v.y / UNIT) == 2)
 		{
-			map->r.d_x = (map->v.x / UNIT) - 1;
-			map->r.d_y = (map->v.y/ UNIT) - 1;
+			map->r.d_y = (int)map->v.y / UNIT;
+			map->r.d_x = ((int)map->v.x - map->r.left) / UNIT;
 		}
-		return (v * cos((map->r.ang - map->r.cast) * M_PI / 180));
+		res = dis[1] * cos((map->r.ang - map->r.cast) * M_PI / 180);
+		free(dis);
+		return (res);
 	}
 	map->vert = false;
-	if (map->map[(int)(map->h.y / UNIT) - 1][(int)(map->h.x / UNIT) - 1])
+	if (check(map, map->h.x / UNIT, (map->h.y - map->r.up) / UNIT) == 2)
 	{
-		map->r.d_x = (map->h.x / UNIT) - 1;
-		map->r.d_y = (map->h.y / UNIT) - 1;
+		map->r.d_y = (int)(map->h.y - map->r.up) / UNIT;
+		map->r.d_x = (int)map->h.x / UNIT;
 	}
-	return (h * cos((map->r.ang - map->r.cast) * M_PI / 180));
+	res = dis[0] * cos((map->r.ang - map->r.cast) * M_PI / 180);
+	free(dis);
+	return (res);
 }
 
 float	wall_height(t_map *map)

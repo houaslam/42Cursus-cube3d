@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajarouaslam <hajarouaslam@student.42.f    +#+  +:+       +#+        */
+/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/02 22:02:09 by hajarouasla      ###   ########.fr       */
+/*   Updated: 2023/10/04 15:12:20 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	mouse(int x, int y, t_window *window)
 {
-     	static int	hold_x;
+	static int	hold_x;
 
 	if (x < PP_WIDTH && y < PP_HEIGHT && x > 0 && y > 0)
 	{
@@ -30,6 +30,7 @@ int	mouse(int x, int y, t_window *window)
 
 int	main(int ac, char **av)
 {
+	int	i;
 	t_window		window;
 	t_map			map;
 	t_directions	directions;
@@ -37,11 +38,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		put_error("INVALID NUMBER OF ARGUMENTS\n");
-	textures = malloc(sizeof(t_textures) * 4);
 	window.map = &map;
 	map.window = &window;
-	int	i;
 	i = 4;
+	textures = malloc(sizeof(t_textures) * i);
 	while (i--)
 		textures[i].map = &map;
 	map.textures = textures;
@@ -56,11 +56,13 @@ int	main(int ac, char **av)
 	map.p.u_y = (map.p.y * UNIT) + (UNIT / 2);
 	map.img.img = mlx_new_image(window.mlx, PP_WIDTH, PP_HEIGHT);
 	map.mini.img = mlx_new_image(window.mlx, PP_WIDTH / 5, PP_HEIGHT / 5);
-	window.DO_ANIMATION = false;
+	window.animation.img = mlx_new_image(window.mlx, PP_WIDTH, PP_HEIGHT);
+	window.animation.addr = mlx_get_data_addr(window.animation.img, &window.animation.bits_per_pixel, &window.animation.line_length, &window.animation.endian);
+	window.s_animation = false;
 	rays_casting(&map, &window);
 	mlx_hook(window.mlx_win, 2, 1L<<0, which_move, &map);
 	mlx_hook(window.mlx_win, 17, 0, ft_exit, &window);
-	mlx_loop_hook(window.mlx,	perform_animation, &window);
+	mlx_loop_hook(window.mlx, perform_animation, &window);
 	mlx_hook(window.mlx_win, 6, 1L<<6, mouse, &window);
 	mlx_loop(window.mlx);
 }
