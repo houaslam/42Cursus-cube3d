@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:31:12 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 17:51:08 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:23:55 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 
 	i = 5;
 	if (ac != 2)
-		put_error("INVALID NUMBER OF ARGUMENTS\n");
+		put_error("INVALID NUMBER OF ARGUMENTS");
 	window.map = &map;
 	map.window = &window;
 	while (i--)

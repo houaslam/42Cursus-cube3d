@@ -14,8 +14,8 @@ long long	ft_condition(char *str, int i)
 
 int	ft_int_dup(char *str)
 {
-	char	*tmp;
-	char	**spl;
+	char		*tmp;
+	char		**spl;
 	long long	i;
 	long long	res;
 
@@ -57,7 +57,7 @@ int	skipp_spaces(char *str, char to_find)
 int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
 {
 	(void)i;
-    if (!ft_strcmp(str, "EA"))
+	if (!ft_strcmp(str, "EA"))
 	{
 		if (dir->ea)
 			put_error("TOO MANY CARDINAL DIRECTIONS");
@@ -66,14 +66,14 @@ int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
 	else if (!ft_strcmp(str, "F"))
 	{
 		if (dir->f != -1)
-			put_error("TOO MANY F COLORS");////F ??
-		return (F);//// protect numb
+			put_error("TOO MANY F COLORS");
+		return (F);
 	}
 	else if (!ft_strcmp(str, "C"))
 	{
-		if (dir->c != -1)////repars it
-			put_error("TOO MANY C COLORS");////C ??
-		return (C);//// protect numb
+		if (dir->c != -1)
+			put_error("TOO MANY C COLORS");
+		return (C);
 	}
 	else if (!*s && skipp_spaces(str, '1'))
 	{
@@ -92,7 +92,7 @@ int	ea_and_colors(char *str, t_directions *dir, int *s, int i)
 void	fill_struct(t_directions **dir, char *crdl, int index)
 {
 	if (!crdl || !*crdl)
-		return;
+		return    ;
 	if (index == NO)
 		(*dir)->no = ft_dup(crdl);
 	else if (index == SO)
