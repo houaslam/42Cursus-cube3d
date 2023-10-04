@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fadermou <fadermou@student.42.fr>          +#+  +:+       +#+         #
+#    By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/13 12:53:10 by houaslam          #+#    #+#              #
-#    Updated: 2023/10/01 16:58:56 by fadermou         ###   ########.fr        #
+#    Updated: 2023/10/04 23:16:16 by macbookair       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ R_SRCS = 	raycasting/distances.c \
 REND_SRCS = rendering/render_setup.c \
 	    	rendering/minimap.c \
 	    	rendering/mini_quadrant.c \
-			rendering/loads_textures.c \
 	    	rendering/animation.c \
+			rendering/loads_textures.c \
+			rendering/get_offset_x.c \
 
 P_SRCS = parsing/cardinal_directions2.c \
 		parsing/cardinal_directions.c \
@@ -34,6 +35,8 @@ P_SRCS = parsing/cardinal_directions2.c \
 		parsing/read_map.c \
 		parsing/parsing.c \
 		parsing/rgb_parse.c \
+		parsing/tools.c \
+		parsing/tools2.c \
 		main.c
 
 O_SRCS = external_outils/get_next_line/get_next_line.c \

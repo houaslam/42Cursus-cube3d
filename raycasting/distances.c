@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   distances.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:02:14 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 15:03:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:58:24 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	check_case_h(t_map *map)
 {
 	map->n_h = 1;
-	if (map->h.y < 0 || map->h.x / UNIT >= map->m_x \
-	|| map->h.x < 0 || map->h.y / UNIT >= map->m_y)
+	if (map->h.y < 0 || map->h.x / UNIT >= map->m_x || map->h.x < 0 || map->h.y
+		/ UNIT >= map->m_y)
 		return (0);
 	map->n_h = 0;
-	if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
-	/ UNIT] == '1')
+	if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x
+		/ UNIT] == '1')
 		return (0);
-	else if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x \
-	/ UNIT] == 'D')
+	else if (map->map[(int)(map->h.y - map->r.up) / UNIT][(int)map->h.x
+		/ UNIT] == 'D')
 		return (0);
 	return (1);
 }
@@ -31,15 +31,15 @@ int	check_case_h(t_map *map)
 int	check_case_v(t_map *map)
 {
 	map->n_v = 1;
-	if (map->v.y < 0 || map->v.x / UNIT >= map->m_x \
-	|| map->v.x / UNIT < 0 || map->v.y / UNIT >= map->m_y)
+	if (map->v.y < 0 || map->v.x / UNIT >= map->m_x || map->v.x / UNIT < 0
+		|| map->v.y / UNIT >= map->m_y)
 		return (0);
 	map->n_v = 0;
-	if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) \
-	/ UNIT] == '1')
+	if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left)
+		/ UNIT] == '1')
 		return (0);
-	else if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left) \
-	/ UNIT] == 'D')
+	else if (map->map[(int)map->v.y / UNIT][((int)map->v.x - map->r.left)
+		/ UNIT] == 'D')
 		return (0);
 	return (1);
 }

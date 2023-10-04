@@ -6,30 +6,11 @@
 /*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:55:19 by fadermou          #+#    #+#             */
-/*   Updated: 2023/10/04 16:31:39 by macbookair       ###   ########.fr       */
+/*   Updated: 2023/10/04 23:28:25 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-void	put_error(char *str)
-{
-	printf("Error\n%s\n", str);
-	exit(1);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
 
 int	str_lenght(char **str)
 {
@@ -58,7 +39,7 @@ void	fill_new_map(t_map **map, int s)
 	int		i;
 
 	i = 0;
-	new = malloc(sizeof(char *) * ((*map)->m_y + 1));//// edit 100
+	new = malloc(sizeof(char *) * ((*map)->m_y + 1));
 	while ((*map)->map[s] && i < (*map)->m_y + 1)
 	{
 		new[i] = ft_strdup((*map)->map[s]);
@@ -69,7 +50,6 @@ void	fill_new_map(t_map **map, int s)
 	ft_free((*map)->map);
 	(*map)->map = new;
 }
-
 
 void	parsing(t_map *map, char **av)
 {

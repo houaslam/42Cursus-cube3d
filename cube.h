@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:29:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 16:43:24 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:28:34 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
+# include <math.h>
 # include <mlx.h>
 # include <stdbool.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <stdio.h>
-# include <math.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 # define PP_HEIGHT 1000
 # define PP_WIDTH 1600
@@ -29,14 +29,15 @@
 # define YELLOW 0xfafefd
 # define BLACK 0x000000
 
-enum {
+enum
+{
 	NO = 0,
 	SO = 1,
 	WE = 2,
 	EA = 3,
-	DO =	4,
-	F =	5,
-	C =	6,
+	DO = 4,
+	F = 5,
+	C = 6,
 	ARROW_LEFT = 65361,
 	ARROW_UP = 65362,
 	ARROW_RIGHT = 65363,
@@ -61,7 +62,7 @@ typedef struct s_data
 	int					bits_per_pixel;
 	int					line_length;
 	int					endian;
-}				t_data;
+}						t_data;
 
 typedef struct s_wall
 {
@@ -69,7 +70,7 @@ typedef struct s_wall
 	double				y;
 	double				step_x;
 	double				step_y;
-}	t_wall;
+}						t_wall;
 
 typedef struct s_ray
 {
@@ -84,7 +85,7 @@ typedef struct s_ray
 	int					right;
 	int					left;
 	int					content;
-}	t_ray;
+}						t_ray;
 
 typedef struct s_player
 {
@@ -94,7 +95,7 @@ typedef struct s_player
 	double				u_y;
 	int					rot_speed;
 	int					mov_speed;
-}	t_player;
+}						t_player;
 
 typedef struct s_minimap
 {
@@ -104,7 +105,7 @@ typedef struct s_minimap
 	void				*player;
 	float				x;
 	float				y;
-}	t_minimap;
+}						t_minimap;
 
 typedef struct s_map
 {
@@ -125,7 +126,7 @@ typedef struct s_map
 	struct s_directions	*directions;
 	struct s_textures	*textures;
 	struct s_window		*window;
-}	t_map;
+}						t_map;
 
 typedef struct s_textures
 {
@@ -137,7 +138,7 @@ typedef struct s_textures
 	int					line_length;
 	int					endian;
 	struct s_map		*map;
-}	t_textures;
+}						t_textures;
 
 typedef struct s_directions
 {
@@ -149,13 +150,14 @@ typedef struct s_directions
 	long long			f;
 	long long			c;
 	struct s_map		*map;
-}	t_directions;
+}						t_directions;
 
-typedef struct s_window{
+typedef struct s_window
+{
 	void				*mlx;
 	void				*mlx_win;
 	struct s_map		*map;
 	bool				s_animation;
-}	t_window;
+}						t_window;
 
 #endif

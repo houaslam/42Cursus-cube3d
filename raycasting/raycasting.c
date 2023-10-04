@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:48:02 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 17:53:40 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:58:57 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_exit(t_window *mlx)
 {
-	int i;
+	int	i;
 
 	free(mlx->map->directions->no);
 	free(mlx->map->directions->so);
@@ -43,9 +43,8 @@ void	rays_casting(t_map *map, t_window *window)
 
 	i = 0;
 	map->r.cast = map->r.ang + 30;
-	map->img.addr = mlx_get_data_addr(map->img.img, \
-	&map->img.bits_per_pixel, &map->img.line_length, &map->img.endian);
-	// printf("%s\n", map->textures[DO]->do)
+	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bits_per_pixel,
+			&map->img.line_length, &map->img.endian);
 	while (i < PP_WIDTH)
 	{
 		check_angles(map);
@@ -56,10 +55,9 @@ void	rays_casting(t_map *map, t_window *window)
 		map->r.cast -= (float)VIEW_D / PP_WIDTH;
 		i++;
 	}
-	mlx_put_image_to_window(window->mlx, \
-	window->mlx_win, map->img.img, 0, 0);
-	map->mini.addr = mlx_get_data_addr(map->mini.img, \
-	&map->mini.bits_per_pixel, &map->mini.line_length, &map->mini.endian);
+	mlx_put_image_to_window(window->mlx, window->mlx_win, map->img.img, 0, 0);
+	map->mini.addr = mlx_get_data_addr(map->mini.img, &map->mini.bits_per_pixel,
+			&map->mini.line_length, &map->mini.endian);
 	draw_minimap(map);
 }
 

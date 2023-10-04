@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rgb_parse.c                                        :+:      :+:    :+:   */
+/*   tools2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 02:16:17 by macbookair        #+#    #+#             */
-/*   Updated: 2023/10/04 23:28:51 by macbookair       ###   ########.fr       */
+/*   Created: 2023/10/04 23:15:10 by macbookair        #+#    #+#             */
+/*   Updated: 2023/10/04 23:15:19 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void    rgb_parse(char *str)
+long long	ft_condition(char *str, int i)
 {
-	int i;
-	int c;
-
-	i = 0;
-	c = 0;
-	while (str[i])
-	{
-	    if (str[i] == ',')
-	    {
-			if (i == 0 || i == (int)ft_strlen(str) - 1 || c >= 2)
-				put_error("INVALID RGB");
-			c++;
-		}
-		else if (str[i] != ' ' && str[i] != '\t' && !ft_isdigit(str[i]))
-			put_error("INVALID RGB");
-		i++;
-	}
+	if (i == 0)
+		return (ft_atoi(str) << 16);
+	if (i == 1)
+		return (ft_atoi(str) << 8);
+	if (i == 2)
+		return (ft_atoi(str));
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookair <macbookair@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 07:38:31 by houaslam          #+#    #+#             */
-/*   Updated: 2023/10/04 15:12:20 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/10/04 22:58:34 by macbookair       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	which_move(int keycode, t_map *map)
 {
 	if (keycode == LEFT || keycode == RIGHT)
 		move_left_right(map, keycode);
-	if (keycode == UP || keycode == ARROW_UP \
-	|| keycode == DOWN || keycode == ARROW_DOWN)
+	if (keycode == UP || keycode == ARROW_UP || keycode == DOWN
+		|| keycode == ARROW_DOWN)
 		move_up_down(map, keycode);
 	if (keycode == ARROW_LEFT || keycode == ARROW_RIGHT)
 		turn_move(keycode, map);
